@@ -1,0 +1,35 @@
+<h2>Show user</h2>
+
+<ul>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </li>
+
+  <li>
+    <strong>Profile:</strong>
+    <%= @user.profile %>
+  </li>
+
+  <li>
+    <strong>Image:</strong>
+    <%= if @user.image do %>
+      <img src="<%= UserImageUploader.url({@user.image, @user}, :medium) %>" alt="" />
+    <% end %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= Status.get(@user.status).text %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: user_path(@conn, :edit, @user) %>
+<%= link "Back", to: user_path(@conn, :index) %>

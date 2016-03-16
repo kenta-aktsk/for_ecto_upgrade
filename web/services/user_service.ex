@@ -23,7 +23,7 @@ defmodule ForEctoUpgrade.UserService do
 
   def upload_image(%Plug.Upload{} = image, %{user: user}) do
     case UserImageUploader.store({image, user}) do
-      {:ok, file} -> 
+      {:ok, file} ->
         case Repo.update(Changeset.change(user, %{image: file})) do
           {:ok, user} -> {:ok, file}
           {:error, changeset} -> {:error, changeset.errors[:image]}

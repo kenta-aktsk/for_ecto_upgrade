@@ -28,6 +28,8 @@ defmodule ForEctoUpgrade.Mixfile do
       :logger, 
       :gettext,
       :phoenix_ecto, 
+      :arc,
+      :ex_enum,
       # :postgrex
       :mariaex
       ]
@@ -57,6 +59,7 @@ defmodule ForEctoUpgrade.Mixfile do
      # {:ex_enum, path: "/Users/kentakatsumata/Documents/workspace_elixir/ex_enum"},
      {:ex_enum, github: "kenta-aktsk/ex_enum"},
      {:comeonin, "~> 1.6"},
+     {:exrm, "~> 1.0" },
      {:cowboy, "~> 1.0"}]
   end
 

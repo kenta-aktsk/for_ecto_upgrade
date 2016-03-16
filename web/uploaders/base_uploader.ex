@@ -1,6 +1,6 @@
 defmodule ForEctoUpgrade.BaseUploader do
   defmacro __using__(_opts) do
-    quote do
+    quote location: :keep do
       use Arc.Definition
       import unquote(__MODULE__)
 
@@ -33,12 +33,12 @@ defmodule ForEctoUpgrade.BaseUploader do
       def filename(version, _) do
         version
       end
-      
-      if System.get_env("MIX_ENV") == "local" do
-        def url(file, version, options) do
-          Arc.Actions.Url.url(__MODULE__, file, version, options)
-          |> String.replace(Application.get_env(:arc, :base_upload_path), "/images")
-        end
+
+      def url({file, scope}, version, options) do
+        url = Arc.Actions.Url.url(__MODULE__, {file, scope}, version, options)
+        url = if System.get_env("MIX_ENV") == "local", do: String.replace(url, Application.get_env(:arc, :base_upload_path), "/images"), else: url
+        hash = :crypto.hash(:sha256, to_string(scope.__struct__) <> to_string(scope.id) <> to_string(scope.updated_at)) |> Base.encode16
+        "#{url}?#{hash}"
       end
 
       # Provide a default URL if there hasn't been a file uploaded

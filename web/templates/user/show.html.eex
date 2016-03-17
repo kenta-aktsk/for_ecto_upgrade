@@ -20,7 +20,7 @@
   <li>
     <strong>Image:</strong>
     <%= if @user.image do %>
-      <img src="<%= UserImageUploader.url({@user.image, @user}, :medium) %>" alt="" />
+      <img src="<%= UserImageUploader.url({@user.image, @user}, :small) %>" alt="" />
     <% end %>
   </li>
 

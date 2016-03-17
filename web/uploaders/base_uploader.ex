@@ -1,10 +1,13 @@
 defmodule ForEctoUpgrade.BaseUploader do
-  defmacro __using__(model) when is_binary(model) do
+  defmacro __using__(opts)do
+    repo = Module.split(__CALLER__.module) |> List.first |> Module.safe_concat(Repo)
     quote location: :keep do
       use Arc.Definition
       import unquote(__MODULE__)
+      alias Ecto.Changeset
+      alias unquote(repo)
+      unquote(config(opts))
 
-      @versions [:medium, :small]
       @extension_whitelist ~w(.jpg .jpeg .gif .png)
       @acl :public_read
 
@@ -13,24 +16,12 @@ defmodule ForEctoUpgrade.BaseUploader do
         Enum.member?(@extension_whitelist, file_extension)
       end
 
-      def transform(:medium, _) do
-        convert "100x100"
-      end
-
-      def transform(:small, _) do
-        convert "50x50"
-      end
-
-      defp convert(size) when is_binary(size) do
-        {:convert, "-thumbnail #{size}^ -gravity center -extent #{size} -format png", :png}
-      end
-
       def __storage do
         Application.get_env(:arc, :storage)
       end
 
       def storage_dir(_version, {_file, scope}) do
-        Path.join(Application.get_env(:arc, :base_upload_path), "#{unquote(model)}/#{scope.id}")
+        Path.join(Application.get_env(:arc, :base_upload_path), "#{to_string(@model)}/#{scope.id}")
       end
 
       def filename(version, _) do
@@ -53,7 +44,29 @@ defmodule ForEctoUpgrade.BaseUploader do
         :crypto.hash(:sha256, to_string(scope.__struct__) <> to_string(id) <> to_string(updated_at)) |> Base.encode16
       end
 
-      defoverridable [storage_dir: 2, filename: 2, validate: 1, default_url: 1, default_url: 2, __storage: 0, url: 3]
+      def upload(%Plug.Upload{} = file, %{@model => model}) do
+        case __MODULE__.store({file, model}) do
+          {:ok, _} ->
+            # generate uuid to indicate this record is updated. (to refresh `updated_at` col)
+            uuid = SecureRandom.uuid
+            case Repo.update(Changeset.change(model, %{@field => uuid})) do
+              {:ok, _} -> {:ok, uuid}
+              {:error, changeset} -> {:error, changeset.errors[@field]}
+            end
+          {:error, message} -> {:error, message}
+        end
+      end
+      def upload(_, _), do: {:ok, nil}
+
+      def erase(%{@model => %{@field => file} = model}) when not is_nil(file) do
+        case __MODULE__.delete({file, model}) do
+          :ok -> {:ok, nil}
+          {:error, reason} -> {:error, reason}
+        end
+      end
+      def erase(_), do: {:ok, nil}
+
+      defoverridable [validate: 1, __storage: 0, storage_dir: 2, filename: 2, default_url: 1, default_url: 2, url: 3, upload: 2, erase: 1]
 
       # Specify custom headers for s3 objects
       # Available options are [:cache_control, :content_disposition,
@@ -63,6 +76,13 @@ defmodule ForEctoUpgrade.BaseUploader do
       # def s3_object_headers(version, {file, scope}) do
       #   [content_type: Plug.MIME.path(file.file_name)]
       # end
+    end
+  end
+
+  defp config(opts) do
+    quote do
+      @model unquote(opts)[:model] || raise ":model must be given."
+      @field unquote(opts)[:field] || raise ":field must be given."
     end
   end
 end

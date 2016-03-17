@@ -1,7 +1,6 @@
 defmodule ForEctoUpgrade.User do
   use ForEctoUpgrade.Web, :model
   alias Ecto.Changeset
-  alias ForEctoUpgrade.UserImageUploader
   @min_password_length 8
   @max_password_length 20
 

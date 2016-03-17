@@ -24,7 +24,7 @@ defmodule ForEctoUpgrade.UserController do
         conn
         |> put_flash(:info, "User created successfully.")
         |> redirect(to: user_path(conn, :show, user))
-      {:error, failed_operation, failed_value, changes_so_far} ->
+      {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "User create failed")
         |> render("new.html", changeset: changeset)
@@ -51,7 +51,7 @@ defmodule ForEctoUpgrade.UserController do
         conn
         |> put_flash(:info, "User updated successfully.")
         |> redirect(to: user_path(conn, :show, user))
-      {:error, failed_operation, failed_value, changes_so_far} ->
+      {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "User update failed")
         |> render("edit.html", user: user, changeset: changeset)
@@ -66,7 +66,7 @@ defmodule ForEctoUpgrade.UserController do
         conn
         |> put_flash(:info, "User deleted successfully.")
         |> redirect(to: user_path(conn, :index))
-      {:error, failed_operation, failed_value, changes_so_far} ->
+      {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "User delete failed")
         |> redirect(to: user_path(conn, :index))

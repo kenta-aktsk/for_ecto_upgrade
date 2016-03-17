@@ -32,4 +32,5 @@
   "providers": {:hex, :providers, "1.6.0"},
   "ranch": {:hex, :ranch, "1.2.1"},
   "relx": {:hex, :relx, "3.18.0"},
+  "secure_random": {:hex, :secure_random, "0.2.0"},
   "ssl_verify_hostname": {:hex, :ssl_verify_hostname, "1.0.5"}}

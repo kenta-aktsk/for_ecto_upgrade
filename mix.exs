@@ -22,6 +22,7 @@ defmodule ForEctoUpgrade.Mixfile do
       :ex_aws,
       :httpoison,
       :comeonin,
+      :secure_random,
       :phoenix, 
       :phoenix_html, 
       :cowboy, 
@@ -59,6 +60,7 @@ defmodule ForEctoUpgrade.Mixfile do
      # {:ex_enum, path: "/Users/kentakatsumata/Documents/workspace_elixir/ex_enum"},
      {:ex_enum, github: "kenta-aktsk/ex_enum"},
      {:comeonin, "~> 1.6"},
+     {:secure_random, "~> 0.2"},
      {:exrm, "~> 1.0" },
      {:cowboy, "~> 1.0"}]
   end

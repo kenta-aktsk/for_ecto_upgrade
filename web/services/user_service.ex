@@ -23,9 +23,11 @@ defmodule ForEctoUpgrade.UserService do
 
   def upload_image(%Plug.Upload{} = image, %{user: user}) do
     case UserImageUploader.store({image, user}) do
-      {:ok, file} ->
-        case Repo.update(Changeset.change(user, %{image: file})) do
-          {:ok, user} -> {:ok, file}
+      {:ok, _} ->
+        # generate uuid to indicate this record is updated. (to refresh `updated_at` col)
+        uuid = SecureRandom.uuid
+        case Repo.update(Changeset.change(user, %{image: uuid})) do
+          {:ok, _} -> {:ok, uuid}
           {:error, changeset} -> {:error, changeset.errors[:image]}
         end
       {:error, message} -> {:error, message}

@@ -1,5 +1,5 @@
 defmodule ForEctoUpgrade.BaseUploader do
-  defmacro __using__(_opts) do
+  defmacro __using__(model) when is_binary(model) do
     quote location: :keep do
       use Arc.Definition
       import unquote(__MODULE__)
@@ -29,22 +29,31 @@ defmodule ForEctoUpgrade.BaseUploader do
         Application.get_env(:arc, :storage)
       end
 
-      # Override the persisted filenames:
+      def storage_dir(_version, {_file, scope}) do
+        Path.join(Application.get_env(:arc, :base_upload_path), "#{unquote(model)}/#{scope.id}")
+      end
+
       def filename(version, _) do
         version
       end
 
+      def default_url(version, _scope), do: default_url(version)
+      def default_url(_version), do: nil
+
       def url({file, scope}, version, options) do
-        url = Arc.Actions.Url.url(__MODULE__, {file, scope}, version, options)
-        url = if System.get_env("MIX_ENV") == "local", do: String.replace(url, Application.get_env(:arc, :base_upload_path), "/images"), else: url
-        hash = :crypto.hash(:sha256, to_string(scope.__struct__) <> to_string(scope.id) <> to_string(scope.updated_at)) |> Base.encode16
+        url = super({file, scope}, version, options) |> replace_url(System.get_env("MIX_ENV"))
+        hash = cache_bust(scope)
         "#{url}?#{hash}"
       end
 
-      # Provide a default URL if there hasn't been a file uploaded
-      # def default_url(version, scope) do
-      #   "/images/avatars/default_#{version}.png"
-      # end
+      defp replace_url(url, "local"), do: String.replace(url, Application.get_env(:arc, :base_upload_path), "/images")
+      defp replace_url(url, _), do: url
+
+      defp cache_bust(%{__struct__: _, id: id, updated_at: updated_at} = scope) do
+        :crypto.hash(:sha256, to_string(scope.__struct__) <> to_string(id) <> to_string(updated_at)) |> Base.encode16
+      end
+
+      defoverridable [storage_dir: 2, filename: 2, validate: 1, default_url: 1, default_url: 2, __storage: 0, url: 3]
 
       # Specify custom headers for s3 objects
       # Available options are [:cache_control, :content_disposition,

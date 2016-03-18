@@ -52,7 +52,7 @@ defmodule ForEctoUpgrade.Web do
       use Phoenix.Controller, namespace: ForEctoUpgrade.Admin
       use ForEctoUpgrade.Controller
       import ForEctoUpgrade.Admin.ControllerConcern
-      alias ForEctoUpgrade.AdminUserAuthService
+      alias ForEctoUpgrade.Admin.AdminUserAuthService
 
       plug :check_logged_in
 

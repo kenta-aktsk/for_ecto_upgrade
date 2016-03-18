@@ -17,7 +17,7 @@ defmodule ForEctoUpgrade.Admin.SessionController do
         conn
         |> put_flash(:info, "Signed in as #{admin_user.name}")
         |> put_session(:current_admin_user, admin_user)
-        |> redirect(to: admin_admin_user_path(conn, :index))
+        |> redirect(to: admin_page_path(conn, :index))
       {:error, _reason} ->
         conn
         |> put_flash(:error, "Could not authenticate")
@@ -34,7 +34,7 @@ defmodule ForEctoUpgrade.Admin.SessionController do
 
   def check_logged_in(conn, _params) do
     if conn.request_path == admin_session_path(conn, :new) && admin_logged_in?(conn) do
-      conn |> redirect(to: admin_admin_user_path(conn, :index))
+      conn |> redirect(to: admin_page_path(conn, :index))
     else
       conn
     end

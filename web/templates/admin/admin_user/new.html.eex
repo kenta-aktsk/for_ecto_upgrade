@@ -1,0 +1,6 @@
+<h2>New admin user</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: admin_admin_user_path(@conn, :create) %>
+
+<%= link "Back", to: admin_admin_user_path(@conn, :index) %>

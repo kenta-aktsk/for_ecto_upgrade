@@ -13,6 +13,16 @@ defmodule ForEctoUpgrade.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/admin", ForEctoUpgrade.Admin, as: :admin do
+    pipe_through [:browser]
+
+    get "/login", SessionController, :new
+    post "/auth/identity/callback", SessionController, :callback
+    delete "/logout", SessionController, :delete
+
+    resources "/admin_users", AdminUserController
+  end
+
   scope "/", ForEctoUpgrade do
     pipe_through :browser # Use the default browser stack
 

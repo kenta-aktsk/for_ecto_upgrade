@@ -32,6 +32,7 @@ defmodule ForEctoUpgrade.Mixfile do
       :arc,
       :ex_enum,
       # :postgrex
+      :ueberauth_identity,
       :mariaex
       ]
     ]
@@ -57,11 +58,11 @@ defmodule ForEctoUpgrade.Mixfile do
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: [:local, :dev]},
      {:gettext, "~> 0.9"},
-     # {:ex_enum, path: "/Users/kentakatsumata/Documents/workspace_elixir/ex_enum"},
      {:ex_enum, github: "kenta-aktsk/ex_enum"},
      {:comeonin, "~> 1.6"},
      {:secure_random, "~> 0.2"},
      {:exrm, "~> 1.0" },
+     {:ueberauth_identity, "~> 0.2"},
      {:cowboy, "~> 1.0"}]
   end
 

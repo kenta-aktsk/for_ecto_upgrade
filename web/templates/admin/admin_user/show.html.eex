@@ -1,0 +1,28 @@
+<h2>Show admin user</h2>
+
+<ul>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @admin_user.email %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @admin_user.name %>
+  </li>
+
+  <li>
+    <strong>Encrypted password:</strong>
+    <%= @admin_user.encrypted_password %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @admin_user.status %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: admin_admin_user_path(@conn, :edit, @admin_user) %>
+<%= link "Back", to: admin_admin_user_path(@conn, :index) %>

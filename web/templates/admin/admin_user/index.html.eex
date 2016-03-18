@@ -1,0 +1,30 @@
+<h2>Listing admin users</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for admin_user <- @admin_users do %>
+    <tr>
+      <td><%= admin_user.email %></td>
+      <td><%= admin_user.name %></td>
+      <td><%= admin_user.status %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: admin_admin_user_path(@conn, :show, admin_user), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: admin_admin_user_path(@conn, :edit, admin_user), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: admin_admin_user_path(@conn, :delete, admin_user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New admin user", to: admin_admin_user_path(@conn, :new) %>

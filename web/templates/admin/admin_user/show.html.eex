@@ -13,13 +13,8 @@
   </li>
 
   <li>
-    <strong>Encrypted password:</strong>
-    <%= @admin_user.encrypted_password %>
-  </li>
-
-  <li>
     <strong>Status:</strong>
-    <%= @admin_user.status %>
+    <%= Status.get(@admin_user.status).text %>
   </li>
 
 </ul>

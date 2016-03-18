@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.AdminUserAuthService do
+defmodule ForEctoUpgrade.Admin.AdminUserAuthService do
   alias Ueberauth.Auth
   alias ForEctoUpgrade.AdminUser
   import ForEctoUpgrade.Router.Helpers

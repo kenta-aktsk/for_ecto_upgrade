@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <h2><%= gettext "Dashboard" %></h2>
+</div>
+
+<div class="row marketing">
+  <div class="col-lg-6">
+    <h4>List</h4>
+    <ul>
+      <li>
+        <%= link "AdminUser", to: admin_admin_user_path(@conn, :index) %>
+      </li>
+      <li>
+        <%= link "Category", to: admin_category_path(@conn, :index) %>
+      </li>
+    </ul>
+  </div>
+
+</div>

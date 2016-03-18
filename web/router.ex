@@ -20,7 +20,10 @@ defmodule ForEctoUpgrade.Router do
     post "/auth/identity/callback", SessionController, :callback
     delete "/logout", SessionController, :delete
 
+    get "/", PageController, :index
+
     resources "/admin_users", AdminUserController
+    resources "/categories", CategoryController
   end
 
   scope "/", ForEctoUpgrade do

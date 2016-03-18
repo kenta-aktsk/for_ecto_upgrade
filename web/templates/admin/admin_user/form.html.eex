@@ -18,15 +18,21 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :encrypted_password, class: "control-label" %>
-    <%= text_input f, :encrypted_password, class: "form-control" %>
-    <%= error_tag f, :encrypted_password %>
+    <%= label f, :status, class: "control-label" %>
+    <%= select f, :status, Status.select([:text, :id]), class: "form-control" %>
+    <%= error_tag f, :status %>
   </div>
 
   <div class="form-group">
-    <%= label f, :status, class: "control-label" %>
-    <%= number_input f, :status, class: "form-control" %>
-    <%= error_tag f, :status %>
+    <%= label f, :password, class: "control-label" %>
+    <%= password_input f, :password, class: "form-control" %>
+    <%= error_tag f, :password %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :password_confirmation, class: "control-label" %>
+    <%= password_input f, :password_confirmation, class: "form-control" %>
+    <%= error_tag f, :password_confirmation %>
   </div>
 
   <div class="form-group">

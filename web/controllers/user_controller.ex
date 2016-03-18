@@ -1,6 +1,5 @@
 defmodule ForEctoUpgrade.UserController do
   use ForEctoUpgrade.Web, :controller
-
   alias ForEctoUpgrade.UserService
   alias ForEctoUpgrade.User
 

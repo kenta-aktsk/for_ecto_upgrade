@@ -1,5 +1,6 @@
 defmodule ForEctoUpgrade.AdminUser do
   use ForEctoUpgrade.Web, :model
+  use ForEctoUpgrade.UserModelPasswordConcern, min_password_length: 4, max_password_length: 10
 
   schema "admin_users" do
     field :email, :string
@@ -7,20 +8,21 @@ defmodule ForEctoUpgrade.AdminUser do
     field :encrypted_password, :string
     field :status, :integer
 
+    field :password, :string, virtual: true
+    field :password_confirmation, :string, virtual: true
+
     timestamps
   end
 
-  @required_fields ~w(email name encrypted_password status)
-  @optional_fields ~w()
+  @required_fields ~w(email name status)a
+  @optional_fields ~w()a
 
-  @doc """
-  Creates a changeset based on the `model` and `params`.
+  def changeset(admin_user, params \\ %{}) do
+    {required_fields, optional_fields} = adjust_validation_fields(admin_user, @required_fields, @optional_fields)
 
-  If no params are provided, an invalid changeset is returned
-  with no validation performed.
-  """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+    admin_user
+    |> cast(params, required_fields ++ optional_fields)
+    |> validate_required(required_fields)
+    |> check_password
   end
 end

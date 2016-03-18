@@ -59,8 +59,9 @@ defmodule ForEctoUpgrade.Web do
       def check_logged_in(conn, _params) do
         if conn.request_path != admin_session_path(conn, :new) && !admin_logged_in?(conn) do
           conn |> redirect(to: admin_session_path(conn, :new))
+        else
+          conn
         end
-        conn
       end
 
       defoverridable [check_logged_in: 2]

@@ -33,16 +33,12 @@ defmodule ForEctoUpgrade.BaseUploader do
 
       def url({file, scope}, version, options) do
         url = super({file, scope}, version, options) |> replace_url(System.get_env("MIX_ENV"))
-        hash = cache_bust(scope)
+        hash = Map.get(scope, @field)
         "#{url}?#{hash}"
       end
 
       defp replace_url(url, "local"), do: String.replace(url, Application.get_env(:arc, :base_upload_path), "/images")
       defp replace_url(url, _), do: url
-
-      defp cache_bust(%{__struct__: _, id: id, updated_at: updated_at} = scope) do
-        :crypto.hash(:sha256, to_string(scope.__struct__) <> to_string(id) <> to_string(updated_at)) |> Base.encode16
-      end
 
       def upload(%Plug.Upload{} = file, %{@model => model}) do
         case __MODULE__.store({file, model}) do

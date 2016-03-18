@@ -41,31 +41,42 @@ defmodule ForEctoUpgrade.Web do
   def controller do
     quote do
       use Phoenix.Controller
+      use ForEctoUpgrade.Controller
+    end
+  end
 
-      alias ForEctoUpgrade.Repo
-      import Ecto
-      import Ecto.Query, only: [from: 1, from: 2]
+  def admin_controller do
+    quote do
+      # By indicating namespace, we can change module name prefix on LayoutView.
+      # In this case, `ForEctoUpgrade.Admin.LayoutView` will be used.
+      use Phoenix.Controller, namespace: ForEctoUpgrade.Admin
+      use ForEctoUpgrade.Controller
+      import ForEctoUpgrade.Admin.ControllerConcern
+      alias ForEctoUpgrade.AdminUserAuthService
 
-      import ForEctoUpgrade.Router.Helpers
-      import ForEctoUpgrade.Gettext
+      plug :check_logged_in
+
+      def check_logged_in(conn, _params) do
+        if conn.request_path != admin_session_path(conn, :new) && !admin_logged_in?(conn) do
+          conn |> redirect(to: admin_session_path(conn, :new))
+        end
+        conn
+      end
+
+      defoverridable [check_logged_in: 2]
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "web/templates"
+      use ForEctoUpgrade.View
+    end
+  end
 
-      # Import convenience functions from controllers
-      import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
-
-      # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
-
-      import ForEctoUpgrade.Router.Helpers
-      import ForEctoUpgrade.ErrorHelpers
-      import ForEctoUpgrade.Gettext
-
-      import ForEctoUpgrade.Helpers
+  def admin_view do
+    quote do
+      use ForEctoUpgrade.View
+      import ForEctoUpgrade.Admin.Helpers
     end
   end
 
@@ -91,5 +102,38 @@ defmodule ForEctoUpgrade.Web do
   """
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
+  end
+end
+
+defmodule ForEctoUpgrade.Controller do
+  defmacro __using__(_) do
+    quote do
+      alias ForEctoUpgrade.Repo
+      import Ecto
+      import Ecto.Query, only: [from: 1, from: 2]
+
+      import ForEctoUpgrade.Router.Helpers
+      import ForEctoUpgrade.Gettext
+      import ForEctoUpgrade.Admin.Helpers
+    end
+  end
+end
+
+defmodule ForEctoUpgrade.View do
+  defmacro __using__(_) do
+    quote do
+      use Phoenix.View, root: "web/templates"
+
+      # Import convenience functions from controllers
+      import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
+
+      # Use all HTML functionality (forms, tags, etc)
+      use Phoenix.HTML
+
+      import ForEctoUpgrade.Router.Helpers
+      import ForEctoUpgrade.ErrorHelpers
+      import ForEctoUpgrade.Gettext
+      import ForEctoUpgrade.Helpers
+    end
   end
 end

@@ -59,6 +59,7 @@ defmodule ForEctoUpgrade.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: [:local, :dev]},
      {:gettext, "~> 0.9"},
      {:ex_enum, github: "kenta-aktsk/ex_enum"},
+     # {:ex_enum, path: "/Users/kentakatsumata/Documents/workspace_elixir/ex_enum"},
      {:comeonin, "~> 1.6"},
      {:secure_random, "~> 0.2"},
      {:exrm, "~> 1.0" },

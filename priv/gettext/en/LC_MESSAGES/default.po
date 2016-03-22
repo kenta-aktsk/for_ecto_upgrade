@@ -1,0 +1,27 @@
+## `msgid`s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+
+#: web/templates/admin/page/index.html.eex:2
+msgid "Dashboard"
+msgstr ""
+
+#: web/templates/page/index.html.eex:2
+msgid "Welcome to %{name}"
+msgstr ""
+
+#: lib/for_ecto_upgrade/enums/status.ex:4
+msgid "invalid"
+msgstr ""
+
+#: lib/for_ecto_upgrade/enums/status.ex:5
+msgid "valid"
+msgstr ""

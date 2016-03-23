@@ -21,4 +21,12 @@ defmodule ForEctoUpgrade.Gettext do
   See the [Gettext Docs](http://hexdocs.pm/gettext) for detailed usage.
   """
   use Gettext, otp_app: :for_ecto_upgrade
+
+  def supported_locales do
+    known = Gettext.known_locales(ForEctoUpgrade.Gettext)
+    allowed = config[:locales]
+    known -- (known -- allowed)
+  end
+
+  def config, do: Application.get_env(:for_ecto_upgrade, __MODULE__)
 end

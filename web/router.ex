@@ -14,24 +14,33 @@ defmodule ForEctoUpgrade.Router do
     plug :accepts, ["json"]
   end
 
+  # this scope is required. without this, root url ("/") won't be recognized. 
+  scope "/", ForEctoUpgrade do
+    pipe_through [:browser]
+    get "/", DummyController, :dummy
+  end
+
+  # ueberauth doesn't support "/:identifier" in request path. 
+  # so login/logout/callback path must be defined outside of "/:locale" scope.
   scope "/admin", ForEctoUpgrade.Admin, as: :admin do
     pipe_through [:browser]
-
     get "/login", SessionController, :new
     post "/auth/identity/callback", SessionController, :callback
     delete "/logout", SessionController, :delete
-
-    get "/", PageController, :index
-
-    resources "/admin_users", AdminUserController
-    resources "/categories", CategoryController
   end
 
-  scope "/", ForEctoUpgrade do
-    pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
-    resources "/users", UserController
+  scope "/:locale" do
+    scope "/admin", ForEctoUpgrade.Admin, as: :admin do
+      pipe_through [:browser]
+      get "/", PageController, :index
+      resources "/admin_users", AdminUserController
+      resources "/categories", CategoryController
+    end
+    scope "/", ForEctoUpgrade do
+      pipe_through [:browser]
+      get "/", PageController, :index
+      resources "/users", UserController
+    end
   end
 
   # Other scopes may use custom stacks.

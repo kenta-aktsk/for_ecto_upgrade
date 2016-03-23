@@ -19,5 +19,5 @@
 
 </ul>
 
-<%= link "Edit", to: admin_admin_user_path(@conn, :edit, @admin_user) %>
-<%= link "Back", to: admin_admin_user_path(@conn, :index) %>
+<%= link "Edit", to: admin_admin_user_path(@conn, :edit, @conn.assigns.locale, @admin_user) %>
+<%= link "Back", to: admin_admin_user_path(@conn, :index, @conn.assigns.locale) %>

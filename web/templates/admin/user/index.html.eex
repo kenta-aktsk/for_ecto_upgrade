@@ -1,0 +1,32 @@
+<h2>Listing users</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Profile</th>
+      <th>Status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.name %></td>
+      <td><%= user.profile %></td>
+      <td><%= Status.get(user.status).text %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: admin_user_path(@conn, :show, @conn.assigns.locale, user), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: admin_user_path(@conn, :edit, @conn.assigns.locale, user), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: admin_user_path(@conn, :delete, @conn.assigns.locale, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New user", to: admin_user_path(@conn, :new, @conn.assigns.locale) %>

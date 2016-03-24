@@ -63,6 +63,9 @@ defmodule ForEctoUpgrade.Mixfile do
      {:comeonin, "~> 1.6"},
      {:secure_random, "~> 0.2"},
      {:exrm, "~> 1.0" },
+     {:ueberauth_facebook, "~> 0.3"},
+     {:ueberauth_twitter, "~> 0.2"},
+     {:ueberauth_github, "~> 0.2"},
      {:ueberauth_identity, "~> 0.2"},
      {:cowboy, "~> 1.0"}]
   end

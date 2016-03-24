@@ -1,7 +1,5 @@
 defmodule ForEctoUpgrade.Admin.SessionController do
   use ForEctoUpgrade.Web, :admin_controller
-
-  alias ForEctoUpgrade.AdminUser
   alias Ueberauth.Strategy.Helpers
   alias ForEctoUpgrade.Gettext
 
@@ -26,7 +24,7 @@ defmodule ForEctoUpgrade.Admin.SessionController do
     end
   end
 
-  def delete(conn, params) do
+  def delete(conn, _params) do
     conn
       |> configure_session(drop: true)
       |> put_flash(:info, "admin signed out")

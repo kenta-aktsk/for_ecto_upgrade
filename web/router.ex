@@ -28,18 +28,24 @@ defmodule ForEctoUpgrade.Router do
     post "/auth/identity/callback", SessionController, :callback
     delete "/logout", SessionController, :delete
   end
+  scope "/", ForEctoUpgrade do
+    pipe_through [:browser]
+    get "/login", SessionController, :new
+    post "/auth/:identity/callback", SessionController, :callback
+    delete "/logout", SessionController, :delete
+  end
 
   scope "/:locale" do
     scope "/admin", ForEctoUpgrade.Admin, as: :admin do
       pipe_through [:browser]
       get "/", PageController, :index
       resources "/admin_users", AdminUserController
+      resources "/users", UserController
       resources "/categories", CategoryController
     end
     scope "/", ForEctoUpgrade do
       pipe_through [:browser]
       get "/", PageController, :index
-      resources "/users", UserController
     end
   end
 

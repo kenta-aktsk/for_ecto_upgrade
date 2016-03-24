@@ -10,6 +10,9 @@
         <%= link "AdminUser", to: admin_admin_user_path(@conn, :index, @conn.assigns.locale) %>
       </li>
       <li>
+        <%= link "User", to: admin_user_path(@conn, :index, @conn.assigns.locale) %>
+      </li>
+      <li>
         <%= link "Category", to: admin_category_path(@conn, :index, @conn.assigns.locale) %>
       </li>
     </ul>

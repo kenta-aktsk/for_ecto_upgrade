@@ -1,6 +1,9 @@
 defmodule ForEctoUpgrade.Locale do
   import Plug.Conn
 
+  {:ok, regex} = Enum.join(["/admin", "/login", "/auth", "/logout"], "|") |> Regex.compile
+  @no_locales regex
+
   def init(opts), do: opts
 
   def call(conn, _opts) do
@@ -9,7 +12,7 @@ defmodule ForEctoUpgrade.Locale do
     cond do
       locale in ForEctoUpgrade.Gettext.supported_locales ->
         conn |> assign_locale!(locale)
-      Regex.match?(~r/^\/admin/, conn.request_path) ->
+      Regex.match?(@no_locales, conn.request_path) ->
         conn
       :else ->
         default_locale = ForEctoUpgrade.Gettext.config[:default_locale]

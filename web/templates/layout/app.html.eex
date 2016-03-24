@@ -15,11 +15,12 @@
     <div class="container">
       <header class="header">
         <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+          <ul class="nav nav-pills pull-right btn-group-xs">
+            <%= render "login_bar.html", conn: @conn %>
           </ul>
         </nav>
         <span class="logo"></span>
+
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

@@ -42,6 +42,7 @@ defmodule ForEctoUpgrade.Web do
     quote do
       use Phoenix.Controller
       use ForEctoUpgrade.Controller
+      alias ForEctoUpgrade.UserAuthService
     end
   end
 

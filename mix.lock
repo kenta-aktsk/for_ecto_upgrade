@@ -22,6 +22,8 @@
   "idna": {:hex, :idna, "1.1.0"},
   "mariaex": {:hex, :mariaex, "0.7.0"},
   "mimerl": {:hex, :mimerl, "1.0.2"},
+  "mimetype_parser": {:hex, :mimetype_parser, "0.1.2"},
+  "oauth2": {:hex, :oauth2, "0.6.0"},
   "phoenix": {:hex, :phoenix, "1.1.4"},
   "phoenix_ecto": {:hex, :phoenix_ecto, "3.0.0-beta.2"},
   "phoenix_html": {:hex, :phoenix_html, "2.5.1"},
@@ -35,4 +37,7 @@
   "secure_random": {:hex, :secure_random, "0.2.0"},
   "ssl_verify_hostname": {:hex, :ssl_verify_hostname, "1.0.5"},
   "ueberauth": {:hex, :ueberauth, "0.2.0"},
-  "ueberauth_identity": {:hex, :ueberauth_identity, "0.2.3"}}
+  "ueberauth_facebook": {:hex, :ueberauth_facebook, "0.3.2"},
+  "ueberauth_github": {:hex, :ueberauth_github, "0.2.0"},
+  "ueberauth_identity": {:hex, :ueberauth_identity, "0.2.3"},
+  "ueberauth_twitter": {:hex, :ueberauth_twitter, "0.2.2"}}

@@ -9,7 +9,7 @@
     <h4>Public</h4>
     <ul>
       <li>
-        <%= link "User", to: user_path(@conn, :index, @conn.assigns.locale) %>
+        <%= link "User", to: session_path(@conn, :new) %>
       </li>
     </ul>
   </div>

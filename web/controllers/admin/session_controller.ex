@@ -16,11 +16,11 @@ defmodule ForEctoUpgrade.Admin.SessionController do
         conn
         |> put_flash(:info, "Signed in as #{admin_user.name}")
         |> put_session(:current_admin_user, admin_user)
-        |> redirect(to: admin_page_path(conn, :index, Gettext.config[:default_locale]))
+        |> redirect(to: admin_page_path(conn, :index, Gettext.config[:default_locale])) |> halt
       {:error, _reason} ->
         conn
         |> put_flash(:error, "Could not authenticate")
-        |> redirect(to: admin_session_path(conn, :new))
+        |> redirect(to: admin_session_path(conn, :new)) |> halt
     end
   end
 
@@ -28,12 +28,12 @@ defmodule ForEctoUpgrade.Admin.SessionController do
     conn
       |> configure_session(drop: true)
       |> put_flash(:info, "admin signed out")
-      |> redirect(to: admin_session_path(conn, :new))
+      |> redirect(to: admin_session_path(conn, :new)) |> halt
   end
 
   def check_logged_in(conn, _params) do
     if conn.request_path == admin_session_path(conn, :new) && admin_logged_in?(conn) do
-      conn |> redirect(to: admin_page_path(conn, :index, Gettext.config[:default_locale]))
+      conn |> redirect(to: admin_page_path(conn, :index, Gettext.config[:default_locale])) |> halt
     else
       conn
     end

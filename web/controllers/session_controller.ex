@@ -12,16 +12,16 @@ defmodule ForEctoUpgrade.SessionController do
   end
 
   def callback(%Plug.Conn{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-    case UserAuthService.auth_and_validate(auth, Repo) do
+    case UserAuthService.get_or_insert(auth, Repo) do
       {:ok, user} ->
         conn
         |> put_flash(:info, "Signed in as #{user.name}")
         |> put_session(:current_user, user)
-        |> redirect(to: page_path(conn, :index, Gettext.config[:default_locale]))
+        |> redirect(to: page_path(conn, :index, Gettext.config[:default_locale])) |> halt
       {:error, _reason} ->
         conn
         |> put_flash(:error, "Could not authenticate")
-        |> redirect(to: session_path(conn, :new))
+        |> redirect(to: session_path(conn, :new, "identity")) |> halt
     end
   end
 
@@ -29,12 +29,12 @@ defmodule ForEctoUpgrade.SessionController do
     conn
       |> configure_session(drop: true)
       |> put_flash(:info, "user signed out")
-      |> redirect(to: session_path(conn, :new))
+      |> redirect(to: session_path(conn, :new, "identity")) |> halt
   end
 
   def check_logged_in(conn, _params) do
-    if conn.request_path == session_path(conn, :new) && user_logged_in?(conn) do
-      conn |> redirect(to: page_path(conn, :index, Gettext.config[:default_locale]))
+    if conn.request_path == session_path(conn, :new, "identity") && user_logged_in?(conn) do
+      conn |> redirect(to: page_path(conn, :index, Gettext.config[:default_locale])) |> halt
     else
       conn
     end

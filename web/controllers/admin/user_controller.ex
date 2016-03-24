@@ -22,7 +22,7 @@ defmodule ForEctoUpgrade.Admin.UserController do
       {:ok, %{user: user, upload: _file}} ->
         conn
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: admin_user_path(conn, :show, conn.assigns.locale, user))
+        |> redirect(to: admin_user_path(conn, :show, conn.assigns.locale, user)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "User create failed")
@@ -49,7 +49,7 @@ defmodule ForEctoUpgrade.Admin.UserController do
       {:ok, %{user: user, upload: _file}} ->
         conn
         |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: admin_user_path(conn, :show, conn.assigns.locale, user))
+        |> redirect(to: admin_user_path(conn, :show, conn.assigns.locale, user)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "User update failed")
@@ -64,11 +64,11 @@ defmodule ForEctoUpgrade.Admin.UserController do
       {:ok, _} ->
         conn
         |> put_flash(:info, "User deleted successfully.")
-        |> redirect(to: admin_user_path(conn, :index, conn.assigns.locale))
+        |> redirect(to: admin_user_path(conn, :index, conn.assigns.locale)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "User delete failed")
-        |> redirect(to: admin_user_path(conn, :index, conn.assigns.locale))
+        |> redirect(to: admin_user_path(conn, :index, conn.assigns.locale)) |> halt
     end
   end
 end

@@ -1,7 +1,7 @@
 defmodule ForEctoUpgrade.Locale do
   import Plug.Conn
 
-  {:ok, regex} = Enum.join(["/admin", "/login", "/auth", "/logout"], "|") |> Regex.compile
+  {:ok, regex} = Enum.join(["/admin", "/auth", "/logout"], "|") |> Regex.compile
   @no_locales regex
 
   def init(opts), do: opts
@@ -16,7 +16,7 @@ defmodule ForEctoUpgrade.Locale do
         conn
       :else ->
         default_locale = ForEctoUpgrade.Gettext.config[:default_locale]
-        conn |> Phoenix.Controller.redirect(to: "/#{default_locale}#{conn.request_path}")
+        conn |> Phoenix.Controller.redirect(to: "/#{default_locale}#{conn.request_path}") |> halt
     end
   end
 

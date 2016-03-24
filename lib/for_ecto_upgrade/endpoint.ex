@@ -36,4 +36,6 @@ defmodule ForEctoUpgrade.Endpoint do
     signing_salt: "Hco0rRT0"
 
   plug ForEctoUpgrade.Router
+
+  def config, do: Application.get_env(:for_ecto_upgrade, __MODULE__)
 end

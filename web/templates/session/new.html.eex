@@ -14,3 +14,9 @@
     <button class='btn btn-primary'>Login</button>
   </div>
 <% end %>
+<p>
+  <a class="btn btn-primary col-xs-12" href="<%= session_path(@conn, :new, "github") %>">
+    <i class='fa fa-github'></i>
+    Github
+  </a>
+</p>

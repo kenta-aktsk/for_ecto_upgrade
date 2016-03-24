@@ -13,11 +13,13 @@ defmodule ForEctoUpgrade.User do
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
 
+    has_many :authorizations, ForEctoUpgrade.Authorization
+
     timestamps
   end
 
-  @required_fields ~w(email name profile status)a
-  @optional_fields ~w()a
+  @required_fields ~w(email name status)a
+  @optional_fields ~w(profile)a
 
   def changeset(user, params \\ %{}) do
     {required_fields, optional_fields} = adjust_validation_fields(user, @required_fields, @optional_fields)
@@ -26,5 +28,9 @@ defmodule ForEctoUpgrade.User do
     |> cast(params, required_fields ++ optional_fields)
     |> validate_required(required_fields)
     |> check_password
+  end
+
+  def simple_changeset(user, params \\ %{}) do
+    user |> cast(params, @required_fields)
   end
 end

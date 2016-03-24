@@ -9,7 +9,7 @@
     <h4>Public</h4>
     <ul>
       <li>
-        <%= link "User", to: session_path(@conn, :new) %>
+        <%= link "User login", to: session_path(@conn, :new, "identity") %>
       </li>
     </ul>
   </div>

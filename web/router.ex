@@ -24,13 +24,14 @@ defmodule ForEctoUpgrade.Router do
   # so login/logout/callback path must be defined outside of "/:locale" scope.
   scope "/admin", ForEctoUpgrade.Admin, as: :admin do
     pipe_through [:browser]
-    get "/login", SessionController, :new
+    get "/auth/identity", SessionController, :new
     post "/auth/identity/callback", SessionController, :callback
     delete "/logout", SessionController, :delete
   end
   scope "/", ForEctoUpgrade do
     pipe_through [:browser]
-    get "/login", SessionController, :new
+    get "/auth/:identity", SessionController, :new
+    get "/auth/:identity/callback", SessionController, :callback
     post "/auth/:identity/callback", SessionController, :callback
     delete "/logout", SessionController, :delete
   end

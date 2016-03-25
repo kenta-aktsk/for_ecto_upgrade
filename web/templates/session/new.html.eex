@@ -20,3 +20,16 @@
     Github
   </a>
 </p>
+<p>
+  <a class="btn btn-primary col-xs-12" href="<%= session_path(@conn, :new, "facebook") %>">
+    <i class='fa fa-github'></i>
+    Facebook
+  </a>
+</p>
+<p>
+  <a class="btn btn-primary col-xs-12" href="<%= session_path(@conn, :new, "twitter") %>">
+    <i class='fa fa-github'></i>
+    Twitter
+  </a>
+</p>
+

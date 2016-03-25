@@ -23,6 +23,7 @@
   "mariaex": {:hex, :mariaex, "0.7.0"},
   "mimerl": {:hex, :mimerl, "1.0.2"},
   "mimetype_parser": {:hex, :mimetype_parser, "0.1.2"},
+  "oauth": {:git, "https://github.com/tim/erlang-oauth.git", "cd31addc828179983564fd57738f1680a4a4d1ff", []},
   "oauth2": {:hex, :oauth2, "0.6.0"},
   "phoenix": {:hex, :phoenix, "1.1.4"},
   "phoenix_ecto": {:hex, :phoenix_ecto, "3.0.0-beta.2"},

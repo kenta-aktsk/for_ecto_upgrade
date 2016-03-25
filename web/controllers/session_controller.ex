@@ -1,14 +1,19 @@
 defmodule ForEctoUpgrade.SessionController do
   use ForEctoUpgrade.Web, :controller
   import ForEctoUpgrade.Helpers
-  alias Ueberauth.Strategy.Helpers
   alias ForEctoUpgrade.Gettext
 
   plug Ueberauth, base_path: "/auth"
   plug :check_logged_in
 
   def new(conn, _params) do
-    render(conn, "new.html", callback_url: Helpers.callback_url(conn))
+    render(conn, "new.html")
+  end
+
+  def callback(%Plug.Conn{assigns: %{ueberauth_failure: fails}} = conn, _params) do
+    conn
+    |> put_flash(:error, hd(fails.errors).message)
+    |> render("new.html")
   end
 
   def callback(%Plug.Conn{assigns: %{ueberauth_auth: auth}} = conn, _params) do

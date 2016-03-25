@@ -8,7 +8,7 @@ defmodule ForEctoUpgrade.UserAuthService do
       {:error, :not_found} -> register_user_from_auth(auth, repo)
       {:error, reason} -> {:error, reason}
       {:ok, user} -> {:ok, user}
-      authorization -> user_from_authorization(authorization, repo)
+      authorization -> user_from_authorization(authorization, auth, repo)
     end
   end
 
@@ -31,26 +31,23 @@ defmodule ForEctoUpgrade.UserAuthService do
   defp auth_and_validate(auth, repo) do
     case repo.get_by(Authorization, uid: auth.uid, provider: to_string(auth.provider)) do
       nil -> {:error, :not_found}
-      authorization ->
-        if authorization.token == auth.credentials.token do
-          authorization
-        else
-          {:error, :token_mismatch}
-        end
+      authorization -> authorization
     end
   end
 
-  defp user_from_authorization(authorization, repo) do
+  defp user_from_authorization(authorization, auth, repo) do
     case repo.one(Ecto.Model.assoc(authorization, :user)) do
       nil -> {:error, :user_not_found}
-      user -> {:ok, user}
+      user ->
+        update_authorization(authorization, auth, repo)
+        {:ok, user}
     end
   end
 
   defp register_user_from_auth(%{provider: :identity} = _auth, _repo), do: {:error, :not_found}
   defp register_user_from_auth(auth, repo) do
     case repo.transaction(create_user_from_auth(auth, repo)) do
-      {:ok, %{user: user, authorization: authorization}} -> {:ok, user}
+      {:ok, %{user: user, authorization: _authorization}} -> {:ok, user}
       {:error, _failed_operation, _failed_value, _changes_so_far} -> {:error, :transaction_failed}
     end
   end
@@ -71,11 +68,20 @@ defmodule ForEctoUpgrade.UserAuthService do
     params = scrub(%{
       provider: to_string(auth.provider),
       uid: uid_from_auth(auth),
-      token: auth.credentials.token,
-      refresh_token: auth.credentials.refresh_token,
+      token: to_string(auth.credentials.token),
+      refresh_token: to_string(auth.credentials.refresh_token),
       expires_at: auth.credentials.expires_at
     })
     repo.insert Authorization.changeset(authorization, params)
+  end
+
+  defp update_authorization(authorization, auth, repo) do
+    params = scrub(%{
+      token: to_string(auth.credentials.token),
+      refresh_token: to_string(auth.credentials.refresh_token),
+      expires_at: auth.credentials.expires_at
+    })
+    repo.update Authorization.changeset(authorization, params)
   end
 
   defp name_from_auth(auth) do
@@ -92,14 +98,14 @@ defmodule ForEctoUpgrade.UserAuthService do
   defp uid_from_auth(auth), do: auth.uid
 
   defp scrub(params) do
-    Enum.filter params, fn
-      {key, val} when is_binary(val) -> String.strip(val) != ""
-      {key, val} when is_nil(val) -> false
+    Enum.filter(params, fn
+      {_, val} when is_binary(val) -> String.strip(val) != ""
+      {_, val} when is_nil(val) -> false
       _ -> true
-    end |> Enum.into(%{})
+    end) |> Enum.into(%{})
   end
 
   defp unique_email(email) do
-    "#{SecureRandom.uuid}@#{ForEctoUpgrade.Endpoint.config[:url][:host]}"
+    email || "#{SecureRandom.uuid}@#{ForEctoUpgrade.Endpoint.config[:url][:host]}"
   end
 end

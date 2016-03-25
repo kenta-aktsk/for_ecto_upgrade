@@ -13,7 +13,7 @@ defmodule ForEctoUpgrade.Authorization do
     timestamps
   end
 
-  @required_fields ~w(provider uid user_id token)
+  @required_fields ~w(provider uid token)
   @optional_fields ~w(refresh_token expires_at)
 
   @doc """

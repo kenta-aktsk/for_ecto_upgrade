@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Category</th>
+      <th>Tag</th>
+      <th>Title</th>
+      <th>Image</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for entry <- @entries do %>
+    <tr>
+      <td><%= entry.user.name %></td>
+      <td><%= entry.category.name %></td>
+      <td><%= assoc_captions(entry.tags, :name) %></td>
+      <td><%= entry.title %></td>
+      <td>
+        <%= if entry.image do %>
+          <img src="<%= EntryImageUploader.url({entry.image, entry}, :small) %>" alt="" />
+        <% end %>
+      </td>
+
+      <td class="text-right">
+        <%= link "Show", to: entry_path(@conn, :show, @conn.assigns.locale, entry), class: "btn btn-default btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

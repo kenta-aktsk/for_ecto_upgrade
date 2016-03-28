@@ -1,6 +1,7 @@
 defmodule ForEctoUpgrade.Helpers do
   import Plug.Conn, only: [get_session: 2]
   alias ForEctoUpgrade.Repo
+  alias ForEctoUpgrade.Gettext
   def user_logged_in?(conn) do
     case current_user(conn) do
       nil -> false
@@ -10,6 +11,14 @@ defmodule ForEctoUpgrade.Helpers do
 
   def current_user(conn) do
     get_session(conn, :current_user)
+  end
+
+  def current_locale(conn) do
+    if Map.has_key?(conn.assigns, :locale) do
+      conn.assigns.locale
+    else
+      Gettext.config[:default_locale]
+    end
   end
 
   def valid_collection(module, caption_field) when is_atom(module) and is_atom(caption_field) do

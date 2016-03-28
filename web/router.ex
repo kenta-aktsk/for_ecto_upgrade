@@ -49,6 +49,7 @@ defmodule ForEctoUpgrade.Router do
     scope "/", ForEctoUpgrade do
       pipe_through [:browser]
       get "/", PageController, :index
+      resources "/entries", EntryController, only: [:index, :show]
     end
   end
 

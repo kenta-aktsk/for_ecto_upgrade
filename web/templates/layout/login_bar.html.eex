@@ -2,4 +2,8 @@
   <li>
     <%= link "Logout", to: session_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
   </li>
+<% else %>
+  <li>
+    <%= link "Login", to: session_path(@conn, :new, "identity"), class: "btn btn-danger" %>
+  </li>
 <% end %>

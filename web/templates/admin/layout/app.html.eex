@@ -25,6 +25,8 @@
 
       <%= render @view_module, @view_template, assigns %>
 
+      <p>
+      <%= link "Admin top", to: admin_page_path(@conn, :index, current_locale(@conn)) %>
     </div> <!-- /container -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>

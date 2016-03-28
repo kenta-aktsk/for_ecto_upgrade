@@ -19,7 +19,7 @@
             <%= render "login_bar.html", conn: @conn %>
           </ul>
         </nav>
-        <span class="logo"></span>
+        <a href="<%= page_path(@conn, :index, @conn.assigns.locale) %>"><span class="logo"></span></a>
 
       </header>
 

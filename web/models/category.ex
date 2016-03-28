@@ -1,6 +1,6 @@
 defmodule ForEctoUpgrade.Category do
   use ForEctoUpgrade.Web, :model
-  alias ForEctoUpgrade.Enums.Status
+  use ForEctoUpgrade.ModelStatusConcern
 
   schema "categories" do
     field :name, :string
@@ -17,9 +17,5 @@ defmodule ForEctoUpgrade.Category do
   def changeset(category, params \\ %{}) do
     category
     |> cast(params, @required_fields ++ @optional_fields)
-  end
-
-  def valid(query) do
-    from r in query, where: r.status == ^Status.valid.id
   end
 end

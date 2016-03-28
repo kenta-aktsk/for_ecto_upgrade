@@ -1,8 +1,7 @@
 defmodule ForEctoUpgrade.User do
   use ForEctoUpgrade.Web, :model
   use ForEctoUpgrade.UserModelPasswordConcern, min_password_length: 8, max_password_length: 10
-  alias ForEctoUpgrade.Repo
-  alias ForEctoUpgrade.Enums.Status
+  use ForEctoUpgrade.ModelStatusConcern
 
   schema "users" do
     field :email, :string
@@ -34,9 +33,5 @@ defmodule ForEctoUpgrade.User do
 
   def simple_changeset(user, params \\ %{}) do
     user |> cast(params, @required_fields)
-  end
-
-  def valid(query) do
-    from u in query, where: u.status == ^Status.valid.id
   end
 end

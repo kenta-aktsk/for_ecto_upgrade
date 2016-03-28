@@ -1,5 +1,6 @@
 defmodule ForEctoUpgrade.Entry do
   use ForEctoUpgrade.Web, :model
+  use ForEctoUpgrade.ModelStatusConcern
 
   schema "entries" do
     field :title, :string

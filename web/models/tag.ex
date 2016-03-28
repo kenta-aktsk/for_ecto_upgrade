@@ -1,6 +1,6 @@
 defmodule ForEctoUpgrade.Tag do
   use ForEctoUpgrade.Web, :model
-  alias ForEctoUpgrade.Enums.Status
+  use ForEctoUpgrade.ModelStatusConcern
 
   schema "tags" do
     field :name, :string
@@ -17,9 +17,5 @@ defmodule ForEctoUpgrade.Tag do
   def changeset(tag, params \\ %{}) do
     tag
     |> cast(params, @required_fields ++ @optional_fields)
-  end
-
-  def valid(query) do
-    from t in query, where: t.status == ^Status.valid.id
   end
 end

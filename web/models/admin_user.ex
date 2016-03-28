@@ -1,6 +1,7 @@
 defmodule ForEctoUpgrade.AdminUser do
   use ForEctoUpgrade.Web, :model
   use ForEctoUpgrade.UserModelPasswordConcern, min_password_length: 4, max_password_length: 10
+  use ForEctoUpgrade.ModelStatusConcern
 
   schema "admin_users" do
     field :email, :string

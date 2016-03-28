@@ -1,0 +1,45 @@
+<h2>Show entry</h2>
+
+<ul>
+
+  <li>
+    <strong>User:</strong>
+    <%= @entry.user.name %>
+  </li>
+
+  <li>
+    <strong>Category:</strong>
+    <%= @entry.category.name %>
+  </li>
+
+  <li>
+    <strong>Tag:</strong>
+    <%= assoc_captions(@entry.tags, :name) %>
+  </li>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @entry.title %>
+  </li>
+
+  <li>
+    <strong>Content:</strong>
+    <%= @entry.content %>
+  </li>
+
+  <li>
+    <strong>Image:</strong>
+    <%= if @entry.image do %>
+      <img src="<%= EntryImageUploader.url({@entry.image, @entry}, :medium) %>" alt="" />
+    <% end %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= Status.get(@entry.status).text %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: admin_entry_path(@conn, :edit, @conn.assigns.locale, @entry) %>
+<%= link "Back", to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>

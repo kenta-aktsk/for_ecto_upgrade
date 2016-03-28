@@ -40,7 +40,7 @@ defmodule ForEctoUpgrade.UserModelPasswordConcern do
   defp config(opts) do
     quote do
       @min_password_length unquote(opts)[:min_password_length] || raise ":min_password_length must be given."
-      @max_password_length unquote(opts)[:max_password_length] || raise ":min_password_length must be given."
+      @max_password_length unquote(opts)[:max_password_length] || raise ":max_password_length must be given."
     end
   end
 end

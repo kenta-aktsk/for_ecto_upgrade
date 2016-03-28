@@ -43,6 +43,8 @@ defmodule ForEctoUpgrade.Router do
       resources "/admin_users", AdminUserController
       resources "/users", UserController
       resources "/categories", CategoryController
+      resources "/entries", EntryController
+      resources "/tags", TagController
     end
     scope "/", ForEctoUpgrade do
       pipe_through [:browser]

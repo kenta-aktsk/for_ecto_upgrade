@@ -1,5 +1,6 @@
 defmodule ForEctoUpgrade.Helpers do
   import Plug.Conn, only: [get_session: 2]
+  alias ForEctoUpgrade.Repo
   def user_logged_in?(conn) do
     case current_user(conn) do
       nil -> false
@@ -9,5 +10,25 @@ defmodule ForEctoUpgrade.Helpers do
 
   def current_user(conn) do
     get_session(conn, :current_user)
+  end
+
+  def valid_collection(module, caption_field) when is_atom(module) and is_atom(caption_field) do
+    module |> module.valid |> Repo.all |> Enum.map(&({Map.get(&1, caption_field), &1.id}))
+  end
+
+  def assoc_captions(association, field) do
+    if Ecto.assoc_loaded?(association) do
+      association |> Enum.map(&Map.get(&1, field)) |> Enum.join(", ")
+    else
+      []
+    end
+  end
+
+  def assoc_ids(association) do
+    if Ecto.assoc_loaded?(association) do
+      association |> Enum.map(&(&1.id))
+    else
+      []
+    end
   end
 end

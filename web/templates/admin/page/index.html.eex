@@ -15,6 +15,12 @@
       <li>
         <%= link "Category", to: admin_category_path(@conn, :index, @conn.assigns.locale) %>
       </li>
+      <li>
+        <%= link "Entry", to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>
+      </li>
+      <li>
+        <%= link "Tag", to: admin_tag_path(@conn, :index, @conn.assigns.locale) %>
+      </li>
     </ul>
   </div>
 

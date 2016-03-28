@@ -1,0 +1,28 @@
+<h2>Listing tags</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for tag <- @tags do %>
+    <tr>
+      <td><%= tag.name %></td>
+      <td><%= Status.get(tag.status).text %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: admin_tag_path(@conn, :show, @conn.assigns.locale, tag), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: admin_tag_path(@conn, :edit, @conn.assigns.locale, tag), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: admin_tag_path(@conn, :delete, @conn.assigns.locale, tag), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New tag", to: admin_tag_path(@conn, :new, @conn.assigns.locale) %>

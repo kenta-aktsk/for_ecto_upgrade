@@ -32,6 +32,7 @@ defmodule ForEctoUpgrade.Web do
   def service do
     quote do
       import Ecto
+      import Ecto.Query, only: [from: 1, from: 2]
       alias Ecto.Changeset
       alias Ecto.Multi
       alias ForEctoUpgrade.Repo

@@ -6,6 +6,7 @@
       <th>Email</th>
       <th>Name</th>
       <th>Profile</th>
+      <th>UserType</th>
       <th>Status</th>
 
       <th></th>
@@ -17,6 +18,7 @@
       <td><%= user.email %></td>
       <td><%= user.name %></td>
       <td><%= user.profile %></td>
+      <td><%= UserType.get(user.user_type).text %></td>
       <td><%= Status.get(user.status).text %></td>
 
       <td class="text-right">

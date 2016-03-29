@@ -25,6 +25,11 @@
   </li>
 
   <li>
+    <strong>UserType:</strong>
+    <%= UserType.get(@user.user_type).text %>
+  </li>
+
+  <li>
     <strong>Status:</strong>
     <%= Status.get(@user.status).text %>
   </li>

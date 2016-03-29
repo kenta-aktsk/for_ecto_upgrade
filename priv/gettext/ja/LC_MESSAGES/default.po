@@ -14,14 +14,17 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: web/templates/page/index.html.eex:2
-msgid "Welcome to %{name}"
-msgstr ""
-
-#: lib/for_ecto_upgrade/enums/status.ex:4
 msgid "invalid"
 msgstr "無効"
 
-#: lib/for_ecto_upgrade/enums/status.ex:5
 msgid "valid"
 msgstr "有効"
+
+msgid "admin"
+msgstr "管理者"
+
+msgid "editor"
+msgstr "編集者"
+
+msgid "reader"
+msgstr "購読者"

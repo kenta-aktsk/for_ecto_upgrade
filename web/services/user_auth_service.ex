@@ -56,6 +56,7 @@ defmodule ForEctoUpgrade.UserAuthService do
     params = scrub(%{
       email: unique_email(auth.info.email),
       name: name_from_auth(auth),
+      user_type: ForEctoUpgrade.Enums.UserType.reader.id,
       status: ForEctoUpgrade.Enums.Status.invalid.id
     })
     Multi.new

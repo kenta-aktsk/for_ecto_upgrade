@@ -9,6 +9,7 @@ defmodule ForEctoUpgrade.User do
     field :encrypted_password, :string
     field :profile, :string
     field :image, :string
+    field :user_type, :integer
     field :status, :integer
 
     field :password, :string, virtual: true
@@ -19,7 +20,7 @@ defmodule ForEctoUpgrade.User do
     timestamps
   end
 
-  @required_fields ~w(email name status)a
+  @required_fields ~w(email name status user_type)a
   @optional_fields ~w(profile)a
 
   def changeset(user, params \\ %{}) do

@@ -36,6 +36,7 @@ defmodule ForEctoUpgrade.Mixfile do
       :ueberauth_twitter,
       :ueberauth_github,
       :ueberauth_identity,
+      :maru,
       :mariaex
       ]
     ]
@@ -71,6 +72,7 @@ defmodule ForEctoUpgrade.Mixfile do
      {:ueberauth_github, "~> 0.2"},
      {:ueberauth_identity, "~> 0.2"},
      {:oauth, github: "tim/erlang-oauth"},
+     {:maru, "~> 0.8"},
      {:cowboy, "~> 1.0"}]
   end
 

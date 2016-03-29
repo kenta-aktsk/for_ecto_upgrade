@@ -51,6 +51,7 @@ defmodule ForEctoUpgrade.Router do
       get "/", PageController, :index
       resources "/entries", EntryController, only: [:index, :show]
     end
+    forward "/api", ForEctoUpgrade.API
   end
 
   # Other scopes may use custom stacks.

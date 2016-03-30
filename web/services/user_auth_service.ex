@@ -12,7 +12,7 @@ defmodule ForEctoUpgrade.UserAuthService do
     end
   end
 
-  defp auth_and_validate(%{provider: :identity} = auth, repo) do
+  def auth_and_validate(%{provider: :identity} = auth, repo) do
     case repo.get_by(User, email: auth.uid) do
       nil -> {:error, :not_found}
       user ->
@@ -28,7 +28,19 @@ defmodule ForEctoUpgrade.UserAuthService do
     end
   end
 
-  defp auth_and_validate(auth, repo) do
+  def auth_and_validate(%{email: email, password: password} = auth, repo) do
+    case repo.get_by(User, email: email) do
+      nil -> {:error, :not_found}
+      user ->
+        if Comeonin.Bcrypt.checkpw(password, user.encrypted_password) do
+          {:ok, user}
+        else
+          {:error, :password_does_not_match}
+        end
+    end
+  end
+
+  def auth_and_validate(auth, repo) do
     case repo.get_by(Authorization, uid: auth.uid, provider: to_string(auth.provider)) do
       nil -> {:error, :not_found}
       authorization -> authorization

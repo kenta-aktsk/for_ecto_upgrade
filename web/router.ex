@@ -14,6 +14,11 @@ defmodule ForEctoUpgrade.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :api_auth do
+    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    plug Guardian.Plug.LoadResource
+  end
+
   # this scope is required. without this, root url ("/") won't be recognized. 
   scope "/", ForEctoUpgrade do
     pipe_through [:browser]
@@ -51,11 +56,10 @@ defmodule ForEctoUpgrade.Router do
       get "/", PageController, :index
       resources "/entries", EntryController, only: [:index, :show]
     end
-    forward "/api", ForEctoUpgrade.API
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ForEctoUpgrade do
-  #   pipe_through :api
-  # end
+  scope "/:locale" do
+    pipe_through [:api, :api_auth]
+    forward "/api", ForEctoUpgrade.API
+  end
 end

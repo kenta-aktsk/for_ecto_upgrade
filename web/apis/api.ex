@@ -3,6 +3,7 @@ defmodule ForEctoUpgrade.API do
 
   rescue_from Unauthorized, as: e do
     IO.inspect e
+    IO.inspect System.stacktrace
 
     conn
     |> put_status(401)
@@ -11,6 +12,7 @@ defmodule ForEctoUpgrade.API do
 
   rescue_from :all, as: e do
     IO.inspect e
+    IO.inspect System.stacktrace
 
     conn
     |> put_status(500)

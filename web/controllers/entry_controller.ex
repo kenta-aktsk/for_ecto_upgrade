@@ -1,6 +1,5 @@
 defmodule ForEctoUpgrade.EntryController do
   use ForEctoUpgrade.Web, :controller
-  alias ForEctoUpgrade.EntryService
   alias ForEctoUpgrade.Entry
 
   def index(conn, _params) do

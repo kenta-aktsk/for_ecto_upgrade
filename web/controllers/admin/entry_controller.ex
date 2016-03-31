@@ -1,6 +1,6 @@
 defmodule ForEctoUpgrade.Admin.EntryController do
   use ForEctoUpgrade.Web, :admin_controller
-  alias ForEctoUpgrade.Admin.EntryService
+  alias ForEctoUpgrade.EntryService
   alias ForEctoUpgrade.Entry
 
   plug :scrub_params, "entry" when action in [:create, :update]
@@ -19,7 +19,7 @@ defmodule ForEctoUpgrade.Admin.EntryController do
     changeset = Entry.changeset(%Entry{}, entry_params)
 
     case Repo.transaction(EntryService.insert(changeset, entry_params)) do
-      {:ok, %{entry: entry, upload: _file}} ->
+      {:ok, %{entry: entry, upload: _upload}} ->
         conn
         |> put_flash(:info, "entry created successfully.")
         |> redirect(to: admin_entry_path(conn, :show, conn.assigns.locale, entry)) |> halt
@@ -46,7 +46,7 @@ defmodule ForEctoUpgrade.Admin.EntryController do
     changeset = Entry.changeset(entry, entry_params)
 
     case Repo.transaction(EntryService.update(changeset, entry_params)) do
-      {:ok, %{entry: entry, upload: _file}} ->
+      {:ok, %{entry: entry, upload: _upload}} ->
         conn
         |> put_flash(:info, "entry updated successfully.")
         |> redirect(to: admin_entry_path(conn, :show, conn.assigns.locale, entry)) |> halt

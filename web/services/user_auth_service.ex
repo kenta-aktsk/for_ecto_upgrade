@@ -1,6 +1,6 @@
 defmodule ForEctoUpgrade.UserAuthService do
   use ForEctoUpgrade.Web, :service
-  alias ForEctoUpgrade.User
+  alias ForEctoUpgrade.{User, Enums.UserType, Enums.Status}
   alias ForEctoUpgrade.Authorization
 
   def get_or_insert(auth, repo) do
@@ -120,5 +120,9 @@ defmodule ForEctoUpgrade.UserAuthService do
 
   defp unique_email(email) do
     email || "#{SecureRandom.uuid}@#{ForEctoUpgrade.Endpoint.config[:url][:host]}"
+  end
+
+  def editable_user?(%{__struct__: _} = user) do
+    user.status == Status.valid.id && user.user_type != UserType.reader.id
   end
 end

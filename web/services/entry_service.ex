@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.Admin.EntryService do
+defmodule ForEctoUpgrade.EntryService do
   use ForEctoUpgrade.Web, :service
   alias ForEctoUpgrade.Tag
   alias ForEctoUpgrade.EntryTag

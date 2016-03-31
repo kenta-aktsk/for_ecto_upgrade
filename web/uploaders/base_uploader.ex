@@ -31,6 +31,7 @@ defmodule ForEctoUpgrade.BaseUploader do
       def default_url(version, _scope), do: default_url(version)
       def default_url(_version), do: nil
 
+      def url({nil, _}, _, _), do: ""
       def url({file, scope}, version, options) do
         url = super({file, scope}, version, options) |> replace_url(System.get_env("MIX_ENV"))
         hash = Map.get(scope, @field)
@@ -46,7 +47,7 @@ defmodule ForEctoUpgrade.BaseUploader do
             # generate uuid to indicate this record is updated. (to refresh `updated_at` col)
             uuid = SecureRandom.uuid
             case Repo.update(Changeset.change(model, %{@field => uuid})) do
-              {:ok, _} -> {:ok, uuid}
+              {:ok, upload} -> {:ok, upload}
               {:error, changeset} -> {:error, changeset.errors[@field]}
             end
           {:error, message} -> {:error, message}

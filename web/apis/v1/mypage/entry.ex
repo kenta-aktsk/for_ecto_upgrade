@@ -21,7 +21,7 @@ defmodule ForEctoUpgrade.API.V1.Mypage.Entry do
     post "/save" do
       user = Guardian.Plug.current_resource(conn)
       check_user_permission!(user)
-      _ = Category |> Category.valid |> Repo.get!(params.category_id) # only check if valid category exists.
+      _ = Category |> Category.valid |> Repo.slave.get!(params.category_id) # only check if valid category exists.
 
       changeset = nil
       multi = nil
@@ -32,7 +32,7 @@ defmodule ForEctoUpgrade.API.V1.Mypage.Entry do
         changeset = Entry.changeset(%Entry{}, params)
         multi = EntryService.insert(changeset, params)
       else
-        entry = Entry |> Entry.preload_all |> Repo.get!(params["id"])
+        entry = Entry |> Entry.preload_all |> Repo.slave.get!(params["id"])
         check_owner!(entry, user)
         changeset = Entry.changeset(entry, params)
         multi = EntryService.update(changeset, params)
@@ -55,7 +55,7 @@ defmodule ForEctoUpgrade.API.V1.Mypage.Entry do
       use [:id]
     end
     get ":id" do
-      entry = Entry |> Entry.preload_all |> Repo.get!(params[:id])
+      entry = Entry |> Entry.preload_all |> Repo.slave.get!(params[:id])
       conn |> json(render(EntryView, "show.json", entry: entry))
     end
   end

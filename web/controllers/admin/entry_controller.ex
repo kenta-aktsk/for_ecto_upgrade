@@ -6,7 +6,7 @@ defmodule ForEctoUpgrade.Admin.EntryController do
   plug :scrub_params, "entry" when action in [:create, :update]
 
   def index(conn, _params) do
-    entries = Entry |> Entry.preload_all |> Repo.all
+    entries = Entry |> Entry.preload_all |> Repo.slave.all
     render(conn, "index.html", entries: entries)
   end
 
@@ -31,18 +31,18 @@ defmodule ForEctoUpgrade.Admin.EntryController do
   end
 
   def show(conn, %{"id" => id}) do
-    entry = Entry |> Entry.preload_all |> Repo.get!(id)
+    entry = Entry |> Entry.preload_all |> Repo.slave.get!(id)
     render(conn, "show.html", entry: entry)
   end
 
   def edit(conn, %{"id" => id}) do
-    entry = Entry |> Entry.preload_all |> Repo.get!(id)
+    entry = Entry |> Entry.preload_all |> Repo.slave.get!(id)
     changeset = Entry.changeset(entry)
     render(conn, "edit.html", entry: entry, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "entry" => entry_params}) do
-    entry = Entry |> Entry.preload_all |> Repo.get!(id)
+    entry = Entry |> Entry.preload_all |> Repo.slave.get!(id)
     changeset = Entry.changeset(entry, entry_params)
 
     case Repo.transaction(EntryService.update(changeset, entry_params)) do
@@ -58,7 +58,7 @@ defmodule ForEctoUpgrade.Admin.EntryController do
   end
 
   def delete(conn, %{"id" => id}) do
-    entry = Repo.get!(Entry, id)
+    entry = Repo.slave.get!(Entry, id)
 
     case Repo.transaction(EntryService.delete(entry)) do
       {:ok, _} ->

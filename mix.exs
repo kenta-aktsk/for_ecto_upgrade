@@ -65,6 +65,8 @@ defmodule ForEctoUpgrade.Mixfile do
      {:gettext, "~> 0.9"},
      {:ex_enum, github: "kenta-aktsk/ex_enum"},
      # {:ex_enum, path: "/Users/kentakatsumata/Documents/workspace_elixir/ex_enum"},
+     {:read_repos, github: "kenta-aktsk/read_repos"},
+     # {:read_repos, path: "/Users/kentakatsumata/Documents/workspace_elixir/read_repos"},
      {:comeonin, "~> 1.6"},
      {:secure_random, "~> 0.2"},
      {:exrm, "~> 1.0" },

@@ -5,7 +5,7 @@ defmodule ForEctoUpgrade.Admin.TagController do
   plug :scrub_params, "tag" when action in [:create, :update]
 
   def index(conn, _params) do
-    tags = Repo.all(Tag)
+    tags = Repo.slave.all(Tag)
     render(conn, "index.html", tags: tags)
   end
 
@@ -28,18 +28,18 @@ defmodule ForEctoUpgrade.Admin.TagController do
   end
 
   def show(conn, %{"id" => id}) do
-    tag = Repo.get!(Tag, id)
+    tag = Repo.slave.get!(Tag, id)
     render(conn, "show.html", tag: tag)
   end
 
   def edit(conn, %{"id" => id}) do
-    tag = Repo.get!(Tag, id)
+    tag = Repo.slave.get!(Tag, id)
     changeset = Tag.changeset(tag)
     render(conn, "edit.html", tag: tag, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "tag" => tag_params}) do
-    tag = Repo.get!(Tag, id)
+    tag = Repo.slave.get!(Tag, id)
     changeset = Tag.changeset(tag, tag_params)
 
     case Repo.update(changeset) do
@@ -53,7 +53,7 @@ defmodule ForEctoUpgrade.Admin.TagController do
   end
 
   def delete(conn, %{"id" => id}) do
-    tag = Repo.get!(Tag, id)
+    tag = Repo.slave.get!(Tag, id)
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).

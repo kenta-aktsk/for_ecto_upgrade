@@ -6,7 +6,7 @@ defmodule ForEctoUpgrade.Admin.UserController do
   plug :scrub_params, "user" when action in [:create, :update]
 
   def index(conn, _params) do
-    users = Repo.all(User)
+    users = Repo.slave.all(User)
     render(conn, "index.html", users: users)
   end
 
@@ -31,18 +31,18 @@ defmodule ForEctoUpgrade.Admin.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
+    user = Repo.slave.get!(User, id)
     render(conn, "show.html", user: user)
   end
 
   def edit(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
+    user = Repo.slave.get!(User, id)
     changeset = User.changeset(user)
     render(conn, "edit.html", user: user, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
-    user = Repo.get!(User, id)
+    user = Repo.slave.get!(User, id)
     changeset = User.changeset(user, user_params)
 
     case Repo.transaction(UserService.update(changeset, user_params)) do
@@ -58,7 +58,7 @@ defmodule ForEctoUpgrade.Admin.UserController do
   end
 
   def delete(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
+    user = Repo.slave.get!(User, id)
 
     case Repo.transaction(UserService.delete(user)) do
       {:ok, _} ->

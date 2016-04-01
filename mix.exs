@@ -31,6 +31,7 @@ defmodule ForEctoUpgrade.Mixfile do
       :phoenix_ecto, 
       :arc,
       :ex_enum,
+      :read_repos,
       # :postgrex
       :ueberauth_facebook,
       :ueberauth_twitter,

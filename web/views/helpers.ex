@@ -22,7 +22,7 @@ defmodule ForEctoUpgrade.Helpers do
   end
 
   def valid_collection(module, caption_field) when is_atom(module) and is_atom(caption_field) do
-    module |> module.valid |> Repo.all |> Enum.map(&({Map.get(&1, caption_field), &1.id}))
+    module |> module.valid |> Repo.slave.all |> Enum.map(&({Map.get(&1, caption_field), &1.id}))
   end
 
   def assoc_captions(association, field) do

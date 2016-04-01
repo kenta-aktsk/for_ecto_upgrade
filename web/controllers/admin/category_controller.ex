@@ -6,7 +6,7 @@ defmodule ForEctoUpgrade.Admin.CategoryController do
   plug :scrub_params, "category" when action in [:create, :update]
 
   def index(conn, _params) do
-    categories = Repo.all(Category)
+    categories = Repo.slave.all(Category)
     render(conn, "index.html", categories: categories)
   end
 
@@ -31,18 +31,18 @@ defmodule ForEctoUpgrade.Admin.CategoryController do
   end
 
   def show(conn, %{"id" => id}) do
-    category = Repo.get!(Category, id)
+    category = Repo.slave.get!(Category, id)
     render(conn, "show.html", category: category)
   end
 
   def edit(conn, %{"id" => id}) do
-    category = Repo.get!(Category, id)
+    category = Repo.slave.get!(Category, id)
     changeset = Category.changeset(category)
     render(conn, "edit.html", category: category, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "category" => category_params}) do
-    category = Repo.get!(Category, id)
+    category = Repo.slave.get!(Category, id)
     changeset = Category.changeset(category, category_params)
 
     case Repo.transaction(CategoryService.update(changeset, category_params)) do
@@ -58,7 +58,7 @@ defmodule ForEctoUpgrade.Admin.CategoryController do
   end
 
   def delete(conn, %{"id" => id}) do
-    category = Repo.get!(Category, id)
+    category = Repo.slave.get!(Category, id)
 
     case Repo.transaction(CategoryService.delete(category)) do
       {:ok, _} ->

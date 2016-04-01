@@ -38,6 +38,7 @@
   "poolboy": {:hex, :poolboy, "1.5.1"},
   "providers": {:hex, :providers, "1.6.0"},
   "ranch": {:hex, :ranch, "1.2.1"},
+  "read_repos": {:git, "https://github.com/kenta-aktsk/read_repos.git", "5592eba22f50eaebd15d6e6be17637389b35cbfd", []},
   "relx": {:hex, :relx, "3.18.0"},
   "secure_random": {:hex, :secure_random, "0.2.0"},
   "ssl_verify_hostname": {:hex, :ssl_verify_hostname, "1.0.5"},

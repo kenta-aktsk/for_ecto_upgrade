@@ -1,8 +1,7 @@
 defmodule ForEctoUpgrade.Locale do
   import Plug.Conn
 
-  {:ok, regex} = Enum.join(["/admin", "/auth", "/logout"], "|") |> Regex.compile
-  @no_locales regex
+  @no_locales Enum.join(["/admin", "/auth", "/logout"], "|") |> Regex.compile!
 
   def init(opts), do: opts
 

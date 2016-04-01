@@ -1,5 +1,5 @@
 defmodule ForEctoUpgrade.BaseUploader do
-  defmacro __using__(opts)do
+  defmacro __using__(opts) do
     repo = Module.split(__CALLER__.module) |> List.first |> Module.safe_concat(Repo)
     quote location: :keep do
       use Arc.Definition

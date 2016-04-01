@@ -15,6 +15,8 @@ defmodule ForEctoUpgrade do
       # worker(ForEctoUpgrade.Worker, [arg1, arg2, arg3]),
     ]
 
+    children = children ++ Enum.map(ForEctoUpgrade.Repo.slaves, &supervisor(&1, []))
+
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: ForEctoUpgrade.Supervisor]

@@ -11,7 +11,7 @@ defmodule ForEctoUpgrade.Admin.SessionController do
   end
 
   def callback(%Plug.Conn{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-    case AdminUserAuthService.auth_and_validate(auth, Repo) do
+    case AdminUserAuthService.auth_and_validate(auth) do
       {:ok, admin_user} ->
         conn
         |> put_flash(:info, "Signed in as #{admin_user.name}")

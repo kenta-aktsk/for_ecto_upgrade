@@ -17,7 +17,7 @@ defmodule ForEctoUpgrade.SessionController do
   end
 
   def callback(%Plug.Conn{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-    case UserAuthService.get_or_insert(auth, Repo) do
+    case UserAuthService.get_or_insert(auth) do
       {:ok, user} ->
         conn
         |> put_flash(:info, "Signed in as #{user.name}")

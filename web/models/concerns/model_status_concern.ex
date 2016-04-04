@@ -1,5 +1,5 @@
 defmodule ForEctoUpgrade.ModelStatusConcern do
-  defmacro __using__(opts) do
+  defmacro __using__(_opts) do
     quote location: :keep do
       alias ForEctoUpgrade.Enums.Status
       @spec valid(Ecto.Queryable.t) :: Ecto.Query.t

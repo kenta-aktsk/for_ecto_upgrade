@@ -1,8 +1,8 @@
 defmodule ForEctoUpgrade.Admin.AdminUserAuthService do
-  alias ForEctoUpgrade.AdminUser
+  alias ForEctoUpgrade.{Repo, AdminUser}
 
-  def auth_and_validate(auth, repo) do
-    case repo.get_by(AdminUser, email: auth.uid) do
+  def auth_and_validate(auth) do
+    case Repo.slave.get_by(AdminUser, email: auth.uid) do
       nil -> {:error, :not_found}
       admin_user ->
         case auth.credentials.other.password do

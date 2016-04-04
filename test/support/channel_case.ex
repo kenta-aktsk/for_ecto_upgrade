@@ -32,10 +32,9 @@ defmodule ForEctoUpgrade.ChannelCase do
   end
 
   setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ForEctoUpgrade.Repo)
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(ForEctoUpgrade.Repo, [])
-    end
-
-    :ok
+      Ecto.Adapters.SQL.Sandbox.mode(ForEctoUpgrade.Repo, {:shared, self()})
+    end || :ok
   end
 end

@@ -14,6 +14,7 @@ defmodule ForEctoUpgrade.ConnCase do
   """
 
   use ExUnit.CaseTemplate
+  alias ForEctoUpgrade.Gettext
 
   using do
     quote do
@@ -33,10 +34,11 @@ defmodule ForEctoUpgrade.ConnCase do
   end
 
   setup tags do
-    unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(ForEctoUpgrade.Repo, [])
-    end
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ForEctoUpgrade.Repo)
+    status = unless tags[:async] do
+      Ecto.Adapters.SQL.Sandbox.mode(ForEctoUpgrade.Repo, {:shared, self()})
+    end || :ok
 
-    {:ok, conn: Phoenix.ConnTest.conn()}
+    {status, conn: Phoenix.ConnTest.conn |> Plug.Conn.assign(:locale, Gettext.config[:default_locale])}
   end
 end

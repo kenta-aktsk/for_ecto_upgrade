@@ -1,6 +1,5 @@
 defmodule ForEctoUpgrade.EntryService do
   use ForEctoUpgrade.Web, :service
-  alias ForEctoUpgrade.Tag
   alias ForEctoUpgrade.EntryTag
   alias ForEctoUpgrade.EntryImageUploader
 
@@ -13,7 +12,6 @@ defmodule ForEctoUpgrade.EntryService do
 
   def update(changeset, params) do
     entry_id = changeset.data.id
-    entry_tags = Enum.map(params["tags"], &([entry_id: entry_id, tag_id: String.to_integer(&1)]))
 
     Multi.new
     |> Multi.update(:entry, changeset)

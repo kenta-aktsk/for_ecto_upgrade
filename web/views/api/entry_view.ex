@@ -1,6 +1,6 @@
 defmodule ForEctoUpgrade.API.EntryView do
   use ForEctoUpgrade.Web, :view
-  alias ForEctoUpgrade.{Enums.Status, Entry, EntryImageUploader}
+  alias ForEctoUpgrade.{Enums.Status, EntryImageUploader}
 
   def render("show.json", %{entry: entry}) do
     %{

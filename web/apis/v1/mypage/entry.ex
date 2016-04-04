@@ -1,7 +1,7 @@
 defmodule ForEctoUpgrade.API.V1.Mypage.Entry do
   use Maru.Router
-  import Phoenix.View, only: [render: 3]
-  alias ForEctoUpgrade.{Repo, Entry, Category, API.EntryView, UserAuthService, EntryService}
+  import Phoenix.View, only: [render: 3], warn: false
+  alias ForEctoUpgrade.{Repo, Entry, Category, API.EntryView, UserAuthService, EntryService}, warn: false
   helpers ForEctoUpgrade.API.V1.SharedParams
 
   plug Guardian.Plug.EnsureAuthenticated, handler: ForEctoUpgrade.API.V1.Session
@@ -23,19 +23,17 @@ defmodule ForEctoUpgrade.API.V1.Mypage.Entry do
       check_user_permission!(user)
       _ = Category |> Category.valid |> Repo.slave.get!(params.category_id) # only check if valid category exists.
 
-      changeset = nil
-      multi = nil
       params = Guardian.Utils.stringify_keys(params)
 
-      if !Map.has_key?(params, "id") do
+      multi = if !Map.has_key?(params, "id") do
         params = Map.put(params, "user_id", user.id)
         changeset = Entry.changeset(%Entry{}, params)
-        multi = EntryService.insert(changeset, params)
+        EntryService.insert(changeset, params)
       else
         entry = Entry |> Entry.preload_all |> Repo.slave.get!(params["id"])
         check_owner!(entry, user)
         changeset = Entry.changeset(entry, params)
-        multi = EntryService.update(changeset, params)
+        EntryService.update(changeset, params)
       end
 
       case Repo.transaction(multi) do

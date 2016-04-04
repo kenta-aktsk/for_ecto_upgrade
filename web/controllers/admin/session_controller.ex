@@ -15,7 +15,7 @@ defmodule ForEctoUpgrade.Admin.SessionController do
       {:ok, admin_user} ->
         conn
         |> put_flash(:info, "Signed in as #{admin_user.name}")
-        |> put_session(:current_admin_user, admin_user)
+        |> AdminUserAuthService.login(admin_user)
         |> redirect(to: admin_page_path(conn, :index, Gettext.config[:default_locale])) |> halt
       {:error, _reason} ->
         conn
@@ -26,7 +26,7 @@ defmodule ForEctoUpgrade.Admin.SessionController do
 
   def delete(conn, _params) do
     conn
-      |> configure_session(drop: true)
+      |> AdminUserAuthService.logout
       |> put_flash(:info, "admin signed out")
       |> redirect(to: admin_session_path(conn, :new)) |> halt
   end

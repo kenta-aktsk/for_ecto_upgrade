@@ -32,7 +32,6 @@ defmodule ForEctoUpgrade.Mixfile do
       :arc,
       :ex_enum,
       :read_repos,
-      # :postgrex
       :ueberauth_facebook,
       :ueberauth_twitter,
       :ueberauth_github,
@@ -53,9 +52,7 @@ defmodule ForEctoUpgrade.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.1.4"},
-     # {:postgrex, ">= 0.0.0"},
      {:mariaex, ">= 0.0.0"},
-     # {:phoenix_ecto, "~> 2.0"},
      {:arc, "~> 0.5.1"},
      {:ex_aws, "~> 0.4.10"},
      {:httpoison, "~> 0.7"},

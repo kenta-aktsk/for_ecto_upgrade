@@ -27,6 +27,11 @@ defmodule ForEctoUpgrade.AdminUserTest do
     refute changeset.valid?
   end
 
+  test "changeset with invalid status" do
+    changeset = AdminUser.changeset(%AdminUser{}, %{@valid_attrs | status: 100})
+    refute changeset.valid?
+  end
+
   test "changeset with different password confirmation_attrs" do
     changeset = AdminUser.changeset(%AdminUser{}, %{@valid_attrs | password_confirmation: "012X"})
     refute changeset.valid?

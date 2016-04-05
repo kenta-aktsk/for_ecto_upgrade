@@ -3,6 +3,7 @@ defmodule ForEctoUpgrade.User do
   use ForEctoUpgrade.UserModelPasswordConcern, min_password_length: 8, max_password_length: 10
   use ForEctoUpgrade.ModelStatusConcern
   import ForEctoUpgrade.ValidationConcern
+  alias ForEctoUpgrade.{Enums.UserType, Enums.Status}
 
   schema "users" do
     field :email, :string
@@ -32,6 +33,8 @@ defmodule ForEctoUpgrade.User do
     |> validate_required(required_fields)
     |> check_password
     |> validate_email_format(:email)
+    |> validate_inclusion(:user_type, UserType.select(:id))
+    |> validate_inclusion(:status, Status.select(:id))
     |> unique_constraint(:email)
   end
 

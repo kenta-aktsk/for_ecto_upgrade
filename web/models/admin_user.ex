@@ -3,6 +3,7 @@ defmodule ForEctoUpgrade.AdminUser do
   use ForEctoUpgrade.UserModelPasswordConcern, min_password_length: 4, max_password_length: 10
   use ForEctoUpgrade.ModelStatusConcern
   import ForEctoUpgrade.ValidationConcern
+  alias ForEctoUpgrade.{Enums.Status}
 
   schema "admin_users" do
     field :email, :string
@@ -27,6 +28,7 @@ defmodule ForEctoUpgrade.AdminUser do
     |> validate_required(required_fields)
     |> check_password
     |> validate_email_format(:email)
+    |> validate_inclusion(:status, Status.select(:id))
     |> unique_constraint(:email)
   end
 end

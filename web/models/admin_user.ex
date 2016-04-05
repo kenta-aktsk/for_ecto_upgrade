@@ -2,6 +2,7 @@ defmodule ForEctoUpgrade.AdminUser do
   use ForEctoUpgrade.Web, :model
   use ForEctoUpgrade.UserModelPasswordConcern, min_password_length: 4, max_password_length: 10
   use ForEctoUpgrade.ModelStatusConcern
+  import ForEctoUpgrade.ValidationConcern
 
   schema "admin_users" do
     field :email, :string
@@ -25,5 +26,7 @@ defmodule ForEctoUpgrade.AdminUser do
     |> cast(params, required_fields ++ optional_fields)
     |> validate_required(required_fields)
     |> check_password
+    |> validate_email_format(:email)
+    |> unique_constraint(:email)
   end
 end

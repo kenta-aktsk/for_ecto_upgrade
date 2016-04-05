@@ -2,6 +2,7 @@ defmodule ForEctoUpgrade.User do
   use ForEctoUpgrade.Web, :model
   use ForEctoUpgrade.UserModelPasswordConcern, min_password_length: 8, max_password_length: 10
   use ForEctoUpgrade.ModelStatusConcern
+  import ForEctoUpgrade.ValidationConcern
 
   schema "users" do
     field :email, :string
@@ -30,6 +31,8 @@ defmodule ForEctoUpgrade.User do
     |> cast(params, required_fields ++ optional_fields)
     |> validate_required(required_fields)
     |> check_password
+    |> validate_email_format(:email)
+    |> unique_constraint(:email)
   end
 
   def simple_changeset(user, params \\ %{}) do

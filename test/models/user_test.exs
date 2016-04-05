@@ -29,6 +29,16 @@ defmodule ForEctoUpgrade.UserTest do
     refute changeset.valid?
   end
 
+  test "changeset with invalid user type" do
+    changeset = User.changeset(%User{}, %{@valid_attrs | user_type: 100})
+    refute changeset.valid?
+  end
+
+  test "changeset with invalid status" do
+    changeset = User.changeset(%User{}, %{@valid_attrs | status: 100})
+    refute changeset.valid?
+  end
+
   test "changeset with different password confirmation_attrs" do
     changeset = User.changeset(%User{}, %{@valid_attrs | password_confirmation: "01234567X"})
     refute changeset.valid?

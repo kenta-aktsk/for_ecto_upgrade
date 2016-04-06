@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.Repo.Migrations.CreateUser do
+defmodule MediaSample.Repo.Migrations.CreateUser do
   use Ecto.Migration
 
   def change do

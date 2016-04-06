@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.ChannelCase do
+defmodule MediaSample.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,21 +20,21 @@ defmodule ForEctoUpgrade.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias ForEctoUpgrade.Repo
+      alias MediaSample.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
 
 
       # The default endpoint for testing
-      @endpoint ForEctoUpgrade.Endpoint
+      @endpoint MediaSample.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ForEctoUpgrade.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MediaSample.Repo)
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ForEctoUpgrade.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(MediaSample.Repo, {:shared, self()})
     end || :ok
   end
 end

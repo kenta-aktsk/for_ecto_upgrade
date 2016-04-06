@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.Repo.Migrations.CreateTag do
+defmodule MediaSample.Repo.Migrations.CreateTag do
   use Ecto.Migration
 
   def change do

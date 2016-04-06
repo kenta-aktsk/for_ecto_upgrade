@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.ModelConcern do
+defmodule MediaSample.ModelConcern do
   def for_insert?(%{__struct__: _} = model) do
     model.__meta__.state == :built
   end

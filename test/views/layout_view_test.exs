@@ -1,3 +1,3 @@
-defmodule ForEctoUpgrade.LayoutViewTest do
-  use ForEctoUpgrade.ConnCase, async: true
+defmodule MediaSample.LayoutViewTest do
+  use MediaSample.ConnCase, async: true
 end

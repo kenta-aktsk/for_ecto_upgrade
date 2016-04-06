@@ -1,5 +1,5 @@
-defmodule ForEctoUpgrade.PageControllerTest do
-  use ForEctoUpgrade.ConnCase
+defmodule MediaSample.PageControllerTest do
+  use MediaSample.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

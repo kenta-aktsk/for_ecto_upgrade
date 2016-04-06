@@ -1,7 +1,7 @@
-defmodule ForEctoUpgrade.UserControllerTest do
-  # use ForEctoUpgrade.ConnCase
+defmodule MediaSample.UserControllerTest do
+  # use MediaSample.ConnCase
 
-  # alias ForEctoUpgrade.User
+  # alias MediaSample.User
   # @valid_attrs %{email: "some content", encrypted_password: "some content", image: "some content", name: "some content", profile: "some content", status: 42}
   # @invalid_attrs %{}
 

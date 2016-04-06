@@ -1,5 +1,5 @@
-defmodule ForEctoUpgrade.Router do
-  use ForEctoUpgrade.Web, :router
+defmodule MediaSample.Router do
+  use MediaSample.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -7,7 +7,7 @@ defmodule ForEctoUpgrade.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug ForEctoUpgrade.Locale
+    plug MediaSample.Locale
   end
 
   pipeline :api do
@@ -20,20 +20,20 @@ defmodule ForEctoUpgrade.Router do
   end
 
   # this scope is required. without this, root url ("/") won't be recognized. 
-  scope "/", ForEctoUpgrade do
+  scope "/", MediaSample do
     pipe_through [:browser]
     get "/", DummyController, :dummy
   end
 
   # ueberauth doesn't support "/:identifier" in request path. 
   # so login/logout/callback path must be defined outside of "/:locale" scope.
-  scope "/admin", ForEctoUpgrade.Admin, as: :admin do
+  scope "/admin", MediaSample.Admin, as: :admin do
     pipe_through [:browser]
     get "/auth/identity", SessionController, :new
     post "/auth/identity/callback", SessionController, :callback
     delete "/logout", SessionController, :delete
   end
-  scope "/", ForEctoUpgrade do
+  scope "/", MediaSample do
     pipe_through [:browser]
     get "/auth/:identity", SessionController, :new
     get "/auth/:identity/callback", SessionController, :callback
@@ -42,7 +42,7 @@ defmodule ForEctoUpgrade.Router do
   end
 
   scope "/:locale" do
-    scope "/admin", ForEctoUpgrade.Admin, as: :admin do
+    scope "/admin", MediaSample.Admin, as: :admin do
       pipe_through [:browser]
       get "/", PageController, :index
       resources "/admin_users", AdminUserController
@@ -51,7 +51,7 @@ defmodule ForEctoUpgrade.Router do
       resources "/entries", EntryController
       resources "/tags", TagController
     end
-    scope "/", ForEctoUpgrade do
+    scope "/", MediaSample do
       pipe_through [:browser]
       get "/", PageController, :index
       resources "/entries", EntryController, only: [:index, :show]
@@ -60,6 +60,6 @@ defmodule ForEctoUpgrade.Router do
 
   scope "/:locale" do
     pipe_through [:api, :api_auth]
-    forward "/api", ForEctoUpgrade.API
+    forward "/api", MediaSample.API
   end
 end

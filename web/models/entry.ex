@@ -1,6 +1,6 @@
-defmodule ForEctoUpgrade.Entry do
-  use ForEctoUpgrade.Web, :model
-  use ForEctoUpgrade.ModelStatusConcern
+defmodule MediaSample.Entry do
+  use MediaSample.Web, :model
+  use MediaSample.ModelStatusConcern
 
   schema "entries" do
     field :title, :string
@@ -8,9 +8,9 @@ defmodule ForEctoUpgrade.Entry do
     field :image, :string
     field :status, :integer
 
-    belongs_to :user, ForEctoUpgrade.User
-    belongs_to :category, ForEctoUpgrade.Category
-    many_to_many :tags, ForEctoUpgrade.Tag, join_through: "entry_tags", on_delete: :delete_all
+    belongs_to :user, MediaSample.User
+    belongs_to :category, MediaSample.Category
+    many_to_many :tags, MediaSample.Tag, join_through: "entry_tags", on_delete: :delete_all
 
     timestamps
   end

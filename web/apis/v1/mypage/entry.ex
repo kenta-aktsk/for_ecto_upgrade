@@ -1,10 +1,10 @@
-defmodule ForEctoUpgrade.API.V1.Mypage.Entry do
+defmodule MediaSample.API.V1.Mypage.Entry do
   use Maru.Router
   import Phoenix.View, only: [render: 3], warn: false
-  alias ForEctoUpgrade.{Repo, Entry, Category, API.EntryView, UserAuthService, EntryService}, warn: false
-  helpers ForEctoUpgrade.API.V1.SharedParams
+  alias MediaSample.{Repo, Entry, Category, API.EntryView, UserAuthService, EntryService}, warn: false
+  helpers MediaSample.API.V1.SharedParams
 
-  plug Guardian.Plug.EnsureAuthenticated, handler: ForEctoUpgrade.API.V1.Session
+  plug Guardian.Plug.EnsureAuthenticated, handler: MediaSample.API.V1.Session
 
   def check_user_permission!(user) do
     unless UserAuthService.editable_user?(user), do: raise "user doesn't have authority to post an entry."

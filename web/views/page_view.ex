@@ -1,3 +1,3 @@
-defmodule ForEctoUpgrade.PageView do
-  use ForEctoUpgrade.Web, :view
+defmodule MediaSample.PageView do
+  use MediaSample.Web, :view
 end

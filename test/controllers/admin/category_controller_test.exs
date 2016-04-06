@@ -1,7 +1,7 @@
-defmodule ForEctoUpgrade.CategoryControllerTest do
-  # use ForEctoUpgrade.ConnCase
+defmodule MediaSample.CategoryControllerTest do
+  # use MediaSample.ConnCase
 
-  # alias ForEctoUpgrade.Category
+  # alias MediaSample.Category
   # @valid_attrs %{description: "some content", image: "some content", name: "some content", status: 42}
   # @invalid_attrs %{}
 

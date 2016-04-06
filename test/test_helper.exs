@@ -1,3 +1,3 @@
 ExUnit.start
 
-Ecto.Adapters.SQL.Sandbox.mode(ForEctoUpgrade.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(MediaSample.Repo, :manual)

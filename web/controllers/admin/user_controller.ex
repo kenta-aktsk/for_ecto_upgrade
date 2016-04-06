@@ -1,7 +1,7 @@
-defmodule ForEctoUpgrade.Admin.UserController do
-  use ForEctoUpgrade.Web, :admin_controller
-  alias ForEctoUpgrade.UserService
-  alias ForEctoUpgrade.User
+defmodule MediaSample.Admin.UserController do
+  use MediaSample.Web, :admin_controller
+  alias MediaSample.UserService
+  alias MediaSample.User
 
   plug :scrub_params, "user" when action in [:create, :update]
 

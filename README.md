@@ -1,4 +1,4 @@
-# ForEctoUpgrade
+# MediaSample
 
 To start your Phoenix app:
 

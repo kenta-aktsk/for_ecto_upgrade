@@ -1,5 +1,5 @@
-defmodule ForEctoUpgrade.Admin.CategoryView do
-  use ForEctoUpgrade.Web, :admin_view
-  alias ForEctoUpgrade.Enums.Status
-  alias ForEctoUpgrade.CategoryImageUploader
+defmodule MediaSample.Admin.CategoryView do
+  use MediaSample.Web, :admin_view
+  alias MediaSample.Enums.Status
+  alias MediaSample.CategoryImageUploader
 end

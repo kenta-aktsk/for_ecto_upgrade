@@ -1,8 +1,8 @@
-defmodule ForEctoUpgrade.Mixfile do
+defmodule MediaSample.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :for_ecto_upgrade,
+    [app: :media_sample,
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,7 +17,7 @@ defmodule ForEctoUpgrade.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {ForEctoUpgrade, []},
+    [mod: {MediaSample, []},
      applications: [
       :ex_aws,
       :httpoison,

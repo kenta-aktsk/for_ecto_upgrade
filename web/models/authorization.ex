@@ -1,5 +1,5 @@
-defmodule ForEctoUpgrade.Authorization do
-  use ForEctoUpgrade.Web, :model
+defmodule MediaSample.Authorization do
+  use MediaSample.Web, :model
 
   schema "authorizations" do
     field :provider, :string
@@ -8,7 +8,7 @@ defmodule ForEctoUpgrade.Authorization do
     field :refresh_token, :string
     field :expires_at, :integer
 
-    belongs_to :user, ForEctoUpgrade.User
+    belongs_to :user, MediaSample.User
 
     timestamps
   end

@@ -1,7 +1,7 @@
-defmodule ForEctoUpgrade.Admin.CategoryController do
-  use ForEctoUpgrade.Web, :admin_controller
-  alias ForEctoUpgrade.Admin.CategoryService
-  alias ForEctoUpgrade.Category
+defmodule MediaSample.Admin.CategoryController do
+  use MediaSample.Web, :admin_controller
+  alias MediaSample.Admin.CategoryService
+  alias MediaSample.Category
 
   plug :scrub_params, "category" when action in [:create, :update]
 

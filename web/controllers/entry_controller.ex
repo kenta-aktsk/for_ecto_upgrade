@@ -1,6 +1,6 @@
-defmodule ForEctoUpgrade.EntryController do
-  use ForEctoUpgrade.Web, :controller
-  alias ForEctoUpgrade.Entry
+defmodule MediaSample.EntryController do
+  use MediaSample.Web, :controller
+  alias MediaSample.Entry
 
   def index(conn, _params) do
     entries = Entry |> Entry.valid |> Entry.preload_all |> Repo.slave.all

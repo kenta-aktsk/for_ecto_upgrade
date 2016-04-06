@@ -1,6 +1,6 @@
-defmodule ForEctoUpgrade.Category do
-  use ForEctoUpgrade.Web, :model
-  use ForEctoUpgrade.ModelStatusConcern
+defmodule MediaSample.Category do
+  use MediaSample.Web, :model
+  use MediaSample.ModelStatusConcern
 
   schema "categories" do
     field :name, :string

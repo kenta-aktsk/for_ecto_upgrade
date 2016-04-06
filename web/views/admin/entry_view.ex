@@ -1,8 +1,8 @@
-defmodule ForEctoUpgrade.Admin.EntryView do
-  use ForEctoUpgrade.Web, :admin_view
-  alias ForEctoUpgrade.User
-  alias ForEctoUpgrade.Category
-  alias ForEctoUpgrade.Tag
-  alias ForEctoUpgrade.Enums.Status
-  alias ForEctoUpgrade.EntryImageUploader
+defmodule MediaSample.Admin.EntryView do
+  use MediaSample.Web, :admin_view
+  alias MediaSample.User
+  alias MediaSample.Category
+  alias MediaSample.Tag
+  alias MediaSample.Enums.Status
+  alias MediaSample.EntryImageUploader
 end

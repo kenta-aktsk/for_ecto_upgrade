@@ -12,15 +12,15 @@ if osname == :darwin && Mix.env == :dev do
 end
 
 # Configures the endpoint
-config :for_ecto_upgrade, ForEctoUpgrade.Endpoint,
+config :media_sample, MediaSample.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "SNGrdlPqi3howFc98AszYO2do73NM4UzDXQzk6rirQ6YHm9Gtq7cbjwkxgXZN/Aw",
   render_errors: [accepts: ~w(html json)],
-  pubsub: [name: ForEctoUpgrade.PubSub,
+  pubsub: [name: MediaSample.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
-config :for_ecto_upgrade, ForEctoUpgrade.Gettext,
+config :media_sample, MediaSample.Gettext,
   locales: ~w(ja en),
   default_locale: "en"
 
@@ -47,10 +47,10 @@ config :arc,
   base_upload_path: "uploads"
 
 config :guardian, Guardian,
-  issuer: "ForEctoUpgrade",
+  issuer: "MediaSample",
   ttl: { 3, :days },
   verify_issuer: true,
-  serializer: ForEctoUpgrade.GuardianSerializer
+  serializer: MediaSample.GuardianSerializer
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

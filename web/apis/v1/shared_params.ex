@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.API.V1.SharedParams do
+defmodule MediaSample.API.V1.SharedParams do
   use Maru.Helper
 
   params :base do

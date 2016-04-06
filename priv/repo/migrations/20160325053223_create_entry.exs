@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.Repo.Migrations.CreateEntry do
+defmodule MediaSample.Repo.Migrations.CreateEntry do
   use Ecto.Migration
 
   def change do

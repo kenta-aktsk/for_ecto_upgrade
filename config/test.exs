@@ -2,7 +2,7 @@ use Mix.Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :for_ecto_upgrade, ForEctoUpgrade.Endpoint,
+config :media_sample, MediaSample.Endpoint,
   http: [port: 4001],
   server: false
 
@@ -10,11 +10,11 @@ config :for_ecto_upgrade, ForEctoUpgrade.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
-config :for_ecto_upgrade, ForEctoUpgrade.Repo,
+config :media_sample, MediaSample.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "myuser",
   password: "mypass",
-  database: "for_ecto_upgrade_test",
+  database: "media_sample_test",
   hostname: "localhost",
   charset: "utf8mb4",
   pool_size: 30,

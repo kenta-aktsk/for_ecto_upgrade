@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.Admin.Helpers do
+defmodule MediaSample.Admin.Helpers do
   import Plug.Conn, only: [get_session: 2]
   def admin_logged_in?(conn) do
     case current_admin_user(conn) do

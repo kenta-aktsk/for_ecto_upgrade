@@ -1,3 +1,3 @@
-defmodule ForEctoUpgrade.Admin.PageView do
-  use ForEctoUpgrade.Web, :admin_view
+defmodule MediaSample.Admin.PageView do
+  use MediaSample.Web, :admin_view
 end

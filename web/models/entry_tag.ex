@@ -1,9 +1,9 @@
-defmodule ForEctoUpgrade.EntryTag do
-  use ForEctoUpgrade.Web, :model
+defmodule MediaSample.EntryTag do
+  use MediaSample.Web, :model
 
   schema "entry_tags" do
-    belongs_to :entry, ForEctoUpgrade.Entry
-    belongs_to :tag, ForEctoUpgrade.Tag
+    belongs_to :entry, MediaSample.Entry
+    belongs_to :tag, MediaSample.Tag
   end
 
   @required_fields ~w(entry_id tag_id)a

@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.EntryView do
-  use ForEctoUpgrade.Web, :view
-  alias ForEctoUpgrade.EntryImageUploader
+defmodule MediaSample.EntryView do
+  use MediaSample.Web, :view
+  alias MediaSample.EntryImageUploader
 end

@@ -1,5 +1,5 @@
-defmodule ForEctoUpgrade.Admin.PageController do
-  use ForEctoUpgrade.Web, :admin_controller
+defmodule MediaSample.Admin.PageController do
+  use MediaSample.Web, :admin_controller
 
   def index(conn, _params) do
     render conn, "index.html"

@@ -1,3 +1,3 @@
-defmodule ForEctoUpgrade.SessionView do
-  use ForEctoUpgrade.Web, :view
+defmodule MediaSample.SessionView do
+  use MediaSample.Web, :view
 end

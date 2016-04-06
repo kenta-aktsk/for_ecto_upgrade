@@ -1,8 +1,8 @@
-defmodule ForEctoUpgrade.Admin.AdminUserControllerTest do
-  use ForEctoUpgrade.ConnCase
-  use ForEctoUpgrade.ControllerTestHelper, controller: ForEctoUpgrade.Admin.AdminUserController
+defmodule MediaSample.Admin.AdminUserControllerTest do
+  use MediaSample.ConnCase
+  use MediaSample.ControllerTestHelper, controller: MediaSample.Admin.AdminUserController
 
-  alias ForEctoUpgrade.{AdminUser, Admin.AdminUserAuthService, Enums.Status}
+  alias MediaSample.{AdminUser, Admin.AdminUserAuthService, Enums.Status}
   @valid_attrs %{email: "some content", encrypted_password: "some content", name: "some content", status: Status.valid.id}
   @invalid_attrs %{}
 

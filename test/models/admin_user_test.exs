@@ -1,7 +1,7 @@
-defmodule ForEctoUpgrade.AdminUserTest do
-  use ForEctoUpgrade.ModelCase
+defmodule MediaSample.AdminUserTest do
+  use MediaSample.ModelCase
 
-  alias ForEctoUpgrade.{AdminUser, Enums.Status}
+  alias MediaSample.{AdminUser, Enums.Status}
 
   @valid_attrs %{email: "admin01@example.com", name: "some content", password: "0123", password_confirmation: "0123", status: Status.valid.id}
   @invalid_attrs %{}

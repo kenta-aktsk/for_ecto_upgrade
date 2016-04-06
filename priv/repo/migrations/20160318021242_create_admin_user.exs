@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.Repo.Migrations.CreateAdminUser do
+defmodule MediaSample.Repo.Migrations.CreateAdminUser do
   use Ecto.Migration
 
   def change do

@@ -1,7 +1,7 @@
-defmodule ForEctoUpgrade.ModelStatusConcern do
+defmodule MediaSample.ModelStatusConcern do
   defmacro __using__(_opts) do
     quote location: :keep do
-      alias ForEctoUpgrade.Enums.Status
+      alias MediaSample.Enums.Status
       @spec valid(Ecto.Queryable.t) :: Ecto.Query.t
       def valid(query) do
         from r in query, where: r.status == ^Status.valid.id

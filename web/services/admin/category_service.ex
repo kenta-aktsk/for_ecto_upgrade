@@ -1,6 +1,6 @@
-defmodule ForEctoUpgrade.Admin.CategoryService do
-  use ForEctoUpgrade.Web, :service
-  alias ForEctoUpgrade.CategoryImageUploader
+defmodule MediaSample.Admin.CategoryService do
+  use MediaSample.Web, :service
+  alias MediaSample.CategoryImageUploader
 
   def insert(changeset, params) do
     Multi.new

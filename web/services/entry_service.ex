@@ -1,7 +1,7 @@
-defmodule ForEctoUpgrade.EntryService do
-  use ForEctoUpgrade.Web, :service
-  alias ForEctoUpgrade.EntryTag
-  alias ForEctoUpgrade.EntryImageUploader
+defmodule MediaSample.EntryService do
+  use MediaSample.Web, :service
+  alias MediaSample.EntryTag
+  alias MediaSample.EntryImageUploader
 
   def insert(changeset, params) do
     Multi.new

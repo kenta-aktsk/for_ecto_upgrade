@@ -1,5 +1,5 @@
-defmodule ForEctoUpgrade.UserImageUploader do
-  use ForEctoUpgrade.BaseUploader, model: :user, field: :image
+defmodule MediaSample.UserImageUploader do
+  use MediaSample.BaseUploader, model: :user, field: :image
   @versions [:medium, :small]
 
   def transform(:medium, _) do

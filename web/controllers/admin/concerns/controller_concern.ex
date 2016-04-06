@@ -1,2 +1,2 @@
-defmodule ForEctoUpgrade.Admin.ControllerConcern do
+defmodule MediaSample.Admin.ControllerConcern do
 end

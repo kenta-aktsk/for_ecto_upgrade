@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.ValidationConcern do
+defmodule MediaSample.ValidationConcern do
   alias Ecto.Changeset
 
   def validate_email_format(%Changeset{} = changeset, field) when is_atom(field) do

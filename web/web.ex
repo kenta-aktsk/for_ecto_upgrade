@@ -1,12 +1,12 @@
-defmodule ForEctoUpgrade.Web do
+defmodule MediaSample.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use ForEctoUpgrade.Web, :controller
-      use ForEctoUpgrade.Web, :view
+      use MediaSample.Web, :controller
+      use MediaSample.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -24,7 +24,7 @@ defmodule ForEctoUpgrade.Web do
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import ForEctoUpgrade.ModelConcern
+      import MediaSample.ModelConcern
       require Logger
     end
   end
@@ -35,26 +35,26 @@ defmodule ForEctoUpgrade.Web do
       import Ecto.Query, only: [from: 1, from: 2]
       alias Ecto.Changeset
       alias Ecto.Multi
-      alias ForEctoUpgrade.Repo
+      alias MediaSample.Repo
     end
   end
 
   def controller do
     quote do
       use Phoenix.Controller
-      use ForEctoUpgrade.Controller
-      alias ForEctoUpgrade.UserAuthService
+      use MediaSample.Controller
+      alias MediaSample.UserAuthService
     end
   end
 
   def admin_controller do
     quote do
       # By indicating namespace, we can change module name prefix on LayoutView.
-      # In this case, `ForEctoUpgrade.Admin.LayoutView` will be used.
-      use Phoenix.Controller, namespace: ForEctoUpgrade.Admin
-      use ForEctoUpgrade.Controller
-      import ForEctoUpgrade.Admin.ControllerConcern
-      alias ForEctoUpgrade.Admin.AdminUserAuthService
+      # In this case, `MediaSample.Admin.LayoutView` will be used.
+      use Phoenix.Controller, namespace: MediaSample.Admin
+      use MediaSample.Controller
+      import MediaSample.Admin.ControllerConcern
+      alias MediaSample.Admin.AdminUserAuthService
 
       plug :check_logged_in
 
@@ -72,14 +72,14 @@ defmodule ForEctoUpgrade.Web do
 
   def view do
     quote do
-      use ForEctoUpgrade.View
+      use MediaSample.View
     end
   end
 
   def admin_view do
     quote do
-      use ForEctoUpgrade.View
-      import ForEctoUpgrade.Admin.Helpers
+      use MediaSample.View
+      import MediaSample.Admin.Helpers
     end
   end
 
@@ -93,10 +93,10 @@ defmodule ForEctoUpgrade.Web do
     quote do
       use Phoenix.Channel
 
-      alias ForEctoUpgrade.Repo
+      alias MediaSample.Repo
       import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
-      import ForEctoUpgrade.Gettext
+      import MediaSample.Gettext
     end
   end
 
@@ -108,21 +108,21 @@ defmodule ForEctoUpgrade.Web do
   end
 end
 
-defmodule ForEctoUpgrade.Controller do
+defmodule MediaSample.Controller do
   defmacro __using__(_) do
     quote do
-      alias ForEctoUpgrade.Repo
+      alias MediaSample.Repo
       import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import ForEctoUpgrade.Router.Helpers
-      import ForEctoUpgrade.Gettext
-      import ForEctoUpgrade.Admin.Helpers
+      import MediaSample.Router.Helpers
+      import MediaSample.Gettext
+      import MediaSample.Admin.Helpers
     end
   end
 end
 
-defmodule ForEctoUpgrade.View do
+defmodule MediaSample.View do
   defmacro __using__(_) do
     quote do
       use Phoenix.View, root: "web/templates"
@@ -133,10 +133,10 @@ defmodule ForEctoUpgrade.View do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import ForEctoUpgrade.Router.Helpers
-      import ForEctoUpgrade.ErrorHelpers
-      import ForEctoUpgrade.Gettext
-      import ForEctoUpgrade.Helpers
+      import MediaSample.Router.Helpers
+      import MediaSample.ErrorHelpers
+      import MediaSample.Gettext
+      import MediaSample.Helpers
     end
   end
 end

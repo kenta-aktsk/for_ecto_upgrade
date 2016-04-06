@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.BaseUploader do
+defmodule MediaSample.BaseUploader do
   defmacro __using__(opts) do
     repo = Module.split(__CALLER__.module) |> List.first |> Module.safe_concat(Repo)
     quote location: :keep do

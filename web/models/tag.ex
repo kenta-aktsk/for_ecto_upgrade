@@ -1,12 +1,12 @@
-defmodule ForEctoUpgrade.Tag do
-  use ForEctoUpgrade.Web, :model
-  use ForEctoUpgrade.ModelStatusConcern
+defmodule MediaSample.Tag do
+  use MediaSample.Web, :model
+  use MediaSample.ModelStatusConcern
 
   schema "tags" do
     field :name, :string
     field :status, :integer
 
-    many_to_many :entries, ForEctoUpgrade.Entry, join_through: "entry_tags", on_delete: :delete_all
+    many_to_many :entries, MediaSample.Entry, join_through: "entry_tags", on_delete: :delete_all
 
     timestamps
   end

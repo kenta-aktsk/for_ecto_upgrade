@@ -1,7 +1,7 @@
-defmodule ForEctoUpgrade.UserAuthService do
-  use ForEctoUpgrade.Web, :service
-  alias ForEctoUpgrade.{Repo, User, Enums.UserType, Enums.Status}
-  alias ForEctoUpgrade.Authorization
+defmodule MediaSample.UserAuthService do
+  use MediaSample.Web, :service
+  alias MediaSample.{Repo, User, Enums.UserType, Enums.Status}
+  alias MediaSample.Authorization
 
   def get_or_insert(auth) do
     case auth_and_validate(auth) do
@@ -68,8 +68,8 @@ defmodule ForEctoUpgrade.UserAuthService do
     params = scrub(%{
       email: unique_email(auth.info.email),
       name: name_from_auth(auth),
-      user_type: ForEctoUpgrade.Enums.UserType.reader.id,
-      status: ForEctoUpgrade.Enums.Status.invalid.id
+      user_type: MediaSample.Enums.UserType.reader.id,
+      status: MediaSample.Enums.Status.invalid.id
     })
     Multi.new
     |> Multi.insert(:user, User.simple_changeset(%User{}, params))
@@ -119,7 +119,7 @@ defmodule ForEctoUpgrade.UserAuthService do
   end
 
   defp unique_email(email) do
-    email || "#{SecureRandom.uuid}@#{ForEctoUpgrade.Endpoint.config[:url][:host]}"
+    email || "#{SecureRandom.uuid}@#{MediaSample.Endpoint.config[:url][:host]}"
   end
 
   def editable_user?(%{__struct__: _} = user) do

@@ -1,9 +1,9 @@
-defmodule ForEctoUpgrade.User do
-  use ForEctoUpgrade.Web, :model
-  use ForEctoUpgrade.UserModelPasswordConcern, min_password_length: 8, max_password_length: 10
-  use ForEctoUpgrade.ModelStatusConcern
-  import ForEctoUpgrade.ValidationConcern
-  alias ForEctoUpgrade.{Enums.UserType, Enums.Status}
+defmodule MediaSample.User do
+  use MediaSample.Web, :model
+  use MediaSample.UserModelPasswordConcern, min_password_length: 8, max_password_length: 10
+  use MediaSample.ModelStatusConcern
+  import MediaSample.ValidationConcern
+  alias MediaSample.{Enums.UserType, Enums.Status}
 
   schema "users" do
     field :email, :string
@@ -17,7 +17,7 @@ defmodule ForEctoUpgrade.User do
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
 
-    has_many :authorizations, ForEctoUpgrade.Authorization
+    has_many :authorizations, MediaSample.Authorization
 
     timestamps
   end

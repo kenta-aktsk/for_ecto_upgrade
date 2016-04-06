@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.ControllerTestHelper do
+defmodule MediaSample.ControllerTestHelper do
   defmacro __using__(opts) do
     quote location: :keep do
       use Plug.Test

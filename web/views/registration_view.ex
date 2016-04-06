@@ -1,3 +1,3 @@
-defmodule ForEctoUpgrade.RegistrationView do
-  use ForEctoUpgrade.Web, :view
+defmodule MediaSample.RegistrationView do
+  use MediaSample.Web, :view
 end

@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.UserModelPasswordConcern do
+defmodule MediaSample.UserModelPasswordConcern do
   defmacro __using__(opts) do
     quote location: :keep do
       alias Ecto.Changeset

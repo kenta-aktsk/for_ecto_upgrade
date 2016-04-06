@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.API.V2.Root do
+defmodule MediaSample.API.V2.Root do
   use Maru.Router
-  mount ForEctoUpgrade.API.V2.Homepage
+  mount MediaSample.API.V2.Homepage
 end

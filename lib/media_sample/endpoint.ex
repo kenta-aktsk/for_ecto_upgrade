@@ -1,14 +1,14 @@
-defmodule ForEctoUpgrade.Endpoint do
-  use Phoenix.Endpoint, otp_app: :for_ecto_upgrade
+defmodule MediaSample.Endpoint do
+  use Phoenix.Endpoint, otp_app: :media_sample
 
-  socket "/socket", ForEctoUpgrade.UserSocket
+  socket "/socket", MediaSample.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :for_ecto_upgrade, gzip: false,
+    at: "/", from: :media_sample, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -32,10 +32,10 @@ defmodule ForEctoUpgrade.Endpoint do
 
   plug Plug.Session,
     store: :cookie,
-    key: "_for_ecto_upgrade_key",
+    key: "_media_sample_key",
     signing_salt: "Hco0rRT0"
 
-  plug ForEctoUpgrade.Router
+  plug MediaSample.Router
 
-  def config, do: Application.get_env(:for_ecto_upgrade, __MODULE__)
+  def config, do: Application.get_env(:media_sample, __MODULE__)
 end

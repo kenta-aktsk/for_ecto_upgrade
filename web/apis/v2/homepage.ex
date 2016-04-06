@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.API.V2.Homepage do
+defmodule MediaSample.API.V2.Homepage do
   use Maru.Router
 
   get "/" do

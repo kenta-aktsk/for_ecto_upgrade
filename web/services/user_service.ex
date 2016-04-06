@@ -1,6 +1,6 @@
-defmodule ForEctoUpgrade.UserService do
-  use ForEctoUpgrade.Web, :service
-  alias ForEctoUpgrade.UserImageUploader
+defmodule MediaSample.UserService do
+  use MediaSample.Web, :service
+  alias MediaSample.UserImageUploader
 
   def insert(changeset, user_params) do
     Multi.new

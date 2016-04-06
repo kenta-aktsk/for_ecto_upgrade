@@ -1,7 +1,7 @@
-defmodule ForEctoUpgrade.Helpers do
+defmodule MediaSample.Helpers do
   import Plug.Conn, only: [get_session: 2]
-  alias ForEctoUpgrade.Repo
-  alias ForEctoUpgrade.Gettext
+  alias MediaSample.Repo
+  alias MediaSample.Gettext
   def user_logged_in?(conn) do
     case current_user(conn) do
       nil -> false

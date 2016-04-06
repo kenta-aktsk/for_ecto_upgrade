@@ -1,5 +1,5 @@
-defmodule ForEctoUpgrade.ErrorView do
-  use ForEctoUpgrade.Web, :view
+defmodule MediaSample.ErrorView do
+  use MediaSample.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

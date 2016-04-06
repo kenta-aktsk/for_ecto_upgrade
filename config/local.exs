@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :for_ecto_upgrade, ForEctoUpgrade.Endpoint,
+config :media_sample, MediaSample.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -14,7 +14,7 @@ config :for_ecto_upgrade, ForEctoUpgrade.Endpoint,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin"]]
 
 # Watch static and templates for browser reloading.
-config :for_ecto_upgrade, ForEctoUpgrade.Endpoint,
+config :media_sample, MediaSample.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
@@ -32,29 +32,29 @@ config :logger, :console, format: "[$level] $message\n"
 # and calculating stacktraces is usually expensive.
 config :phoenix, :stacktrace_depth, 20
 
-config :for_ecto_upgrade, ForEctoUpgrade.Repo,
+config :media_sample, MediaSample.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "myuser",
   password: "mypass",
-  database: "for_ecto_upgrade",
+  database: "media_sample",
   hostname: "localhost",
   charset: "utf8mb4",
   pool_size: 10
 
-config :for_ecto_upgrade, ForEctoUpgrade.ReadRepo0,
+config :media_sample, MediaSample.ReadRepo0,
   adapter: Ecto.Adapters.MySQL,
   username: "myuser",
   password: "mypass",
-  database: "for_ecto_upgrade",
+  database: "media_sample",
   hostname: "localhost",
   charset: "utf8mb4",
   pool_size: 10
 
-config :for_ecto_upgrade, ForEctoUpgrade.ReadRepo1,
+config :media_sample, MediaSample.ReadRepo1,
   adapter: Ecto.Adapters.MySQL,
   username: "myuser",
   password: "mypass",
-  database: "for_ecto_upgrade",
+  database: "media_sample",
   hostname: "localhost",
   charset: "utf8mb4",
   pool_size: 10

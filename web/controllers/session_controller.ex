@@ -1,7 +1,7 @@
-defmodule ForEctoUpgrade.SessionController do
-  use ForEctoUpgrade.Web, :controller
-  import ForEctoUpgrade.Helpers
-  alias ForEctoUpgrade.Gettext
+defmodule MediaSample.SessionController do
+  use MediaSample.Web, :controller
+  import MediaSample.Helpers
+  alias MediaSample.Gettext
 
   plug Ueberauth, base_path: "/auth"
   plug :check_logged_in

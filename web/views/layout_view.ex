@@ -1,3 +1,3 @@
-defmodule ForEctoUpgrade.LayoutView do
-  use ForEctoUpgrade.Web, :view
+defmodule MediaSample.LayoutView do
+  use MediaSample.Web, :view
 end

@@ -1,6 +1,6 @@
-defmodule ForEctoUpgrade.Admin.TagController do
-  use ForEctoUpgrade.Web, :admin_controller
-  alias ForEctoUpgrade.Tag
+defmodule MediaSample.Admin.TagController do
+  use MediaSample.Web, :admin_controller
+  alias MediaSample.Tag
 
   plug :scrub_params, "tag" when action in [:create, :update]
 

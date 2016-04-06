@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.Admin.AdminUserView do
-  use ForEctoUpgrade.Web, :admin_view
-  alias ForEctoUpgrade.Enums.Status
+defmodule MediaSample.Admin.AdminUserView do
+  use MediaSample.Web, :admin_view
+  alias MediaSample.Enums.Status
 end

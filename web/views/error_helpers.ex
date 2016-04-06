@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.ErrorHelpers do
+defmodule MediaSample.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -26,11 +26,11 @@ defmodule ForEctoUpgrade.ErrorHelpers do
     #
     #     dngettext "errors", "1 file", "%{count} files", count
     #
-    # Gettext.dngettext(ForEctoUpgrade.Gettext, "errors", msg, msg, opts[:count], opts)
-    Gettext.dngettext(ForEctoUpgrade.Gettext, "errors", msg, msg, opts[:count] || 1, opts)
+    # Gettext.dngettext(MediaSample.Gettext, "errors", msg, msg, opts[:count], opts)
+    Gettext.dngettext(MediaSample.Gettext, "errors", msg, msg, opts[:count] || 1, opts)
   end
 
   def translate_error(msg) do
-    Gettext.dgettext(ForEctoUpgrade.Gettext, "errors", msg)
+    Gettext.dgettext(MediaSample.Gettext, "errors", msg)
   end
 end

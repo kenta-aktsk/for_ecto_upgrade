@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.Locale do
+defmodule MediaSample.Locale do
   import Plug.Conn
 
   @no_locales Enum.join(["/admin", "/auth", "/logout"], "|") |> Regex.compile!
@@ -9,18 +9,18 @@ defmodule ForEctoUpgrade.Locale do
     locale = conn.params["locale"]
 
     cond do
-      locale in ForEctoUpgrade.Gettext.supported_locales ->
+      locale in MediaSample.Gettext.supported_locales ->
         conn |> assign_locale!(locale)
       Regex.match?(@no_locales, conn.request_path) ->
         conn
       :else ->
-        default_locale = ForEctoUpgrade.Gettext.config[:default_locale]
+        default_locale = MediaSample.Gettext.config[:default_locale]
         conn |> Phoenix.Controller.redirect(to: "/#{default_locale}#{conn.request_path}") |> halt
     end
   end
 
   defp assign_locale!(conn, locale) do
-    Gettext.put_locale(ForEctoUpgrade.Gettext, locale)
+    Gettext.put_locale(MediaSample.Gettext, locale)
     conn |> assign(:locale, locale)
   end
 end

@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.ConnCase do
+defmodule MediaSample.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -14,29 +14,29 @@ defmodule ForEctoUpgrade.ConnCase do
   """
 
   use ExUnit.CaseTemplate
-  alias ForEctoUpgrade.Gettext
+  alias MediaSample.Gettext
 
   using do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias ForEctoUpgrade.Repo
+      alias MediaSample.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import ForEctoUpgrade.Router.Helpers
+      import MediaSample.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint ForEctoUpgrade.Endpoint
+      @endpoint MediaSample.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ForEctoUpgrade.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MediaSample.Repo)
     status = unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ForEctoUpgrade.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(MediaSample.Repo, {:shared, self()})
     end || :ok
 
     {status, conn: Phoenix.ConnTest.conn |> Plug.Conn.assign(:locale, Gettext.config[:default_locale])}

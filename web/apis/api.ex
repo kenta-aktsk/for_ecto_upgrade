@@ -1,4 +1,4 @@
-defmodule ForEctoUpgrade.API do
+defmodule MediaSample.API do
   use Maru.Router
 
   rescue_from Unauthorized, as: e do
@@ -20,9 +20,9 @@ defmodule ForEctoUpgrade.API do
   end
 
   resource "/v1" do
-    mount ForEctoUpgrade.API.V1.Root
+    mount MediaSample.API.V1.Root
   end
   resource "/v2" do
-    mount ForEctoUpgrade.API.V2.Root
+    mount MediaSample.API.V2.Root
   end
 end

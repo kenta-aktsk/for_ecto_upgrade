@@ -1,8 +1,8 @@
-defmodule ForEctoUpgrade.API.V1.Session do
+defmodule MediaSample.API.V1.Session do
   use Maru.Router
   import Plug.Conn, only: [put_status: 2]
-  alias ForEctoUpgrade.{Repo, UserAuthService}, warn: false
-  helpers ForEctoUpgrade.API.V1.SharedParams
+  alias MediaSample.{Repo, UserAuthService}, warn: false
+  helpers MediaSample.API.V1.SharedParams
 
   resource "/session" do
 

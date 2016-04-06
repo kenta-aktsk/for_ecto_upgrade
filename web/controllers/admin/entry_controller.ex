@@ -1,7 +1,7 @@
-defmodule ForEctoUpgrade.Admin.EntryController do
-  use ForEctoUpgrade.Web, :admin_controller
-  alias ForEctoUpgrade.EntryService
-  alias ForEctoUpgrade.Entry
+defmodule MediaSample.Admin.EntryController do
+  use MediaSample.Web, :admin_controller
+  alias MediaSample.EntryService
+  alias MediaSample.Entry
 
   plug :scrub_params, "entry" when action in [:create, :update]
 

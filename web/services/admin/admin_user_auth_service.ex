@@ -1,6 +1,6 @@
-defmodule ForEctoUpgrade.Admin.AdminUserAuthService do
+defmodule MediaSample.Admin.AdminUserAuthService do
   import Plug.Conn, only: [put_session: 3, configure_session: 2]
-  alias ForEctoUpgrade.{Repo, AdminUser}
+  alias MediaSample.{Repo, AdminUser}
 
   def auth_and_validate(auth) do
     case Repo.slave.get_by(AdminUser, email: auth.uid) do

@@ -1,6 +1,7 @@
 <h2>New tag</h2>
 
 <%= render "form.html", changeset: @changeset,
+                        tag: nil,
                         action: admin_tag_path(@conn, :create, @conn.assigns.locale) %>
 
 <%= link "Back", to: admin_tag_path(@conn, :index, @conn.assigns.locale) %>

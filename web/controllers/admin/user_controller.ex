@@ -1,28 +1,28 @@
 defmodule MediaSample.Admin.UserController do
   use MediaSample.Web, :admin_controller
-  alias MediaSample.UserService
-  alias MediaSample.User
+  use MediaSample.LocalizedController
+  alias MediaSample.{UserService, User}
 
   plug :scrub_params, "user" when action in [:create, :update]
 
-  def index(conn, _params) do
+  def index(conn, _params, locale) do
     users = Repo.slave.all(User)
     render(conn, "index.html", users: users)
   end
 
-  def new(conn, _params) do
+  def new(conn, _params, locale) do
     changeset = User.changeset(%User{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"user" => user_params}) do
+  def create(conn, %{"user" => user_params}, locale) do
     changeset = User.changeset(%User{}, user_params)
 
     case Repo.transaction(UserService.insert(changeset, user_params)) do
       {:ok, %{user: user, upload: _file}} ->
         conn
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: admin_user_path(conn, :show, conn.assigns.locale, user)) |> halt
+        |> redirect(to: admin_user_path(conn, :show, locale, user)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "User create failed")
@@ -30,18 +30,18 @@ defmodule MediaSample.Admin.UserController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
+  def show(conn, %{"id" => id}, locale) do
     user = Repo.slave.get!(User, id)
     render(conn, "show.html", user: user)
   end
 
-  def edit(conn, %{"id" => id}) do
+  def edit(conn, %{"id" => id}, locale) do
     user = Repo.slave.get!(User, id)
     changeset = User.changeset(user)
     render(conn, "edit.html", user: user, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
+  def update(conn, %{"id" => id, "user" => user_params}, locale) do
     user = Repo.slave.get!(User, id)
     changeset = User.changeset(user, user_params)
 
@@ -49,7 +49,7 @@ defmodule MediaSample.Admin.UserController do
       {:ok, %{user: user, upload: _file}} ->
         conn
         |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: admin_user_path(conn, :show, conn.assigns.locale, user)) |> halt
+        |> redirect(to: admin_user_path(conn, :show, locale, user)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "User update failed")
@@ -57,18 +57,18 @@ defmodule MediaSample.Admin.UserController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"id" => id}, locale) do
     user = Repo.slave.get!(User, id)
 
     case Repo.transaction(UserService.delete(user)) do
       {:ok, _} ->
         conn
         |> put_flash(:info, "User deleted successfully.")
-        |> redirect(to: admin_user_path(conn, :index, conn.assigns.locale)) |> halt
+        |> redirect(to: admin_user_path(conn, :index, locale)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "User delete failed")
-        |> redirect(to: admin_user_path(conn, :index, conn.assigns.locale)) |> halt
+        |> redirect(to: admin_user_path(conn, :index, locale)) |> halt
     end
   end
 end

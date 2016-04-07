@@ -1,7 +1,6 @@
 defmodule MediaSample.Helpers do
   import Plug.Conn, only: [get_session: 2]
-  alias MediaSample.Repo
-  alias MediaSample.Gettext
+  alias MediaSample.{Repo, Gettext, Util}
   def user_logged_in?(conn) do
     case current_user(conn) do
       nil -> false
@@ -21,16 +20,17 @@ defmodule MediaSample.Helpers do
     end
   end
 
-  def valid_collection(module, caption_field) when is_atom(module) and is_atom(caption_field) do
-    module |> module.valid |> Repo.slave.all |> Enum.map(&({Map.get(&1, caption_field), &1.id}))
-  end
-  def valid_collection(module, caption_field, locale) when is_atom(module) and is_atom(caption_field) do
-    module |> module.valid |> module.preload_all(locale) |> Repo.slave.all |> Enum.map(&({Map.get(&1.translation, caption_field), &1.id}))
+  def valid_collection(module, caption_field, locale \\ nil) when is_atom(module) and is_atom(caption_field) do
+    module
+    |> module.valid
+    |> Util.pipe_if(locale, &(&1 |> module.preload_all(locale)))
+    |> Repo.slave.all
+    |> Enum.map(&({translate(&1, caption_field), &1.id}))
   end
 
   def assoc_captions(association, field) do
     if Ecto.assoc_loaded?(association) do
-      association |> Enum.map(&Map.get(&1, field)) |> Enum.join(", ")
+      association |> Enum.map(&translate(&1, field)) |> Enum.join(", ")
     else
       []
     end

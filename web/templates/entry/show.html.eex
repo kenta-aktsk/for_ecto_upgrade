@@ -1,14 +1,10 @@
 <ul>
-
-
-
-
   <li>
-    <strong><%= @entry.title %></strong>
+    <strong><%= translate(@entry, :title) %></strong>
   </li>
 
   <li>
-    <%= @entry.content %>
+    <%= translate(@entry, :content) %>
   </li>
 
   <li>

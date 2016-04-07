@@ -40,4 +40,14 @@ defmodule MediaSample.Helpers do
       []
     end
   end
+
+  def translate(nil, field), do: ""
+  def translate(model, field) do
+    if Map.has_key?(model, :translation) && !is_nil(model.translation) &&
+       Ecto.assoc_loaded?(model.translation) && Map.has_key?(model.translation, field) do
+      Map.get(model.translation, field)
+    else
+      Map.get(model, field)
+    end
+  end
 end

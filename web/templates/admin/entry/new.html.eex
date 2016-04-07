@@ -1,6 +1,7 @@
 <h2>New entry</h2>
 
 <%= render "form.html", changeset: @changeset,
+                        entry: nil,
                         action: admin_entry_path(@conn, :create, @conn.assigns.locale) %>
 
 <%= link "Back", to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>

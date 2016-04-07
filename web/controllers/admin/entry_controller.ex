@@ -1,24 +1,24 @@
 defmodule MediaSample.Admin.EntryController do
   use MediaSample.Web, :admin_controller
-  alias MediaSample.EntryService
-  alias MediaSample.Entry
+  use MediaSample.LocalizedController
+  alias MediaSample.{EntryService, Entry}
 
   plug :scrub_params, "entry" when action in [:create, :update]
 
-  def index(conn, _params) do
-    entries = Entry |> Entry.preload_all |> Repo.slave.all
+  def index(conn, _params, locale) do
+    entries = Entry |> Entry.preload_all(locale) |> Repo.slave.all
     render(conn, "index.html", entries: entries)
   end
 
-  def new(conn, _params) do
+  def new(conn, _params, _locale) do
     changeset = Entry.changeset(%Entry{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"entry" => entry_params}) do
+  def create(conn, %{"entry" => entry_params}, locale) do
     changeset = Entry.changeset(%Entry{}, entry_params)
 
-    case Repo.transaction(EntryService.insert(changeset, entry_params)) do
+    case Repo.transaction(EntryService.insert(changeset, entry_params, locale)) do
       {:ok, %{entry: entry, upload: _upload}} ->
         conn
         |> put_flash(:info, "entry created successfully.")
@@ -30,22 +30,22 @@ defmodule MediaSample.Admin.EntryController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    entry = Entry |> Entry.preload_all |> Repo.slave.get!(id)
+  def show(conn, %{"id" => id}, locale) do
+    entry = Entry |> Entry.preload_all(locale) |> Repo.slave.get!(id)
     render(conn, "show.html", entry: entry)
   end
 
-  def edit(conn, %{"id" => id}) do
-    entry = Entry |> Entry.preload_all |> Repo.slave.get!(id)
+  def edit(conn, %{"id" => id}, locale) do
+    entry = Entry |> Entry.preload_all(locale) |> Repo.slave.get!(id)
     changeset = Entry.changeset(entry)
     render(conn, "edit.html", entry: entry, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "entry" => entry_params}) do
-    entry = Entry |> Entry.preload_all |> Repo.slave.get!(id)
+  def update(conn, %{"id" => id, "entry" => entry_params}, locale) do
+    entry = Entry |> Entry.preload_all(locale) |> Repo.slave.get!(id)
     changeset = Entry.changeset(entry, entry_params)
 
-    case Repo.transaction(EntryService.update(changeset, entry_params)) do
+    case Repo.transaction(EntryService.update(changeset, entry_params, locale)) do
       {:ok, %{entry: entry, upload: _upload}} ->
         conn
         |> put_flash(:info, "entry updated successfully.")
@@ -57,7 +57,7 @@ defmodule MediaSample.Admin.EntryController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"id" => id}, _locale) do
     entry = Repo.slave.get!(Entry, id)
 
     case Repo.transaction(EntryService.delete(entry)) do

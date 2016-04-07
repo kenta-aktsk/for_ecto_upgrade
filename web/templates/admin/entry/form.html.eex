@@ -25,13 +25,13 @@
 
   <div class="form-group">
     <%= label f, :title, class: "control-label" %>
-    <%= text_input f, :title, class: "form-control" %>
+    <%= text_input :entry, :title, value: translate(@entry, :title), class: "form-control" %>
     <%= error_tag f, :title %>
   </div>
 
   <div class="form-group">
     <%= label f, :content, class: "control-label" %>
-    <%= textarea f, :content, class: "form-control" %>
+    <%= textarea :entry, :content, value: translate(@entry, :content), class: "form-control" %>
     <%= error_tag f, :content %>
   </div>
 

@@ -19,12 +19,12 @@
 
   <li>
     <strong>Title:</strong>
-    <%= @entry.title %>
+    <%= translate(@entry, :title) %>
   </li>
 
   <li>
     <strong>Content:</strong>
-    <%= @entry.content %>
+    <%= translate(@entry, :content) %>
   </li>
 
   <li>

@@ -18,7 +18,7 @@
       <td><%= entry.user.name %></td>
       <td><%= entry.category.name %></td>
       <td><%= assoc_captions(entry.tags, :name) %></td>
-      <td><%= entry.title %></td>
+      <td><%= translate(entry, :title) %></td>
       <td><%= Status.get(entry.status).text %></td>
 
       <td class="text-right">

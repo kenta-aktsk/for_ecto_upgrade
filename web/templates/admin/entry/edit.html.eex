@@ -1,6 +1,7 @@
 <h2>Edit entry</h2>
 
 <%= render "form.html", changeset: @changeset,
+                        entry: @entry,
                         action: admin_entry_path(@conn, :update, @conn.assigns.locale, @entry) %>
 
 <%= link "Back", to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>

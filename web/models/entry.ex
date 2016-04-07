@@ -1,6 +1,7 @@
 defmodule MediaSample.Entry do
   use MediaSample.Web, :model
   use MediaSample.ModelStatusConcern
+  alias MediaSample.{Gettext, EntryTranslation}
 
   schema "entries" do
     field :title, :string
@@ -11,6 +12,7 @@ defmodule MediaSample.Entry do
     belongs_to :user, MediaSample.User
     belongs_to :category, MediaSample.Category
     many_to_many :tags, MediaSample.Tag, join_through: "entry_tags", on_delete: :delete_all
+    has_one :translation, MediaSample.EntryTranslation
 
     timestamps
   end
@@ -25,7 +27,9 @@ defmodule MediaSample.Entry do
     |> foreign_key_constraint(:category_id)
   end
 
-  def preload_all(query) do
-    from query, preload: [:user, :category, :tags]
+  def preload_all(query), do: preload_all(query, Gettext.config[:default_locale])
+  def preload_all(query, locale) do
+    from query, preload: [:user, :category, :tags, translation: ^EntryTranslation.translation_query(locale)]
   end
 end
+

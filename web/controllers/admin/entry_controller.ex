@@ -22,7 +22,7 @@ defmodule MediaSample.Admin.EntryController do
       {:ok, %{entry: entry, upload: _upload}} ->
         conn
         |> put_flash(:info, "entry created successfully.")
-        |> redirect(to: admin_entry_path(conn, :show, conn.assigns.locale, entry)) |> halt
+        |> redirect(to: admin_entry_path(conn, :show, locale, entry)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "entry create failed")
@@ -49,7 +49,7 @@ defmodule MediaSample.Admin.EntryController do
       {:ok, %{entry: entry, upload: _upload}} ->
         conn
         |> put_flash(:info, "entry updated successfully.")
-        |> redirect(to: admin_entry_path(conn, :show, conn.assigns.locale, entry)) |> halt
+        |> redirect(to: admin_entry_path(conn, :show, locale, entry)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "entry update failed")
@@ -57,18 +57,18 @@ defmodule MediaSample.Admin.EntryController do
     end
   end
 
-  def delete(conn, %{"id" => id}, _locale) do
+  def delete(conn, %{"id" => id}, locale) do
     entry = Repo.slave.get!(Entry, id)
 
     case Repo.transaction(EntryService.delete(entry)) do
       {:ok, _} ->
         conn
         |> put_flash(:info, "entry deleted successfully.")
-        |> redirect(to: admin_entry_path(conn, :index, conn.assigns.locale)) |> halt
+        |> redirect(to: admin_entry_path(conn, :index, locale)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "entry delete failed")
-        |> redirect(to: admin_entry_path(conn, :index, conn.assigns.locale)) |> halt
+        |> redirect(to: admin_entry_path(conn, :index, locale)) |> halt
     end
   end
 end

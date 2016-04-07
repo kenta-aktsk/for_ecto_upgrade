@@ -12,7 +12,7 @@
   <tbody>
 <%= for tag <- @tags do %>
     <tr>
-      <td><%= tag.name %></td>
+      <td><%= translate(tag, :name) %></td>
       <td><%= Status.get(tag.status).text %></td>
 
       <td class="text-right">

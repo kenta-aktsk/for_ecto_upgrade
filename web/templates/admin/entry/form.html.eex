@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= label f, :tag, class: "control-label" %>
-    <%= multiple_select f, :tags, valid_collection(Tag, :name), value: assoc_ids(@changeset.data.tags), class: "form-control" %>
+    <%= multiple_select f, :tags, valid_collection(Tag, :name, @locale), value: assoc_ids(@changeset.data.tags), class: "form-control" %>
     <%= error_tag f, :tag %>
   </div>
 

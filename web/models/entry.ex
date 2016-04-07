@@ -1,7 +1,7 @@
 defmodule MediaSample.Entry do
   use MediaSample.Web, :model
   use MediaSample.ModelStatusConcern
-  alias MediaSample.{Gettext, EntryTranslation}
+  alias MediaSample.{Gettext, EntryTranslation, CategoryTranslation}
 
   schema "entries" do
     field :title, :string
@@ -29,7 +29,9 @@ defmodule MediaSample.Entry do
 
   def preload_all(query), do: preload_all(query, Gettext.config[:default_locale])
   def preload_all(query, locale) do
-    from query, preload: [:user, :category, :tags, translation: ^EntryTranslation.translation_query(locale)]
+    from query, preload: [:user, :tags,
+      translation: ^EntryTranslation.translation_query(locale),
+      category: [translation: ^CategoryTranslation.translation_query(locale)]]
   end
 end
 

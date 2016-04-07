@@ -9,7 +9,7 @@
 
   <li>
     <strong>Category:</strong>
-    <%= @entry.category.name %>
+    <%= translate(@entry.category, :name) %>
   </li>
 
   <li>

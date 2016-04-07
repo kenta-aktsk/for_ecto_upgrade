@@ -4,12 +4,12 @@
 
   <li>
     <strong>Name:</strong>
-    <%= @category.name %>
+    <%= translate(@category, :name) %>
   </li>
 
   <li>
     <strong>Description:</strong>
-    <%= @category.description %>
+    <%= translate(@category, :description) %>
   </li>
 
   <li>

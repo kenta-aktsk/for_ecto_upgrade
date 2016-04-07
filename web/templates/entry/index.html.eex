@@ -13,7 +13,7 @@
   <tbody>
 <%= for entry <- @entries do %>
     <tr>
-      <td><%= entry.user.name %></td>
+      <td><%= translate(entry.user, :name) %></td>
       <td><%= translate(entry.category, :name) %></td>
       <td><%= assoc_captions(entry.tags, :name) %></td>
       <td><%= translate(entry, :title) %></td>

@@ -3,7 +3,7 @@ defmodule MediaSample.User do
   use MediaSample.UserModelPasswordConcern, min_password_length: 8, max_password_length: 10
   use MediaSample.ModelStatusConcern
   import MediaSample.ValidationConcern
-  alias MediaSample.{Enums.UserType, Enums.Status}
+  alias MediaSample.{UserTranslation, Enums.UserType, Enums.Status}
 
   schema "users" do
     field :email, :string
@@ -17,6 +17,7 @@ defmodule MediaSample.User do
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
 
+    has_one :translation, MediaSample.UserTranslation
     has_many :authorizations, MediaSample.Authorization
 
     timestamps
@@ -40,5 +41,10 @@ defmodule MediaSample.User do
 
   def simple_changeset(user, params \\ %{}) do
     user |> cast(params, @required_fields)
+  end
+
+  def preload_all(query), do: preload_all(query, Gettext.config[:default_locale])
+  def preload_all(query, locale) do
+    from query, preload: [translation: ^UserTranslation.translation_query(locale)]
   end
 end

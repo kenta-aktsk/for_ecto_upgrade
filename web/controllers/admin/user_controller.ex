@@ -6,7 +6,7 @@ defmodule MediaSample.Admin.UserController do
   plug :scrub_params, "user" when action in [:create, :update]
 
   def index(conn, _params, locale) do
-    users = Repo.slave.all(User)
+    users = User |> User.preload_all(locale) |> Repo.slave.all
     render(conn, "index.html", users: users)
   end
 
@@ -18,7 +18,7 @@ defmodule MediaSample.Admin.UserController do
   def create(conn, %{"user" => user_params}, locale) do
     changeset = User.changeset(%User{}, user_params)
 
-    case Repo.transaction(UserService.insert(changeset, user_params)) do
+    case Repo.transaction(UserService.insert(changeset, user_params, locale)) do
       {:ok, %{user: user, upload: _file}} ->
         conn
         |> put_flash(:info, "User created successfully.")
@@ -31,21 +31,21 @@ defmodule MediaSample.Admin.UserController do
   end
 
   def show(conn, %{"id" => id}, locale) do
-    user = Repo.slave.get!(User, id)
+    user = User |> User.preload_all(locale) |> Repo.slave.get!(id)
     render(conn, "show.html", user: user)
   end
 
   def edit(conn, %{"id" => id}, locale) do
-    user = Repo.slave.get!(User, id)
+    user = User |> User.preload_all(locale) |> Repo.slave.get!(id)
     changeset = User.changeset(user)
     render(conn, "edit.html", user: user, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "user" => user_params}, locale) do
-    user = Repo.slave.get!(User, id)
+    user = User |> User.preload_all(locale) |> Repo.slave.get!(id)
     changeset = User.changeset(user, user_params)
 
-    case Repo.transaction(UserService.update(changeset, user_params)) do
+    case Repo.transaction(UserService.update(changeset, user_params, locale)) do
       {:ok, %{user: user, upload: _file}} ->
         conn
         |> put_flash(:info, "User updated successfully.")

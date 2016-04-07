@@ -9,12 +9,12 @@
 
   <li>
     <strong>Name:</strong>
-    <%= @user.name %>
+    <%= translate(@user, :name) %>
   </li>
 
   <li>
     <strong>Profile:</strong>
-    <%= @user.profile %>
+    <%= translate(@user, :profile) %>
   </li>
 
   <li>

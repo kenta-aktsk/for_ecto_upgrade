@@ -1,6 +1,7 @@
 <h2>New user</h2>
 
 <%= render "form.html", changeset: @changeset,
+                        user: nil,
                         action: admin_user_path(@conn, :create, @conn.assigns.locale) %>
 
 <%= link "Back", to: admin_user_path(@conn, :index, @conn.assigns.locale) %>

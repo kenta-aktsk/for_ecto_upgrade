@@ -7,7 +7,7 @@
 
   <div class="form-group">
     <%= label f, :user, class: "control-label" %>
-    <%= select f, :user_id, valid_collection(User, :name), class: "form-control" %>
+    <%= select f, :user_id, valid_collection(User, :name, @locale), class: "form-control" %>
     <%= error_tag f, :user %>
   </div>
 

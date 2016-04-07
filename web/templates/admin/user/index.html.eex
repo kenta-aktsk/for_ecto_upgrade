@@ -16,8 +16,8 @@
 <%= for user <- @users do %>
     <tr>
       <td><%= user.email %></td>
-      <td><%= user.name %></td>
-      <td><%= user.profile %></td>
+      <td><%= translate(user, :name) %></td>
+      <td><%= translate(user, :profile) %></td>
       <td><%= UserType.get(user.user_type).text %></td>
       <td><%= Status.get(user.status).text %></td>
 

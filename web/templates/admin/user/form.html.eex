@@ -13,13 +13,13 @@
 
   <div class="form-group">
     <%= label f, :name, class: "control-label" %>
-    <%= text_input f, :name, class: "form-control" %>
+    <%= text_input :user, :name, value: translate(@user, :name), class: "form-control" %>
     <%= error_tag f, :name %>
   </div>
 
   <div class="form-group">
     <%= label f, :profile, class: "control-label" %>
-    <%= text_input f, :profile, class: "form-control" %>
+    <%= textarea :user, :profile, value: translate(@user, :profile), class: "form-control" %>
     <%= error_tag f, :profile %>
   </div>
 

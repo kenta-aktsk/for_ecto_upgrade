@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <%= label f, :category, class: "control-label" %>
-    <%= select f, :category_id, valid_collection(Category, :name), class: "form-control" %>
+    <%= select f, :category_id, valid_collection(Category, :name, @locale), class: "form-control" %>
     <%= error_tag f, :category %>
   </div>
 

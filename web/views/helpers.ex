@@ -24,6 +24,9 @@ defmodule MediaSample.Helpers do
   def valid_collection(module, caption_field) when is_atom(module) and is_atom(caption_field) do
     module |> module.valid |> Repo.slave.all |> Enum.map(&({Map.get(&1, caption_field), &1.id}))
   end
+  def valid_collection(module, caption_field, locale) when is_atom(module) and is_atom(caption_field) do
+    module |> module.valid |> module.preload_all(locale) |> Repo.slave.all |> Enum.map(&({Map.get(&1.translation, caption_field), &1.id}))
+  end
 
   def assoc_captions(association, field) do
     if Ecto.assoc_loaded?(association) do

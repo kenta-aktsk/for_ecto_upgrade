@@ -2,6 +2,7 @@
 
 <%= render "form.html", changeset: @changeset,
                         entry: @entry,
+                        locale: @conn.assigns.locale,
                         action: admin_entry_path(@conn, :update, @conn.assigns.locale, @entry) %>
 
 <%= link "Back", to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>

@@ -13,8 +13,8 @@
   <tbody>
 <%= for category <- @categories do %>
     <tr>
-      <td><%= category.name %></td>
-      <td><%= category.description %></td>
+      <td><%= translate(category, :name) %></td>
+      <td><%= translate(category, :description) %></td>
       <td><%= Status.get(category.status).text %></td>
 
       <td class="text-right">

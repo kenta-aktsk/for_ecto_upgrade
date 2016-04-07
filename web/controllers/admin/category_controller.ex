@@ -1,24 +1,24 @@
 defmodule MediaSample.Admin.CategoryController do
   use MediaSample.Web, :admin_controller
-  alias MediaSample.Admin.CategoryService
-  alias MediaSample.Category
+  use MediaSample.LocalizedController
+  alias MediaSample.{CategoryService, Category}
 
   plug :scrub_params, "category" when action in [:create, :update]
 
-  def index(conn, _params) do
-    categories = Repo.slave.all(Category)
+  def index(conn, _params, locale) do
+    categories = Category |> Category.preload_all(locale) |> Repo.slave.all
     render(conn, "index.html", categories: categories)
   end
 
-  def new(conn, _params) do
+  def new(conn, _params, _locale) do
     changeset = Category.changeset(%Category{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"category" => category_params}) do
+  def create(conn, %{"category" => category_params}, locale) do
     changeset = Category.changeset(%Category{}, category_params)
 
-    case Repo.transaction(CategoryService.insert(changeset, category_params)) do
+    case Repo.transaction(CategoryService.insert(changeset, category_params, locale)) do
       {:ok, %{category: category, upload: _file}} ->
         conn
         |> put_flash(:info, "category created successfully.")
@@ -30,22 +30,22 @@ defmodule MediaSample.Admin.CategoryController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    category = Repo.slave.get!(Category, id)
+  def show(conn, %{"id" => id}, locale) do
+    category = Category |> Category.preload_all(locale) |> Repo.slave.get!(id)
     render(conn, "show.html", category: category)
   end
 
-  def edit(conn, %{"id" => id}) do
-    category = Repo.slave.get!(Category, id)
+  def edit(conn, %{"id" => id}, locale) do
+    category = Category |> Category.preload_all(locale) |> Repo.slave.get!(id)
     changeset = Category.changeset(category)
     render(conn, "edit.html", category: category, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "category" => category_params}) do
-    category = Repo.slave.get!(Category, id)
+  def update(conn, %{"id" => id, "category" => category_params}, locale) do
+    category = Category |> Category.preload_all(locale) |> Repo.slave.get!(id)
     changeset = Category.changeset(category, category_params)
 
-    case Repo.transaction(CategoryService.update(changeset, category_params)) do
+    case Repo.transaction(CategoryService.update(changeset, category_params, locale)) do
       {:ok, %{category: category, upload: _file}} ->
         conn
         |> put_flash(:info, "category updated successfully.")
@@ -57,7 +57,7 @@ defmodule MediaSample.Admin.CategoryController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"id" => id}, _locale) do
     category = Repo.slave.get!(Category, id)
 
     case Repo.transaction(CategoryService.delete(category)) do

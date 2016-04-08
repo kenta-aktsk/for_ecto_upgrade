@@ -4,16 +4,16 @@
 
 <div class="row marketing">
   <div class="col-lg-6">
-    <h4>Admin</h4>
+    <h4><%= gettext "Admin" %></h4>
     <ul>
       <li>
-        <%= link "Admin", to: admin_page_path(@conn, :index, @conn.assigns.locale) %>
+        <%= link gettext("Admin"), to: admin_page_path(@conn, :index, @conn.assigns.locale) %>
       </li>
     </ul>
-    <h4>Public</h4>
+    <h4><%= gettext "Public" %></h4>
     <ul>
       <li>
-        <%= link "Entries", to: entry_path(@conn, :index, @conn.assigns.locale) %>
+        <%= link gettext("Entries"), to: entry_path(@conn, :index, @conn.assigns.locale) %>
       </li>
     </ul>
   </div>

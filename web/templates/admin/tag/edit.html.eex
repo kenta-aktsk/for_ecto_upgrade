@@ -1,7 +1,7 @@
-<h2>Edit tag</h2>
+<h2><%= gettext "Edit tag" %></h2>
 
 <%= render "form.html", changeset: @changeset,
                         tag: @tag,
                         action: admin_tag_path(@conn, :update, @conn.assigns.locale, @tag) %>
 
-<%= link "Back", to: admin_tag_path(@conn, :index, @conn.assigns.locale) %>
+<%= link gettext("Back"), to: admin_tag_path(@conn, :index, @conn.assigns.locale) %>

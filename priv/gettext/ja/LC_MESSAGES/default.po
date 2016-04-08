@@ -12,7 +12,7 @@ msgstr ""
 
 #: web/templates/admin/page/index.html.eex:2
 msgid "Dashboard"
-msgstr ""
+msgstr "ダッシュボード"
 
 msgid "invalid"
 msgstr "無効"
@@ -28,3 +28,335 @@ msgstr "編集者"
 
 msgid "reader"
 msgstr "購読者"
+
+#: web/templates/admin/admin_user/index.html.eex:23
+#: web/templates/admin/category/index.html.eex:23
+#: web/templates/admin/entry/index.html.eex:27
+#: web/templates/admin/tag/index.html.eex:21
+#: web/templates/admin/user/index.html.eex:27
+msgid "Delete"
+msgstr "削除"
+
+#: web/templates/admin/admin_user/index.html.eex:22
+#: web/templates/admin/admin_user/show.html.eex:22
+#: web/templates/admin/category/index.html.eex:22
+#: web/templates/admin/category/show.html.eex:29
+#: web/templates/admin/entry/index.html.eex:26
+#: web/templates/admin/entry/show.html.eex:44
+#: web/templates/admin/tag/index.html.eex:20
+#: web/templates/admin/tag/show.html.eex:17
+#: web/templates/admin/user/index.html.eex:26
+#: web/templates/admin/user/show.html.eex:39
+msgid "Edit"
+msgstr "編集"
+
+#: web/templates/admin/admin_user/form.html.eex:9
+#: web/templates/admin/admin_user/index.html.eex:6
+#: web/templates/admin/admin_user/show.html.eex:6
+#: web/templates/admin/session/new.html.eex:4
+#: web/templates/admin/user/form.html.eex:9
+#: web/templates/admin/user/index.html.eex:6
+#: web/templates/admin/user/show.html.eex:6 web/templates/session/new.html.eex:4
+msgid "Email"
+msgstr "メール"
+
+#: web/templates/admin/admin_user/index.html.eex:1
+msgid "Listing admin users"
+msgstr "管理者一覧"
+
+#: web/templates/admin/admin_user/form.html.eex:15
+#: web/templates/admin/admin_user/index.html.eex:7
+#: web/templates/admin/admin_user/show.html.eex:11
+#: web/templates/admin/category/form.html.eex:9
+#: web/templates/admin/category/index.html.eex:6
+#: web/templates/admin/category/show.html.eex:6
+#: web/templates/admin/tag/form.html.eex:9
+#: web/templates/admin/tag/index.html.eex:6
+#: web/templates/admin/tag/show.html.eex:6
+#: web/templates/admin/user/form.html.eex:15
+#: web/templates/admin/user/index.html.eex:7
+#: web/templates/admin/user/show.html.eex:11
+msgid "Name"
+msgstr "名前"
+
+#: web/templates/admin/admin_user/new.html.eex:1
+msgid "New admin user"
+msgstr "新規 管理者"
+
+#: web/templates/admin/admin_user/index.html.eex:21
+#: web/templates/admin/category/index.html.eex:21
+#: web/templates/admin/entry/index.html.eex:25
+#: web/templates/admin/tag/index.html.eex:19
+#: web/templates/admin/user/index.html.eex:25
+#: web/templates/entry/index.html.eex:27
+msgid "Show"
+msgstr "表示"
+
+#: web/templates/admin/admin_user/form.html.eex:21
+#: web/templates/admin/admin_user/index.html.eex:8
+#: web/templates/admin/admin_user/show.html.eex:16
+#: web/templates/admin/category/form.html.eex:30
+#: web/templates/admin/category/index.html.eex:8
+#: web/templates/admin/category/show.html.eex:23
+#: web/templates/admin/entry/form.html.eex:48
+#: web/templates/admin/entry/index.html.eex:10
+#: web/templates/admin/entry/show.html.eex:38
+#: web/templates/admin/tag/form.html.eex:15
+#: web/templates/admin/tag/index.html.eex:7
+#: web/templates/admin/tag/show.html.eex:11
+#: web/templates/admin/user/form.html.eex:42
+#: web/templates/admin/user/index.html.eex:10
+#: web/templates/admin/user/show.html.eex:33
+msgid "Status"
+msgstr "状態"
+
+#: web/templates/page/index.html.eex:2
+msgid "Top"
+msgstr "トップ"
+
+#: web/templates/admin/layout/app.html.eex:10
+#: web/templates/page/index.html.eex:7 web/templates/page/index.html.eex:10
+msgid "Admin"
+msgstr "管理"
+
+#: web/templates/admin/layout/app.html.eex:29
+msgid "Admin top"
+msgstr "トップ"
+
+#: web/templates/admin/layout/login_bar.html.eex:3
+#: web/templates/layout/login_bar.html.eex:3
+msgid "Logout"
+msgstr "ログアウト"
+
+#: web/templates/admin/page/index.html.eex:10
+msgid "AdminUser"
+msgstr "管理者"
+
+#: web/templates/admin/entry/form.html.eex:15
+#: web/templates/admin/entry/index.html.eex:7
+#: web/templates/admin/entry/show.html.eex:11
+#: web/templates/admin/page/index.html.eex:16
+#: web/templates/entry/index.html.eex:5
+msgid "Category"
+msgstr "カテゴリ"
+
+#: web/templates/admin/page/index.html.eex:19
+msgid "Entry"
+msgstr "記事"
+
+#: web/templates/admin/entry/form.html.eex:21
+#: web/templates/admin/entry/index.html.eex:8
+#: web/templates/admin/entry/show.html.eex:16
+#: web/templates/admin/page/index.html.eex:22
+#: web/templates/entry/index.html.eex:6
+msgid "Tag"
+msgstr "タグ"
+
+#: web/templates/admin/entry/form.html.eex:9
+#: web/templates/admin/entry/index.html.eex:6
+#: web/templates/admin/entry/show.html.eex:6
+#: web/templates/admin/page/index.html.eex:13
+#: web/templates/entry/index.html.eex:4
+msgid "User"
+msgstr "ユーザー"
+
+#: web/templates/admin/page/index.html.eex:7
+msgid "List"
+msgstr "一覧"
+
+#: web/templates/admin/admin_user/edit.html.eex:6
+#: web/templates/admin/admin_user/new.html.eex:6
+#: web/templates/admin/admin_user/show.html.eex:23
+#: web/templates/admin/category/edit.html.eex:7
+#: web/templates/admin/category/new.html.eex:7
+#: web/templates/admin/category/show.html.eex:30
+#: web/templates/admin/entry/edit.html.eex:8
+#: web/templates/admin/entry/new.html.eex:8
+#: web/templates/admin/entry/show.html.eex:45
+#: web/templates/admin/tag/edit.html.eex:7
+#: web/templates/admin/tag/new.html.eex:7
+#: web/templates/admin/tag/show.html.eex:18
+#: web/templates/admin/user/edit.html.eex:7
+#: web/templates/admin/user/new.html.eex:7
+#: web/templates/admin/user/show.html.eex:40
+#: web/templates/entry/show.html.eex:20
+msgid "Back"
+msgstr "戻る"
+
+#: web/templates/admin/admin_user/edit.html.eex:1
+msgid "Edit admin user"
+msgstr "編集 管理者"
+
+#: web/templates/admin/admin_user/form.html.eex:4
+#: web/templates/admin/category/form.html.eex:4
+#: web/templates/admin/entry/form.html.eex:4
+#: web/templates/admin/tag/form.html.eex:4
+#: web/templates/admin/user/form.html.eex:4
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr "エラーが発生しました。下記のエラーメッセージを確認してください。"
+
+#: web/templates/admin/admin_user/form.html.eex:39
+#: web/templates/admin/category/form.html.eex:36
+#: web/templates/admin/entry/form.html.eex:54
+#: web/templates/admin/tag/form.html.eex:21
+#: web/templates/admin/user/form.html.eex:60
+msgid "Submit"
+msgstr "実行"
+
+#: web/templates/admin/admin_user/form.html.eex:27
+#: web/templates/admin/session/new.html.eex:9
+#: web/templates/admin/user/form.html.eex:48
+#: web/templates/session/new.html.eex:9
+msgid "Password"
+msgstr "パスワード"
+
+#: web/templates/admin/admin_user/form.html.eex:33
+#: web/templates/admin/user/form.html.eex:54
+msgid "Password Confirmation"
+msgstr "パスワード(確認)"
+
+#: web/templates/admin/session/new.html.eex:1
+msgid "Admin Login"
+msgstr "管理者ログイン"
+
+#: web/templates/admin/entry/form.html.eex:33
+#: web/templates/admin/entry/show.html.eex:26
+msgid "Content"
+msgstr "コンテンツ"
+
+#: web/templates/admin/category/form.html.eex:15
+#: web/templates/admin/category/index.html.eex:7
+#: web/templates/admin/category/show.html.eex:11
+msgid "Description"
+msgstr "説明"
+
+#: web/templates/admin/category/edit.html.eex:1
+msgid "Edit category"
+msgstr "編集 カテゴリ"
+
+#: web/templates/admin/entry/edit.html.eex:1
+msgid "Edit entry"
+msgstr "編集 記事"
+
+#: web/templates/admin/tag/edit.html.eex:1
+msgid "Edit tag"
+msgstr "編集 タグ"
+
+#: web/templates/admin/user/edit.html.eex:1
+msgid "Edit user"
+msgstr "編集 ユーザー"
+
+#: web/templates/page/index.html.eex:16
+msgid "Entries"
+msgstr "記事一覧"
+
+#: web/templates/layout/app.html.eex:10
+msgid "Hello %{name}!"
+msgstr "ハロー %{name}！"
+
+#: web/templates/admin/category/form.html.eex:21
+#: web/templates/admin/category/show.html.eex:16
+#: web/templates/admin/entry/form.html.eex:39
+#: web/templates/admin/entry/show.html.eex:31
+#: web/templates/admin/user/form.html.eex:27
+#: web/templates/admin/user/show.html.eex:21
+#: web/templates/entry/index.html.eex:8
+msgid "Image"
+msgstr "画像"
+
+#: web/templates/admin/category/index.html.eex:1
+msgid "Listing categories"
+msgstr "カテゴリ一覧"
+
+#: web/templates/admin/entry/index.html.eex:1
+msgid "Listing entries"
+msgstr "記事一覧"
+
+#: web/templates/admin/tag/index.html.eex:1
+msgid "Listing tags"
+msgstr "タグ一覧"
+
+#: web/templates/admin/user/index.html.eex:1
+msgid "Listing users"
+msgstr "ユーザー一覧"
+
+#: web/templates/admin/session/new.html.eex:14
+#: web/templates/layout/login_bar.html.eex:7
+#: web/templates/session/new.html.eex:14
+msgid "Login"
+msgstr "ログイン"
+
+#: web/templates/admin/category/new.html.eex:1
+msgid "New category"
+msgstr "新規 カテゴリ"
+
+#: web/templates/admin/entry/new.html.eex:1
+msgid "New entry"
+msgstr "新規 記事"
+
+#: web/templates/admin/tag/new.html.eex:1
+msgid "New tag"
+msgstr "新規 タグ"
+
+#: web/templates/admin/user/new.html.eex:1
+msgid "New user"
+msgstr "新規 ユーザー"
+
+#: web/templates/admin/user/form.html.eex:21
+#: web/templates/admin/user/index.html.eex:8
+#: web/templates/admin/user/show.html.eex:16
+msgid "Profile"
+msgstr "プロフィール"
+
+#: web/templates/page/index.html.eex:13
+msgid "Public"
+msgstr "一般"
+
+#: web/templates/admin/category/show.html.eex:1
+msgid "Show category"
+msgstr "表示"
+
+#: web/templates/admin/entry/show.html.eex:1
+msgid "Show entry"
+msgstr "表示"
+
+#: web/templates/admin/tag/show.html.eex:1
+msgid "Show tag"
+msgstr "表示"
+
+#: web/templates/admin/user/show.html.eex:1
+msgid "Show user"
+msgstr "表示"
+
+#: web/templates/admin/entry/form.html.eex:27
+#: web/templates/admin/entry/index.html.eex:9
+#: web/templates/admin/entry/show.html.eex:21
+#: web/templates/entry/index.html.eex:7
+msgid "Title"
+msgstr "タイトル"
+
+#: web/templates/session/new.html.eex:1
+msgid "User Login"
+msgstr "ユーザーログイン"
+
+#: web/templates/admin/user/form.html.eex:36
+#: web/templates/admin/user/index.html.eex:9
+#: web/templates/admin/user/show.html.eex:28
+msgid "UserType"
+msgstr "種別"
+
+#: web/templates/admin/admin_user/index.html.eex:30
+#: web/templates/admin/category/index.html.eex:30
+#: web/templates/admin/entry/index.html.eex:34
+#: web/templates/admin/tag/index.html.eex:28
+#: web/templates/admin/user/index.html.eex:34
+msgid "New"
+msgstr "新規"
+
+#: web/templates/admin/admin_user/index.html.eex:23
+#: web/templates/admin/category/index.html.eex:23
+#: web/templates/admin/entry/index.html.eex:27
+#: web/templates/admin/tag/index.html.eex:21
+#: web/templates/admin/user/index.html.eex:27
+msgid "Are you sure?"
+msgstr "よろしいですか？"

@@ -29,3 +29,335 @@ msgstr ""
 
 msgid "reader"
 msgstr ""
+
+#: web/templates/admin/admin_user/index.html.eex:23
+#: web/templates/admin/category/index.html.eex:23
+#: web/templates/admin/entry/index.html.eex:27
+#: web/templates/admin/tag/index.html.eex:21
+#: web/templates/admin/user/index.html.eex:27
+msgid "Delete"
+msgstr ""
+
+#: web/templates/admin/admin_user/index.html.eex:22
+#: web/templates/admin/admin_user/show.html.eex:22
+#: web/templates/admin/category/index.html.eex:22
+#: web/templates/admin/category/show.html.eex:29
+#: web/templates/admin/entry/index.html.eex:26
+#: web/templates/admin/entry/show.html.eex:44
+#: web/templates/admin/tag/index.html.eex:20
+#: web/templates/admin/tag/show.html.eex:17
+#: web/templates/admin/user/index.html.eex:26
+#: web/templates/admin/user/show.html.eex:39
+msgid "Edit"
+msgstr ""
+
+#: web/templates/admin/admin_user/form.html.eex:9
+#: web/templates/admin/admin_user/index.html.eex:6
+#: web/templates/admin/admin_user/show.html.eex:6
+#: web/templates/admin/session/new.html.eex:4
+#: web/templates/admin/user/form.html.eex:9
+#: web/templates/admin/user/index.html.eex:6
+#: web/templates/admin/user/show.html.eex:6 web/templates/session/new.html.eex:4
+msgid "Email"
+msgstr ""
+
+#: web/templates/admin/admin_user/index.html.eex:1
+msgid "Listing admin users"
+msgstr ""
+
+#: web/templates/admin/admin_user/form.html.eex:15
+#: web/templates/admin/admin_user/index.html.eex:7
+#: web/templates/admin/admin_user/show.html.eex:11
+#: web/templates/admin/category/form.html.eex:9
+#: web/templates/admin/category/index.html.eex:6
+#: web/templates/admin/category/show.html.eex:6
+#: web/templates/admin/tag/form.html.eex:9
+#: web/templates/admin/tag/index.html.eex:6
+#: web/templates/admin/tag/show.html.eex:6
+#: web/templates/admin/user/form.html.eex:15
+#: web/templates/admin/user/index.html.eex:7
+#: web/templates/admin/user/show.html.eex:11
+msgid "Name"
+msgstr ""
+
+#: web/templates/admin/admin_user/new.html.eex:1
+msgid "New admin user"
+msgstr ""
+
+#: web/templates/admin/admin_user/index.html.eex:21
+#: web/templates/admin/category/index.html.eex:21
+#: web/templates/admin/entry/index.html.eex:25
+#: web/templates/admin/tag/index.html.eex:19
+#: web/templates/admin/user/index.html.eex:25
+#: web/templates/entry/index.html.eex:27
+msgid "Show"
+msgstr ""
+
+#: web/templates/admin/admin_user/form.html.eex:21
+#: web/templates/admin/admin_user/index.html.eex:8
+#: web/templates/admin/admin_user/show.html.eex:16
+#: web/templates/admin/category/form.html.eex:30
+#: web/templates/admin/category/index.html.eex:8
+#: web/templates/admin/category/show.html.eex:23
+#: web/templates/admin/entry/form.html.eex:48
+#: web/templates/admin/entry/index.html.eex:10
+#: web/templates/admin/entry/show.html.eex:38
+#: web/templates/admin/tag/form.html.eex:15
+#: web/templates/admin/tag/index.html.eex:7
+#: web/templates/admin/tag/show.html.eex:11
+#: web/templates/admin/user/form.html.eex:42
+#: web/templates/admin/user/index.html.eex:10
+#: web/templates/admin/user/show.html.eex:33
+msgid "Status"
+msgstr ""
+
+#: web/templates/page/index.html.eex:2
+msgid "Top"
+msgstr ""
+
+#: web/templates/admin/layout/app.html.eex:10
+#: web/templates/page/index.html.eex:7 web/templates/page/index.html.eex:10
+msgid "Admin"
+msgstr ""
+
+#: web/templates/admin/layout/app.html.eex:29
+msgid "Admin top"
+msgstr ""
+
+#: web/templates/admin/layout/login_bar.html.eex:3
+#: web/templates/layout/login_bar.html.eex:3
+msgid "Logout"
+msgstr ""
+
+#: web/templates/admin/page/index.html.eex:10
+msgid "AdminUser"
+msgstr ""
+
+#: web/templates/admin/entry/form.html.eex:15
+#: web/templates/admin/entry/index.html.eex:7
+#: web/templates/admin/entry/show.html.eex:11
+#: web/templates/admin/page/index.html.eex:16
+#: web/templates/entry/index.html.eex:5
+msgid "Category"
+msgstr ""
+
+#: web/templates/admin/page/index.html.eex:19
+msgid "Entry"
+msgstr ""
+
+#: web/templates/admin/entry/form.html.eex:21
+#: web/templates/admin/entry/index.html.eex:8
+#: web/templates/admin/entry/show.html.eex:16
+#: web/templates/admin/page/index.html.eex:22
+#: web/templates/entry/index.html.eex:6
+msgid "Tag"
+msgstr ""
+
+#: web/templates/admin/entry/form.html.eex:9
+#: web/templates/admin/entry/index.html.eex:6
+#: web/templates/admin/entry/show.html.eex:6
+#: web/templates/admin/page/index.html.eex:13
+#: web/templates/entry/index.html.eex:4
+msgid "User"
+msgstr ""
+
+#: web/templates/admin/page/index.html.eex:7
+msgid "List"
+msgstr ""
+
+#: web/templates/admin/admin_user/edit.html.eex:6
+#: web/templates/admin/admin_user/new.html.eex:6
+#: web/templates/admin/admin_user/show.html.eex:23
+#: web/templates/admin/category/edit.html.eex:7
+#: web/templates/admin/category/new.html.eex:7
+#: web/templates/admin/category/show.html.eex:30
+#: web/templates/admin/entry/edit.html.eex:8
+#: web/templates/admin/entry/new.html.eex:8
+#: web/templates/admin/entry/show.html.eex:45
+#: web/templates/admin/tag/edit.html.eex:7
+#: web/templates/admin/tag/new.html.eex:7
+#: web/templates/admin/tag/show.html.eex:18
+#: web/templates/admin/user/edit.html.eex:7
+#: web/templates/admin/user/new.html.eex:7
+#: web/templates/admin/user/show.html.eex:40
+#: web/templates/entry/show.html.eex:20
+msgid "Back"
+msgstr ""
+
+#: web/templates/admin/admin_user/edit.html.eex:1
+msgid "Edit admin user"
+msgstr ""
+
+#: web/templates/admin/admin_user/form.html.eex:4
+#: web/templates/admin/category/form.html.eex:4
+#: web/templates/admin/entry/form.html.eex:4
+#: web/templates/admin/tag/form.html.eex:4
+#: web/templates/admin/user/form.html.eex:4
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr ""
+
+#: web/templates/admin/admin_user/form.html.eex:39
+#: web/templates/admin/category/form.html.eex:36
+#: web/templates/admin/entry/form.html.eex:54
+#: web/templates/admin/tag/form.html.eex:21
+#: web/templates/admin/user/form.html.eex:60
+msgid "Submit"
+msgstr ""
+
+#: web/templates/admin/admin_user/form.html.eex:27
+#: web/templates/admin/session/new.html.eex:9
+#: web/templates/admin/user/form.html.eex:48
+#: web/templates/session/new.html.eex:9
+msgid "Password"
+msgstr ""
+
+#: web/templates/admin/admin_user/form.html.eex:33
+#: web/templates/admin/user/form.html.eex:54
+msgid "Password Confirmation"
+msgstr ""
+
+#: web/templates/admin/session/new.html.eex:1
+msgid "Admin Login"
+msgstr ""
+
+#: web/templates/admin/entry/form.html.eex:33
+#: web/templates/admin/entry/show.html.eex:26
+msgid "Content"
+msgstr ""
+
+#: web/templates/admin/category/form.html.eex:15
+#: web/templates/admin/category/index.html.eex:7
+#: web/templates/admin/category/show.html.eex:11
+msgid "Description"
+msgstr ""
+
+#: web/templates/admin/category/edit.html.eex:1
+msgid "Edit category"
+msgstr ""
+
+#: web/templates/admin/entry/edit.html.eex:1
+msgid "Edit entry"
+msgstr ""
+
+#: web/templates/admin/tag/edit.html.eex:1
+msgid "Edit tag"
+msgstr ""
+
+#: web/templates/admin/user/edit.html.eex:1
+msgid "Edit user"
+msgstr ""
+
+#: web/templates/page/index.html.eex:16
+msgid "Entries"
+msgstr ""
+
+#: web/templates/layout/app.html.eex:10
+msgid "Hello %{name}!"
+msgstr ""
+
+#: web/templates/admin/category/form.html.eex:21
+#: web/templates/admin/category/show.html.eex:16
+#: web/templates/admin/entry/form.html.eex:39
+#: web/templates/admin/entry/show.html.eex:31
+#: web/templates/admin/user/form.html.eex:27
+#: web/templates/admin/user/show.html.eex:21
+#: web/templates/entry/index.html.eex:8
+msgid "Image"
+msgstr ""
+
+#: web/templates/admin/category/index.html.eex:1
+msgid "Listing categories"
+msgstr ""
+
+#: web/templates/admin/entry/index.html.eex:1
+msgid "Listing entries"
+msgstr ""
+
+#: web/templates/admin/tag/index.html.eex:1
+msgid "Listing tags"
+msgstr ""
+
+#: web/templates/admin/user/index.html.eex:1
+msgid "Listing users"
+msgstr ""
+
+#: web/templates/admin/session/new.html.eex:14
+#: web/templates/layout/login_bar.html.eex:7
+#: web/templates/session/new.html.eex:14
+msgid "Login"
+msgstr ""
+
+#: web/templates/admin/category/new.html.eex:1
+msgid "New category"
+msgstr ""
+
+#: web/templates/admin/entry/new.html.eex:1
+msgid "New entry"
+msgstr ""
+
+#: web/templates/admin/tag/new.html.eex:1
+msgid "New tag"
+msgstr ""
+
+#: web/templates/admin/user/new.html.eex:1
+msgid "New user"
+msgstr ""
+
+#: web/templates/admin/user/form.html.eex:21
+#: web/templates/admin/user/index.html.eex:8
+#: web/templates/admin/user/show.html.eex:16
+msgid "Profile"
+msgstr ""
+
+#: web/templates/page/index.html.eex:13
+msgid "Public"
+msgstr ""
+
+#: web/templates/admin/category/show.html.eex:1
+msgid "Show category"
+msgstr ""
+
+#: web/templates/admin/entry/show.html.eex:1
+msgid "Show entry"
+msgstr ""
+
+#: web/templates/admin/tag/show.html.eex:1
+msgid "Show tag"
+msgstr ""
+
+#: web/templates/admin/user/show.html.eex:1
+msgid "Show user"
+msgstr ""
+
+#: web/templates/admin/entry/form.html.eex:27
+#: web/templates/admin/entry/index.html.eex:9
+#: web/templates/admin/entry/show.html.eex:21
+#: web/templates/entry/index.html.eex:7
+msgid "Title"
+msgstr ""
+
+#: web/templates/session/new.html.eex:1
+msgid "User Login"
+msgstr ""
+
+#: web/templates/admin/user/form.html.eex:36
+#: web/templates/admin/user/index.html.eex:9
+#: web/templates/admin/user/show.html.eex:28
+msgid "UserType"
+msgstr ""
+
+#: web/templates/admin/admin_user/index.html.eex:30
+#: web/templates/admin/category/index.html.eex:30
+#: web/templates/admin/entry/index.html.eex:34
+#: web/templates/admin/tag/index.html.eex:28
+#: web/templates/admin/user/index.html.eex:34
+msgid "New"
+msgstr ""
+
+#: web/templates/admin/admin_user/index.html.eex:23
+#: web/templates/admin/category/index.html.eex:23
+#: web/templates/admin/entry/index.html.eex:27
+#: web/templates/admin/tag/index.html.eex:21
+#: web/templates/admin/user/index.html.eex:27
+msgid "Are you sure?"
+msgstr ""

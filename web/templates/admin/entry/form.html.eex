@@ -1,42 +1,42 @@
 <%= form_for @changeset, @action, [multipart: true], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+      <p><%= gettext "Oops, something went wrong! Please check the errors below." %></p>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= label f, :user, class: "control-label" %>
+    <%= label f, :user, gettext("User"), class: "control-label" %>
     <%= select f, :user_id, valid_collection(User, :name, @locale), class: "form-control" %>
     <%= error_tag f, :user %>
   </div>
 
   <div class="form-group">
-    <%= label f, :category, class: "control-label" %>
+    <%= label f, :category, gettext("Category"), class: "control-label" %>
     <%= select f, :category_id, valid_collection(Category, :name, @locale), class: "form-control" %>
     <%= error_tag f, :category %>
   </div>
 
   <div class="form-group">
-    <%= label f, :tag, class: "control-label" %>
+    <%= label f, :tag, gettext("Tag"), class: "control-label" %>
     <%= multiple_select f, :tags, valid_collection(Tag, :name, @locale), value: assoc_ids(@changeset.data.tags), class: "form-control" %>
     <%= error_tag f, :tag %>
   </div>
 
   <div class="form-group">
-    <%= label f, :title, class: "control-label" %>
+    <%= label f, :title, gettext("Title"), class: "control-label" %>
     <%= text_input :entry, :title, value: translate(@entry, :title), class: "form-control" %>
     <%= error_tag f, :title %>
   </div>
 
   <div class="form-group">
-    <%= label f, :content, class: "control-label" %>
+    <%= label f, :content, gettext("Content"), class: "control-label" %>
     <%= textarea :entry, :content, value: translate(@entry, :content), class: "form-control" %>
     <%= error_tag f, :content %>
   </div>
 
   <div class="form-group">
-    <%= label f, :image, class: "control-label" %>
+    <%= label f, :image, gettext("Image"), class: "control-label" %>
     <%= if @changeset.data.image do %>
       <img src="<%= EntryImageUploader.url({@changeset.data.image, @changeset.data}, :medium) %>" alt="" />
     <% end %>
@@ -45,12 +45,12 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :status, class: "control-label" %>
+    <%= label f, :status, gettext("Status"), class: "control-label" %>
     <%= select f, :status, Status.select([:text, :id]), class: "form-control" %>
     <%= error_tag f, :status %>
   </div>
 
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= submit gettext("Submit"), class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,6 +1,7 @@
 defmodule MediaSample.Entry do
   use MediaSample.Web, :model
   use MediaSample.ModelStatusConcern
+  use MediaSample.PreloadConcern
   alias MediaSample.{Gettext, EntryTranslation, UserTranslation, CategoryTranslation, TagTranslation}
 
   schema "entries" do
@@ -23,11 +24,11 @@ defmodule MediaSample.Entry do
   def changeset(entry, params \\ %{}) do
     entry
     |> cast(params, @required_fields ++ @optional_fields)
+    |> validate_required(@required_fields)
     |> foreign_key_constraint(:user_id)
     |> foreign_key_constraint(:category_id)
   end
 
-  def preload_all(query), do: preload_all(query, Gettext.config[:default_locale])
   def preload_all(query, locale) do
     from query, preload: [
       translation: ^EntryTranslation.translation_query(locale),

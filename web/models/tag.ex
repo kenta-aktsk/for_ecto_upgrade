@@ -1,6 +1,7 @@
 defmodule MediaSample.Tag do
   use MediaSample.Web, :model
   use MediaSample.ModelStatusConcern
+  use MediaSample.PreloadConcern
   alias MediaSample.TagTranslation
 
   schema "tags" do
@@ -19,9 +20,9 @@ defmodule MediaSample.Tag do
   def changeset(tag, params \\ %{}) do
     tag
     |> cast(params, @required_fields ++ @optional_fields)
+    |> validate_required(@required_fields)
   end
 
-  def preload_all(query), do: preload_all(query, Gettext.config[:default_locale])
   def preload_all(query, locale) do
     from query, preload: [translation: ^TagTranslation.translation_query(locale)]
   end

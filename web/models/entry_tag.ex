@@ -12,5 +12,6 @@ defmodule MediaSample.EntryTag do
   def changeset(entry_tag, params \\ %{}) do
     entry_tag
     |> cast(params, @required_fields ++ @optional_fields)
+    |> validate_required(@required_fields)
   end
 end

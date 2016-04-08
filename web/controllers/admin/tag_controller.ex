@@ -50,7 +50,7 @@ defmodule MediaSample.Admin.TagController do
         conn
         |> put_flash(:info, "tag updated successfully.")
         |> redirect(to: admin_tag_path(conn, :show, locale, tag)) |> halt
-      {:error, failed_operation, failed_value, changes_so_far} ->
+      {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, "tag update failed")
         |> render("edit.html", tag: tag, changeset: changeset)

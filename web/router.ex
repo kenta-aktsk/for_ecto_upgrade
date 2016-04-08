@@ -12,6 +12,7 @@ defmodule MediaSample.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug MediaSample.Locale
   end
 
   pipeline :api_auth do

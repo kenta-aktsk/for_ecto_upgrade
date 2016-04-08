@@ -24,16 +24,17 @@ defmodule MediaSample.API.V1.Mypage.Entry do
       _ = Category |> Category.valid |> Repo.slave.get!(params.category_id) # only check if valid category exists.
 
       params = Guardian.Utils.stringify_keys(params)
+      locale = conn.assigns.locale
 
       multi = if !Map.has_key?(params, "id") do
         params = Map.put(params, "user_id", user.id)
         changeset = Entry.changeset(%Entry{}, params)
-        EntryService.insert(changeset, params)
+        EntryService.insert(changeset, params, locale)
       else
-        entry = Entry |> Entry.preload_all |> Repo.slave.get!(params["id"])
+        entry = Entry |> Entry.preload_all(locale) |> Repo.slave.get!(params["id"])
         check_owner!(entry, user)
         changeset = Entry.changeset(entry, params)
-        EntryService.update(changeset, params)
+        EntryService.update(changeset, params, locale)
       end
 
       case Repo.transaction(multi) do
@@ -53,7 +54,7 @@ defmodule MediaSample.API.V1.Mypage.Entry do
       use [:id]
     end
     get ":id" do
-      entry = Entry |> Entry.preload_all |> Repo.slave.get!(params[:id])
+      entry = Entry |> Entry.preload_all(conn.assigns.locale) |> Repo.slave.get!(params[:id])
       conn |> json(render(EntryView, "show.json", entry: entry))
     end
   end

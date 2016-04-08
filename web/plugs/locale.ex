@@ -13,6 +13,8 @@ defmodule MediaSample.Locale do
         conn |> assign_locale!(locale)
       Regex.match?(@no_locales, conn.request_path) ->
         conn
+      Regex.match?(~r/^\/api/, conn.request_path) ->
+        raise "every api needs locale."
       :else ->
         default_locale = MediaSample.Gettext.config[:default_locale]
         conn |> Phoenix.Controller.redirect(to: "/#{default_locale}#{conn.request_path}") |> halt

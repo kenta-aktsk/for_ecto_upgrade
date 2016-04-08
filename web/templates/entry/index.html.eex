@@ -1,11 +1,11 @@
 <table class="table">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Category</th>
-      <th>Tag</th>
-      <th>Title</th>
-      <th>Image</th>
+      <th><%= gettext "User" %></th>
+      <th><%= gettext "Category" %></th>
+      <th><%= gettext "Tag" %></th>
+      <th><%= gettext "Title" %></th>
+      <th><%= gettext "Image" %></th>
 
       <th></th>
     </tr>
@@ -24,7 +24,7 @@
       </td>
 
       <td class="text-right">
-        <%= link "Show", to: entry_path(@conn, :show, @conn.assigns.locale, entry), class: "btn btn-default btn-xs" %>
+        <%= link gettext("Show"), to: entry_path(@conn, :show, @conn.assigns.locale, entry), class: "btn btn-default btn-xs" %>
       </td>
     </tr>
 <% end %>

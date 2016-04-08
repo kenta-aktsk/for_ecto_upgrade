@@ -1,13 +1,13 @@
-<h2>Listing users</h2>
+<h2><%= gettext "Listing users" %></h2>
 
 <table class="table">
   <thead>
     <tr>
-      <th>Email</th>
-      <th>Name</th>
-      <th>Profile</th>
-      <th>UserType</th>
-      <th>Status</th>
+      <th><%= gettext "Email" %></th>
+      <th><%= gettext "Name" %></th>
+      <th><%= gettext "Profile" %></th>
+      <th><%= gettext "UserType" %></th>
+      <th><%= gettext "Status" %></th>
 
       <th></th>
     </tr>
@@ -22,13 +22,13 @@
       <td><%= Status.get(user.status).text %></td>
 
       <td class="text-right">
-        <%= link "Show", to: admin_user_path(@conn, :show, @conn.assigns.locale, user), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: admin_user_path(@conn, :edit, @conn.assigns.locale, user), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: admin_user_path(@conn, :delete, @conn.assigns.locale, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= link gettext("Show"), to: admin_user_path(@conn, :show, @conn.assigns.locale, user), class: "btn btn-default btn-xs" %>
+        <%= link gettext("Edit"), to: admin_user_path(@conn, :edit, @conn.assigns.locale, user), class: "btn btn-default btn-xs" %>
+        <%= link gettext("Delete"), to: admin_user_path(@conn, :delete, @conn.assigns.locale, user), method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link "New user", to: admin_user_path(@conn, :new, @conn.assigns.locale) %>
+<%= link gettext("New"), to: admin_user_path(@conn, :new, @conn.assigns.locale) %>

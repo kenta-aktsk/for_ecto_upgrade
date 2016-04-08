@@ -1,45 +1,45 @@
-<h2>Show entry</h2>
+<h2><%= gettext "Show entry" %></h2>
 
 <ul>
 
   <li>
-    <strong>User:</strong>
+    <strong><%= gettext "User" %>:</strong>
     <%= translate(@entry.user, :name) %>
   </li>
 
   <li>
-    <strong>Category:</strong>
+    <strong><%= gettext "Category" %>:</strong>
     <%= translate(@entry.category, :name) %>
   </li>
 
   <li>
-    <strong>Tag:</strong>
+    <strong><%= gettext "Tag" %>:</strong>
     <%= assoc_captions(@entry.tags, :name) %>
   </li>
 
   <li>
-    <strong>Title:</strong>
+    <strong><%= gettext "Title" %>:</strong>
     <%= translate(@entry, :title) %>
   </li>
 
   <li>
-    <strong>Content:</strong>
+    <strong><%= gettext "Content" %>:</strong>
     <%= translate(@entry, :content) %>
   </li>
 
   <li>
-    <strong>Image:</strong>
+    <strong><%= gettext "Image" %>:</strong>
     <%= if @entry.image do %>
       <img src="<%= EntryImageUploader.url({@entry.image, @entry}, :medium) %>" alt="" />
     <% end %>
   </li>
 
   <li>
-    <strong>Status:</strong>
+    <strong><%= gettext "Status" %>:</strong>
     <%= Status.get(@entry.status).text %>
   </li>
 
 </ul>
 
-<%= link "Edit", to: admin_entry_path(@conn, :edit, @conn.assigns.locale, @entry) %>
-<%= link "Back", to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>
+<%= link gettext("Edit"), to: admin_entry_path(@conn, :edit, @conn.assigns.locale, @entry) %>
+<%= link gettext("Back"), to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>

@@ -1,40 +1,40 @@
-<h2>Show user</h2>
+<h2><%= gettext "Show user" %></h2>
 
 <ul>
 
   <li>
-    <strong>Email:</strong>
+    <strong><%= gettext "Email" %>:</strong>
     <%= @user.email %>
   </li>
 
   <li>
-    <strong>Name:</strong>
+    <strong><%= gettext "Name" %>:</strong>
     <%= translate(@user, :name) %>
   </li>
 
   <li>
-    <strong>Profile:</strong>
+    <strong><%= gettext "Profile" %>:</strong>
     <%= translate(@user, :profile) %>
   </li>
 
   <li>
-    <strong>Image:</strong>
+    <strong><%= gettext "Image" %>:</strong>
     <%= if @user.image do %>
       <img src="<%= UserImageUploader.url({@user.image, @user}, :small) %>" alt="" />
     <% end %>
   </li>
 
   <li>
-    <strong>UserType:</strong>
+    <strong><%= gettext "UserType" %>:</strong>
     <%= UserType.get(@user.user_type).text %>
   </li>
 
   <li>
-    <strong>Status:</strong>
+    <strong><%= gettext "Status" %>:</strong>
     <%= Status.get(@user.status).text %>
   </li>
 
 </ul>
 
-<%= link "Edit", to: admin_user_path(@conn, :edit, @conn.assigns.locale, @user) %>
-<%= link "Back", to: admin_user_path(@conn, :index, @conn.assigns.locale) %>
+<%= link gettext("Edit"), to: admin_user_path(@conn, :edit, @conn.assigns.locale, @user) %>
+<%= link gettext("Back"), to: admin_user_path(@conn, :index, @conn.assigns.locale) %>

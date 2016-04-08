@@ -1,24 +1,24 @@
 <%= form_for @changeset, @action, [multipart: true], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+      <p><%= gettext "Oops, something went wrong! Please check the errors below." %></p>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= label f, :name, class: "control-label" %>
+    <%= label f, :name, gettext("Name"), class: "control-label" %>
     <%= text_input :category, :name, value: translate(@category, :name), class: "form-control" %>
     <%= error_tag f, :name %>
   </div>
 
   <div class="form-group">
-    <%= label f, :description, class: "control-label" %>
+    <%= label f, :description, gettext("Description"), class: "control-label" %>
     <%= textarea :category, :description, value: translate(@category, :description), class: "form-control" %>
     <%= error_tag f, :description %>
   </div>
 
   <div class="form-group">
-    <%= label f, :image, class: "control-label" %>
+    <%= label f, :image, gettext("Image"), class: "control-label" %>
     <%= if @changeset.data.image do %>
       <img src="<%= CategoryImageUploader.url({@changeset.data.image, @changeset.data}, :medium) %>" alt="" />
     <% end %>
@@ -27,12 +27,12 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :status, class: "control-label" %>
+    <%= label f, :status, gettext("Status"), class: "control-label" %>
     <%= select f, :status, Status.select([:text, :id]), class: "form-control" %>
     <%= error_tag f, :status %>
   </div>
 
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= submit gettext("Submit"), class: "btn btn-primary" %>
   </div>
 <% end %>

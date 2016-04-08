@@ -1,8 +1,8 @@
-<h2>Edit entry</h2>
+<h2><%= gettext "Edit entry" %></h2>
 
 <%= render "form.html", changeset: @changeset,
                         entry: @entry,
                         locale: @conn.assigns.locale,
                         action: admin_entry_path(@conn, :update, @conn.assigns.locale, @entry) %>
 
-<%= link "Back", to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>
+<%= link gettext("Back"), to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>

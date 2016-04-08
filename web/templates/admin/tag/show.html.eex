@@ -1,18 +1,18 @@
-<h2>Show tag</h2>
+<h2><%= gettext "Show tag" %></h2>
 
 <ul>
 
   <li>
-    <strong>Name:</strong>
+    <strong><%= gettext "Name" %>:</strong>
     <%= translate(@tag, :name) %>
   </li>
 
   <li>
-    <strong>Status:</strong>
+    <strong><%= gettext "Status" %>:</strong>
     <%= Status.get(@tag.status).text %>
   </li>
 
 </ul>
 
-<%= link "Edit", to: admin_tag_path(@conn, :edit, @conn.assigns.locale, @tag) %>
-<%= link "Back", to: admin_tag_path(@conn, :index, @conn.assigns.locale) %>
+<%= link gettext("Edit"), to: admin_tag_path(@conn, :edit, @conn.assigns.locale, @tag) %>
+<%= link gettext("Back"), to: admin_tag_path(@conn, :index, @conn.assigns.locale) %>

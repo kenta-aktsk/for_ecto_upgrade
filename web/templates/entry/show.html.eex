@@ -17,4 +17,4 @@
     <strong><%= assoc_captions(@entry.tags, :name) %></strong>
   </li>
 </ul>
-<%= link "Back", to: entry_path(@conn, :index, @conn.assigns.locale) %>
+<%= link gettext("Back"), to: entry_path(@conn, :index, @conn.assigns.locale) %>

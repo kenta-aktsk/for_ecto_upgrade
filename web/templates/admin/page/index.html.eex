@@ -4,22 +4,22 @@
 
 <div class="row marketing">
   <div class="col-lg-6">
-    <h4>List</h4>
+    <h4><%= gettext "List" %></h4>
     <ul>
       <li>
-        <%= link "AdminUser", to: admin_admin_user_path(@conn, :index, @conn.assigns.locale) %>
+        <%= link gettext("AdminUser"), to: admin_admin_user_path(@conn, :index, @conn.assigns.locale) %>
       </li>
       <li>
-        <%= link "User", to: admin_user_path(@conn, :index, @conn.assigns.locale) %>
+        <%= link gettext("User"), to: admin_user_path(@conn, :index, @conn.assigns.locale) %>
       </li>
       <li>
-        <%= link "Category", to: admin_category_path(@conn, :index, @conn.assigns.locale) %>
+        <%= link gettext("Category"), to: admin_category_path(@conn, :index, @conn.assigns.locale) %>
       </li>
       <li>
-        <%= link "Entry", to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>
+        <%= link gettext("Entry"), to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>
       </li>
       <li>
-        <%= link "Tag", to: admin_tag_path(@conn, :index, @conn.assigns.locale) %>
+        <%= link gettext("Tag"), to: admin_tag_path(@conn, :index, @conn.assigns.locale) %>
       </li>
     </ul>
   </div>

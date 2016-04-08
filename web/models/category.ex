@@ -1,6 +1,7 @@
 defmodule MediaSample.Category do
   use MediaSample.Web, :model
   use MediaSample.ModelStatusConcern
+  use MediaSample.PreloadConcern
   alias MediaSample.CategoryTranslation
 
   schema "categories" do
@@ -20,9 +21,9 @@ defmodule MediaSample.Category do
   def changeset(category, params \\ %{}) do
     category
     |> cast(params, @required_fields ++ @optional_fields)
+    |> validate_required(@required_fields)
   end
 
-  def preload_all(query), do: preload_all(query, Gettext.config[:default_locale])
   def preload_all(query, locale) do
     from query, preload: [translation: ^CategoryTranslation.translation_query(locale)]
   end

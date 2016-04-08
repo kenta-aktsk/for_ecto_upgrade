@@ -2,6 +2,7 @@ defmodule MediaSample.User do
   use MediaSample.Web, :model
   use MediaSample.UserModelPasswordConcern, min_password_length: 8, max_password_length: 10
   use MediaSample.ModelStatusConcern
+  use MediaSample.PreloadConcern
   import MediaSample.ValidationConcern
   alias MediaSample.{UserTranslation, Enums.UserType, Enums.Status}
 
@@ -43,7 +44,6 @@ defmodule MediaSample.User do
     user |> cast(params, @required_fields)
   end
 
-  def preload_all(query), do: preload_all(query, Gettext.config[:default_locale])
   def preload_all(query, locale) do
     from query, preload: [translation: ^UserTranslation.translation_query(locale)]
   end

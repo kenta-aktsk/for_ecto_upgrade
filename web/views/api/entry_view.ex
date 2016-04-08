@@ -11,8 +11,8 @@ defmodule MediaSample.API.EntryView do
   def render("entry.json", %{entry: entry}) do
     %{
       id: entry.id,
-      title: entry.title,
-      content: entry.content,
+      title: translate(entry, :title),
+      content: translate(entry, :content),
       image: EntryImageUploader.url({entry.image, entry}, :medium),
       status: Status.get(entry.status).text
     }

@@ -21,11 +21,11 @@ defmodule MediaSample.Admin.EntryController do
     case Repo.transaction(EntryService.insert(changeset, entry_params, locale)) do
       {:ok, %{entry: entry, upload: _upload}} ->
         conn
-        |> put_flash(:info, "entry created successfully.")
+        |> put_flash(:info, gettext("%{name} created successfully.", name: gettext("Entry")))
         |> redirect(to: admin_entry_path(conn, :show, locale, entry)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "entry create failed")
+        |> put_flash(:error, gettext("%{name} create failed.", name: gettext("Entry")))
         |> render("new.html", changeset: changeset)
     end
   end
@@ -48,11 +48,11 @@ defmodule MediaSample.Admin.EntryController do
     case Repo.transaction(EntryService.update(changeset, entry_params, locale)) do
       {:ok, %{entry: entry, upload: _upload}} ->
         conn
-        |> put_flash(:info, "entry updated successfully.")
+        |> put_flash(:info, gettext("%{name} updated successfully.", name: gettext("Entry")))
         |> redirect(to: admin_entry_path(conn, :show, locale, entry)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "entry update failed")
+        |> put_flash(:error, gettext("%{name} update failed.", name: gettext("Entry")))
         |> render("edit.html", entry: entry, changeset: changeset)
     end
   end
@@ -63,11 +63,11 @@ defmodule MediaSample.Admin.EntryController do
     case Repo.transaction(EntryService.delete(entry)) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, "entry deleted successfully.")
+        |> put_flash(:info, gettext("%{name} deleted successfully.", name: gettext("Entry")))
         |> redirect(to: admin_entry_path(conn, :index, locale)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "entry delete failed")
+        |> put_flash(:error, gettext("%{name} delete failed.", name: gettext("Entry")))
         |> redirect(to: admin_entry_path(conn, :index, locale)) |> halt
     end
   end

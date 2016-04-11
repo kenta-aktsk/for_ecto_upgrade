@@ -21,11 +21,11 @@ defmodule MediaSample.Admin.UserController do
     case Repo.transaction(UserService.insert(changeset, user_params, locale)) do
       {:ok, %{user: user, upload: _file}} ->
         conn
-        |> put_flash(:info, "User created successfully.")
+        |> put_flash(:info, gettext("%{name} created successfully.", name: gettext("User")))
         |> redirect(to: admin_user_path(conn, :show, locale, user)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "User create failed")
+        |> put_flash(:error, gettext("%{name} create failed.", name: gettext("User")))
         |> render("new.html", changeset: changeset)
     end
   end
@@ -48,11 +48,11 @@ defmodule MediaSample.Admin.UserController do
     case Repo.transaction(UserService.update(changeset, user_params, locale)) do
       {:ok, %{user: user, upload: _file}} ->
         conn
-        |> put_flash(:info, "User updated successfully.")
+        |> put_flash(:info, gettext("%{name} updated successfully.", name: gettext("User")))
         |> redirect(to: admin_user_path(conn, :show, locale, user)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "User update failed")
+        |> put_flash(:error, gettext("%{name} update failed.", name: gettext("User")))
         |> render("edit.html", user: user, changeset: changeset)
     end
   end
@@ -63,11 +63,11 @@ defmodule MediaSample.Admin.UserController do
     case Repo.transaction(UserService.delete(user)) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, "User deleted successfully.")
+        |> put_flash(:info, gettext("%{name} deleted successfully.", name: gettext("User")))
         |> redirect(to: admin_user_path(conn, :index, locale)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "User delete failed")
+        |> put_flash(:error, gettext("%{name} delete failed.", name: gettext("User")))
         |> redirect(to: admin_user_path(conn, :index, locale)) |> halt
     end
   end

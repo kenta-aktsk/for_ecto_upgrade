@@ -129,10 +129,19 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
+#: web/controllers/admin/admin_user_controller.ex:23
+#: web/controllers/admin/admin_user_controller.ex:48
+#: web/controllers/admin/admin_user_controller.ex:63
 #: web/templates/admin/page/index.html.eex:10
 msgid "AdminUser"
 msgstr ""
 
+#: web/controllers/admin/category_controller.ex:24
+#: web/controllers/admin/category_controller.ex:28
+#: web/controllers/admin/category_controller.ex:51
+#: web/controllers/admin/category_controller.ex:55
+#: web/controllers/admin/category_controller.ex:66
+#: web/controllers/admin/category_controller.ex:70
 #: web/templates/admin/entry/form.html.eex:15
 #: web/templates/admin/entry/index.html.eex:7
 #: web/templates/admin/entry/show.html.eex:11
@@ -141,10 +150,28 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
+#: web/controllers/admin/entry_controller.ex:24
+#: web/controllers/admin/entry_controller.ex:28
+#: web/controllers/admin/entry_controller.ex:51
+#: web/controllers/admin/entry_controller.ex:55
+#: web/controllers/admin/entry_controller.ex:66
+#: web/controllers/admin/entry_controller.ex:70
 #: web/templates/admin/page/index.html.eex:19
 msgid "Entry"
 msgstr ""
 
+#: web/controllers/admin/tag_controller.ex:24
+#: web/controllers/admin/tag_controller.ex:28
+#: web/controllers/admin/tag_controller.ex:51
+#: web/controllers/admin/tag_controller.ex:55
+#: web/controllers/admin/tag_controller.ex:66
+#: web/controllers/admin/tag_controller.ex:70
+#: web/controllers/admin/user_controller.ex:24
+#: web/controllers/admin/user_controller.ex:28
+#: web/controllers/admin/user_controller.ex:51
+#: web/controllers/admin/user_controller.ex:55
+#: web/controllers/admin/user_controller.ex:66
+#: web/controllers/admin/user_controller.ex:70
 #: web/templates/admin/entry/form.html.eex:21
 #: web/templates/admin/entry/index.html.eex:8
 #: web/templates/admin/entry/show.html.eex:16
@@ -360,4 +387,49 @@ msgstr ""
 #: web/templates/admin/tag/index.html.eex:21
 #: web/templates/admin/user/index.html.eex:27
 msgid "Are you sure?"
+msgstr ""
+
+#: web/controllers/admin/admin_user_controller.ex:23
+#: web/controllers/admin/category_controller.ex:24
+#: web/controllers/admin/entry_controller.ex:24
+#: web/controllers/admin/tag_controller.ex:24
+#: web/controllers/admin/user_controller.ex:24
+msgid "%{name} created successfully."
+msgstr ""
+
+#: web/controllers/admin/admin_user_controller.ex:63
+#: web/controllers/admin/category_controller.ex:66
+#: web/controllers/admin/entry_controller.ex:66
+#: web/controllers/admin/tag_controller.ex:66
+#: web/controllers/admin/user_controller.ex:66
+msgid "%{name} deleted successfully."
+msgstr ""
+
+#: web/controllers/admin/admin_user_controller.ex:48
+#: web/controllers/admin/category_controller.ex:51
+#: web/controllers/admin/entry_controller.ex:51
+#: web/controllers/admin/tag_controller.ex:51
+#: web/controllers/admin/user_controller.ex:51
+msgid "%{name} updated successfully."
+msgstr ""
+
+#: web/controllers/admin/category_controller.ex:28
+#: web/controllers/admin/entry_controller.ex:28
+#: web/controllers/admin/tag_controller.ex:28
+#: web/controllers/admin/user_controller.ex:28
+msgid "%{name} create failed."
+msgstr ""
+
+#: web/controllers/admin/category_controller.ex:70
+#: web/controllers/admin/entry_controller.ex:70
+#: web/controllers/admin/tag_controller.ex:70
+#: web/controllers/admin/user_controller.ex:70
+msgid "%{name} delete failed."
+msgstr ""
+
+#: web/controllers/admin/category_controller.ex:55
+#: web/controllers/admin/entry_controller.ex:55
+#: web/controllers/admin/tag_controller.ex:55
+#: web/controllers/admin/user_controller.ex:55
+msgid "%{name} update failed."
 msgstr ""

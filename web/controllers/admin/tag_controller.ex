@@ -21,11 +21,11 @@ defmodule MediaSample.Admin.TagController do
     case Repo.transaction(TagService.insert(changeset, tag_params, locale)) do
       {:ok, %{tag: tag}} ->
         conn
-        |> put_flash(:info, "tag created successfully.")
+        |> put_flash(:info, gettext("%{name} created successfully.", name: gettext("Tag")))
         |> redirect(to: admin_tag_path(conn, :show, locale, tag)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "tag create failed")
+        |> put_flash(:error, gettext("%{name} create failed.", name: gettext("Tag")))
         |> render("new.html", changeset: changeset)
     end
   end
@@ -48,11 +48,11 @@ defmodule MediaSample.Admin.TagController do
     case Repo.transaction(TagService.update(changeset, tag_params, locale)) do
       {:ok, %{tag: tag}} ->
         conn
-        |> put_flash(:info, "tag updated successfully.")
+        |> put_flash(:info, gettext("%{name} updated successfully.", name: gettext("Tag")))
         |> redirect(to: admin_tag_path(conn, :show, locale, tag)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "tag update failed")
+        |> put_flash(:error, gettext("%{name} update failed.", name: gettext("Tag")))
         |> render("edit.html", tag: tag, changeset: changeset)
     end
   end
@@ -63,11 +63,11 @@ defmodule MediaSample.Admin.TagController do
     case Repo.transaction(TagService.delete(tag)) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, "tag deleted successfully.")
+        |> put_flash(:info, gettext("%{name} deleted successfully.", name: gettext("Tag")))
         |> redirect(to: admin_tag_path(conn, :index, locale)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "tag delete failed")
+        |> put_flash(:error, gettext("%{name} delete failed.", name: gettext("Tag")))
         |> redirect(to: admin_tag_path(conn, :index, locale)) |> halt
     end
   end

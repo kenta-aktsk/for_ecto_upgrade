@@ -20,7 +20,7 @@ defmodule MediaSample.Admin.AdminUserController do
     case Repo.insert(changeset) do
       {:ok, _admin_user} ->
         conn
-        |> put_flash(:info, "Admin user created successfully.")
+        |> put_flash(:info, gettext("%{name} created successfully.", name: gettext("AdminUser")))
         |> redirect(to: admin_admin_user_path(conn, :index, conn.assigns.locale)) |> halt
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -45,7 +45,7 @@ defmodule MediaSample.Admin.AdminUserController do
     case Repo.update(changeset) do
       {:ok, admin_user} ->
         conn
-        |> put_flash(:info, "Admin user updated successfully.")
+        |> put_flash(:info, gettext("%{name} updated successfully.", name: gettext("AdminUser")))
         |> redirect(to: admin_admin_user_path(conn, :show, conn.assigns.locale, admin_user)) |> halt
       {:error, changeset} ->
         render(conn, "edit.html", admin_user: admin_user, changeset: changeset)
@@ -60,7 +60,7 @@ defmodule MediaSample.Admin.AdminUserController do
     Repo.delete!(admin_user)
 
     conn
-    |> put_flash(:info, "Admin user deleted successfully.")
+    |> put_flash(:info, gettext("%{name} deleted successfully.", name: gettext("AdminUser")))
     |> redirect(to: admin_admin_user_path(conn, :index, conn.assigns.locale)) |> halt
   end
 end

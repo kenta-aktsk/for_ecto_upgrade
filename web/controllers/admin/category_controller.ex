@@ -21,11 +21,11 @@ defmodule MediaSample.Admin.CategoryController do
     case Repo.transaction(CategoryService.insert(changeset, category_params, locale)) do
       {:ok, %{category: category, upload: _file}} ->
         conn
-        |> put_flash(:info, "category created successfully.")
+        |> put_flash(:info, gettext("%{name} created successfully.", name: gettext("Category")))
         |> redirect(to: admin_category_path(conn, :show, locale, category)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "category create failed")
+        |> put_flash(:error, gettext("%{name} create failed.", name: gettext("Category")))
         |> render("new.html", changeset: changeset)
     end
   end
@@ -48,11 +48,11 @@ defmodule MediaSample.Admin.CategoryController do
     case Repo.transaction(CategoryService.update(changeset, category_params, locale)) do
       {:ok, %{category: category, upload: _file}} ->
         conn
-        |> put_flash(:info, "category updated successfully.")
+        |> put_flash(:info, gettext("%{name} updated successfully.", name: gettext("Category")))
         |> redirect(to: admin_category_path(conn, :show, locale, category)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "category update failed")
+        |> put_flash(:error, gettext("%{name} update failed.", name: gettext("Category")))
         |> render("edit.html", category: category, changeset: changeset)
     end
   end
@@ -63,11 +63,11 @@ defmodule MediaSample.Admin.CategoryController do
     case Repo.transaction(CategoryService.delete(category)) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, "category deleted successfully.")
+        |> put_flash(:info, gettext("%{name} deleted successfully.", name: gettext("Category")))
         |> redirect(to: admin_category_path(conn, :index, locale)) |> halt
       {:error, _failed_operation, _failed_value, _changes_so_far} ->
         conn
-        |> put_flash(:error, "category delete failed")
+        |> put_flash(:error, gettext("%{name} delete failed.", name: gettext("Category")))
         |> redirect(to: admin_category_path(conn, :index, locale)) |> halt
     end
   end

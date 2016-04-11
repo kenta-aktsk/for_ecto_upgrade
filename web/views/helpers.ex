@@ -1,5 +1,6 @@
 defmodule MediaSample.Helpers do
   import Plug.Conn, only: [get_session: 2]
+  import Translator.TranslationHelpers
   alias MediaSample.{Repo, Gettext, Util}
   def user_logged_in?(conn) do
     case current_user(conn) do
@@ -41,17 +42,6 @@ defmodule MediaSample.Helpers do
       association |> Enum.map(&(&1.id))
     else
       []
-    end
-  end
-
-  def translate(model, field, assoc \\ :translation)
-  def translate(nil, _field, _assoc), do: ""
-  def translate(model, field, assoc) do
-    translation = Map.get(model, assoc)
-    if !is_nil(translation) && Ecto.assoc_loaded?(translation) && Map.has_key?(translation, field) do
-      Map.get(translation, field)
-    else
-      Map.get(model, field)
     end
   end
 end

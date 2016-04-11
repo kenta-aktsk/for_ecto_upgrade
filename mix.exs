@@ -65,6 +65,8 @@ defmodule MediaSample.Mixfile do
      # {:ex_enum, path: "/Users/kentakatsumata/Documents/workspace_elixir/ex_enum"},
      {:read_repos, github: "kenta-aktsk/read_repos"},
      # {:read_repos, path: "/Users/kentakatsumata/Documents/workspace_elixir/read_repos"},
+     {:translator, github: "kenta-aktsk/translator"},
+     # {:translator, path: "/Users/kentakatsumata/Documents/workspace_elixir/translator"},
      {:comeonin, "~> 1.6"},
      {:secure_random, "~> 0.2"},
      {:exrm, "~> 1.0" },

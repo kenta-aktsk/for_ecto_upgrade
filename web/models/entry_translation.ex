@@ -1,5 +1,5 @@
 defmodule MediaSample.EntryTranslation do
   use MediaSample.Web, :model
-  use MediaSample.TranslationModelConcern,
+  use Translator.TranslationModel,
     schema: "entry_translations", belongs_to: MediaSample.Entry, required_fields: [:title, :content]
 end

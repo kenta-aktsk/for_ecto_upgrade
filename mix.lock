@@ -42,6 +42,7 @@
   "relx": {:hex, :relx, "3.18.0"},
   "secure_random": {:hex, :secure_random, "0.2.0"},
   "ssl_verify_hostname": {:hex, :ssl_verify_hostname, "1.0.5"},
+  "translator": {:git, "https://github.com/kenta-aktsk/translator.git", "c8ca5dfeed59773f38538546deb90b07dd199569", []},
   "ueberauth": {:hex, :ueberauth, "0.2.0"},
   "ueberauth_facebook": {:hex, :ueberauth_facebook, "0.3.2"},
   "ueberauth_github": {:hex, :ueberauth_github, "0.2.0"},

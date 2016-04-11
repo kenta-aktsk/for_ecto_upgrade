@@ -136,6 +136,7 @@ defmodule MediaSample.View do
       import MediaSample.ErrorHelpers
       import MediaSample.Gettext
       import MediaSample.Helpers
+      import Translator.TranslationHelpers
     end
   end
 end

@@ -5,7 +5,7 @@ defmodule MediaSample.EntryService do
   def insert(changeset, params, locale) do
     Multi.new
     |> Multi.insert(:entry, changeset)
-    |> Multi.run(:insert_or_update_translation, &(EntryTranslation.insert_or_update(Repo, &1[:entry], params, locale)))
+    |> Multi.run(:translation, &(EntryTranslation.insert_or_update(Repo, &1[:entry], params, locale)))
     |> Multi.run(:insert_entry_tags, &(insert_entry_tags(params["tags"], &1[:entry])))
     |> Multi.run(:upload, &(EntryImageUploader.upload(params["image"], &1)))
   end
@@ -15,7 +15,7 @@ defmodule MediaSample.EntryService do
 
     Multi.new
     |> Multi.update(:entry, changeset)
-    |> Multi.run(:insert_or_update_translation, &(EntryTranslation.insert_or_update(Repo, &1[:entry], params, locale)))
+    |> Multi.run(:translation, &(EntryTranslation.insert_or_update(Repo, &1[:entry], params, locale)))
     |> Multi.delete_all(:delete_entry_tags, from(r in EntryTag, where: r.entry_id == ^entry_id))
     |> Multi.run(:insert_entry_tags, &(insert_entry_tags(params["tags"], &1[:entry])))
     |> Multi.run(:upload, &(EntryImageUploader.upload(params["image"], &1)))

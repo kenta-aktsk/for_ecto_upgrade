@@ -5,14 +5,14 @@ defmodule MediaSample.UserService do
   def insert(changeset, params, locale) do
     Multi.new
     |> Multi.insert(:user, changeset)
-    |> Multi.run(:insert_or_update_translation, &(UserTranslation.insert_or_update(Repo, &1[:user], params, locale)))
+    |> Multi.run(:translation, &(UserTranslation.insert_or_update(Repo, &1[:user], params, locale)))
     |> Multi.run(:upload, &(UserImageUploader.upload(params["image"], &1)))
   end
 
   def update(changeset, params, locale) do
     Multi.new
     |> Multi.update(:user, changeset)
-    |> Multi.run(:insert_or_update_translation, &(UserTranslation.insert_or_update(Repo, &1[:user], params, locale)))
+    |> Multi.run(:translation, &(UserTranslation.insert_or_update(Repo, &1[:user], params, locale)))
     |> Multi.run(:upload, &(UserImageUploader.upload(params["image"], &1)))
   end
 

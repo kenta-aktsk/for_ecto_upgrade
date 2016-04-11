@@ -24,7 +24,7 @@ defmodule MediaSample.Web do
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import MediaSample.ModelConcern
+      import MediaSample.ModelHelpers
       require Logger
     end
   end

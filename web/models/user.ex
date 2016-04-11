@@ -3,7 +3,7 @@ defmodule MediaSample.User do
   use MediaSample.UserModelPasswordConcern, min_password_length: 8, max_password_length: 10
   use MediaSample.ModelStatusConcern
   use MediaSample.PreloadConcern
-  import MediaSample.ValidationConcern
+  import MediaSample.ValidationHelpers
   alias MediaSample.{UserTranslation, Enums.UserType, Enums.Status}
 
   schema "users" do

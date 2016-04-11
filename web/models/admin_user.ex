@@ -2,7 +2,7 @@ defmodule MediaSample.AdminUser do
   use MediaSample.Web, :model
   use MediaSample.UserModelPasswordConcern, min_password_length: 4, max_password_length: 10
   use MediaSample.ModelStatusConcern
-  import MediaSample.ValidationConcern
+  import MediaSample.ValidationHelpers
   alias MediaSample.{Enums.Status}
 
   schema "admin_users" do

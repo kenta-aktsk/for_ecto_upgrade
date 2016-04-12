@@ -53,6 +53,7 @@ defmodule MediaSample.Web do
       # In this case, `MediaSample.Admin.LayoutView` will be used.
       use Phoenix.Controller, namespace: MediaSample.Admin
       use MediaSample.Controller
+      import MediaSample.Admin.Helpers
       alias MediaSample.Admin.AdminUserAuthService
 
       plug :check_logged_in
@@ -116,7 +117,8 @@ defmodule MediaSample.Controller do
 
       import MediaSample.Router.Helpers
       import MediaSample.Gettext
-      import MediaSample.Admin.Helpers
+      import MediaSample.ControllerHelpers
+      alias MediaSample.Gettext
     end
   end
 end

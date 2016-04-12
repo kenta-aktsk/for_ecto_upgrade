@@ -33,18 +33,6 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :user_type, gettext("UserType"), class: "control-label" %>
-    <%= select f, :user_type, UserType.select([:text, :id]), class: "form-control" %>
-    <%= error_tag f, :user_type %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :status, gettext("Status"), class: "control-label" %>
-    <%= select f, :status, Status.select([:text, :id]), class: "form-control" %>
-    <%= error_tag f, :status %>
-  </div>
-
-  <div class="form-group">
     <%= label f, :password, gettext("Password"), class: "control-label" %>
     <%= password_input f, :password, class: "form-control" %>
     <%= error_tag f, :password %>

@@ -4,6 +4,9 @@
   </li>
 <% else %>
   <li>
+    <%= link gettext("Sign up"), to: registration_path(@conn, :new, current_locale(@conn)), class: "btn btn-danger" %>
+  </li>
+  <li>
     <%= link gettext("Login"), to: session_path(@conn, :new, "identity"), class: "btn btn-danger" %>
   </li>
 <% end %>

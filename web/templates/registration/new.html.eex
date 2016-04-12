@@ -1,0 +1,5 @@
+<h2><%= gettext "Sign up" %></h2>
+
+<%= render "form.html", changeset: @changeset,
+                        user: nil,
+                        action: registration_path(@conn, :create, @conn.assigns.locale) %>

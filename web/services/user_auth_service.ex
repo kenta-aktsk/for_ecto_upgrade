@@ -13,7 +13,7 @@ defmodule MediaSample.UserAuthService do
   end
 
   def auth_and_validate(%{provider: :identity} = auth) do
-    case Repo.slave.get_by(User, email: auth.uid) do
+    case Repo.slave.get_by(User, email: auth.uid, status: Status.valid.id) do
       nil -> {:error, :not_found}
       user ->
         case auth.credentials.other.password do

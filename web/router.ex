@@ -56,6 +56,7 @@ defmodule MediaSample.Router do
       pipe_through [:browser]
       get "/", PageController, :index
       resources "/entries", EntryController, only: [:index, :show]
+      resources "/registration", RegistrationController, only: [:new, :create]
     end
   end
 

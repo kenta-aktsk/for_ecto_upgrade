@@ -1,7 +1,6 @@
 defmodule MediaSample.Admin.SessionController do
   use MediaSample.Web, :admin_controller
   alias Ueberauth.Strategy.Helpers
-  alias MediaSample.Gettext
 
   plug Ueberauth, base_path: "/admin/auth"
   plug :check_logged_in

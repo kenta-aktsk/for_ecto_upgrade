@@ -44,6 +44,10 @@ defmodule MediaSample.User do
     user |> cast(params, @required_fields)
   end
 
+  def default_params do
+    %{"user_type" => UserType.reader.id, "status" => Status.invalid.id}
+  end
+
   def preload_all(query, locale) do
     from query, preload: [translation: ^UserTranslation.translation_query(locale)]
   end

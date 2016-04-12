@@ -23,10 +23,10 @@ defmodule MediaSample.Admin.TagController do
         conn
         |> put_flash(:info, gettext("%{name} created successfully.", name: gettext("Tag")))
         |> redirect(to: admin_tag_path(conn, :show, locale, tag)) |> halt
-      {:error, _failed_operation, _failed_value, _changes_so_far} ->
+      {:error, _failed_operation, failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, gettext("%{name} create failed.", name: gettext("Tag")))
-        |> render("new.html", changeset: changeset)
+        |> render("new.html", changeset: extract_changeset(failed_value, changeset))
     end
   end
 
@@ -50,10 +50,10 @@ defmodule MediaSample.Admin.TagController do
         conn
         |> put_flash(:info, gettext("%{name} updated successfully.", name: gettext("Tag")))
         |> redirect(to: admin_tag_path(conn, :show, locale, tag)) |> halt
-      {:error, _failed_operation, _failed_value, _changes_so_far} ->
+      {:error, _failed_operation, failed_value, _changes_so_far} ->
         conn
         |> put_flash(:error, gettext("%{name} update failed.", name: gettext("Tag")))
-        |> render("edit.html", tag: tag, changeset: changeset)
+        |> render("edit.html", tag: tag, changeset: extract_changeset(failed_value, changeset))
     end
   end
 

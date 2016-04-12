@@ -56,7 +56,9 @@ msgstr "編集"
 #: web/templates/admin/session/new.html.eex:4
 #: web/templates/admin/user/form.html.eex:9
 #: web/templates/admin/user/index.html.eex:6
-#: web/templates/admin/user/show.html.eex:6 web/templates/session/new.html.eex:4
+#: web/templates/admin/user/show.html.eex:6
+#: web/templates/registration/form.html.eex:9
+#: web/templates/session/new.html.eex:4
 msgid "Email"
 msgstr "メール"
 
@@ -76,6 +78,7 @@ msgstr "管理者一覧"
 #: web/templates/admin/user/form.html.eex:15
 #: web/templates/admin/user/index.html.eex:7
 #: web/templates/admin/user/show.html.eex:11
+#: web/templates/registration/form.html.eex:15
 msgid "Name"
 msgstr "名前"
 
@@ -165,12 +168,6 @@ msgstr "記事"
 #: web/controllers/admin/tag_controller.ex:55
 #: web/controllers/admin/tag_controller.ex:66
 #: web/controllers/admin/tag_controller.ex:70
-#: web/controllers/admin/user_controller.ex:24
-#: web/controllers/admin/user_controller.ex:28
-#: web/controllers/admin/user_controller.ex:51
-#: web/controllers/admin/user_controller.ex:55
-#: web/controllers/admin/user_controller.ex:66
-#: web/controllers/admin/user_controller.ex:70
 #: web/templates/admin/entry/form.html.eex:21
 #: web/templates/admin/entry/index.html.eex:8
 #: web/templates/admin/entry/show.html.eex:16
@@ -179,6 +176,14 @@ msgstr "記事"
 msgid "Tag"
 msgstr "タグ"
 
+#: web/controllers/admin/user_controller.ex:24
+#: web/controllers/admin/user_controller.ex:28
+#: web/controllers/admin/user_controller.ex:51
+#: web/controllers/admin/user_controller.ex:55
+#: web/controllers/admin/user_controller.ex:66
+#: web/controllers/admin/user_controller.ex:70
+#: web/controllers/registration_controller.ex:20
+#: web/controllers/registration_controller.ex:24
 #: web/templates/admin/entry/form.html.eex:9
 #: web/templates/admin/entry/index.html.eex:6
 #: web/templates/admin/entry/show.html.eex:6
@@ -219,6 +224,7 @@ msgstr "編集 管理者"
 #: web/templates/admin/entry/form.html.eex:4
 #: web/templates/admin/tag/form.html.eex:4
 #: web/templates/admin/user/form.html.eex:4
+#: web/templates/registration/form.html.eex:4
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr "エラーが発生しました。下記のエラーメッセージを確認してください。"
 
@@ -227,18 +233,21 @@ msgstr "エラーが発生しました。下記のエラーメッセージを確
 #: web/templates/admin/entry/form.html.eex:54
 #: web/templates/admin/tag/form.html.eex:21
 #: web/templates/admin/user/form.html.eex:60
+#: web/templates/registration/form.html.eex:48
 msgid "Submit"
 msgstr "実行"
 
 #: web/templates/admin/admin_user/form.html.eex:27
 #: web/templates/admin/session/new.html.eex:9
 #: web/templates/admin/user/form.html.eex:48
+#: web/templates/registration/form.html.eex:36
 #: web/templates/session/new.html.eex:9
 msgid "Password"
 msgstr "パスワード"
 
 #: web/templates/admin/admin_user/form.html.eex:33
 #: web/templates/admin/user/form.html.eex:54
+#: web/templates/registration/form.html.eex:42
 msgid "Password Confirmation"
 msgstr "パスワード(確認)"
 
@@ -288,6 +297,7 @@ msgstr "ハロー %{name}！"
 #: web/templates/admin/user/form.html.eex:27
 #: web/templates/admin/user/show.html.eex:21
 #: web/templates/entry/index.html.eex:8
+#: web/templates/registration/form.html.eex:27
 msgid "Image"
 msgstr "画像"
 
@@ -308,7 +318,7 @@ msgid "Listing users"
 msgstr "ユーザー一覧"
 
 #: web/templates/admin/session/new.html.eex:14
-#: web/templates/layout/login_bar.html.eex:7
+#: web/templates/layout/login_bar.html.eex:10
 #: web/templates/session/new.html.eex:14
 msgid "Login"
 msgstr "ログイン"
@@ -332,6 +342,7 @@ msgstr "新規 ユーザー"
 #: web/templates/admin/user/form.html.eex:21
 #: web/templates/admin/user/index.html.eex:8
 #: web/templates/admin/user/show.html.eex:16
+#: web/templates/registration/form.html.eex:21
 msgid "Profile"
 msgstr "プロフィール"
 
@@ -432,3 +443,16 @@ msgstr "%{name} の削除に失敗しました。"
 #: web/controllers/admin/user_controller.ex:55
 msgid "%{name} update failed."
 msgstr "%{name} の更新に失敗しました。"
+
+#: web/controllers/registration_controller.ex:24
+msgid "%{name} regist failed."
+msgstr "%{name} の登録に失敗しました。"
+
+#: web/controllers/registration_controller.ex:20
+msgid "%{name} registed successfully."
+msgstr "%{name} を登録しました。"
+
+#: web/templates/layout/login_bar.html.eex:7
+#: web/templates/registration/new.html.eex:1
+msgid "Sign up"
+msgstr "サインアップ"

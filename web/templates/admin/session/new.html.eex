@@ -1,5 +1,5 @@
 <h1><%= gettext "Admin Login" %></h1>
-<%= form_tag admin_session_path(@conn, :callback), method: "post", class: "login" do %>
+<%= form_tag admin_session_path(@conn, :callback, @conn.assigns.locale), method: "post", class: "login" do %>
   <div class='control-group'>
     <label class='control-label' for='email-input'><%= gettext "Email" %></label>
     <input class='form-control' type='email' name='email' value='<%= @conn.params["email"] %>' required/>

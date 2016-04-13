@@ -1,12 +1,12 @@
 <%= if user_logged_in?(@conn) do %>
   <li>
-    <%= link gettext("Logout"), to: session_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
+    <%= link gettext("Logout"), to: session_path(@conn, :delete, current_locale(@conn)), method: :delete, class: "btn btn-danger" %>
   </li>
 <% else %>
   <li>
     <%= link gettext("Sign up"), to: registration_path(@conn, :new, current_locale(@conn)), class: "btn btn-danger" %>
   </li>
   <li>
-    <%= link gettext("Login"), to: session_path(@conn, :new, "identity"), class: "btn btn-danger" %>
+    <%= link gettext("Login"), to: session_path(@conn, :new, current_locale(@conn), "identity"), class: "btn btn-danger" %>
   </li>
 <% end %>

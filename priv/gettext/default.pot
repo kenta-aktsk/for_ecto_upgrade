@@ -135,6 +135,7 @@ msgstr ""
 #: web/controllers/admin/admin_user_controller.ex:23
 #: web/controllers/admin/admin_user_controller.ex:48
 #: web/controllers/admin/admin_user_controller.ex:63
+#: web/controllers/admin/session_controller.ex:31
 #: web/templates/admin/page/index.html.eex:10
 msgid "AdminUser"
 msgstr ""
@@ -177,13 +178,14 @@ msgstr ""
 msgid "Tag"
 msgstr ""
 
-#: web/controllers/admin/user_controller.ex:25
-#: web/controllers/admin/user_controller.ex:29
-#: web/controllers/admin/user_controller.ex:53
-#: web/controllers/admin/user_controller.ex:57
-#: web/controllers/admin/user_controller.ex:68
-#: web/controllers/admin/user_controller.ex:72
+#: web/controllers/admin/user_controller.ex:24
+#: web/controllers/admin/user_controller.ex:28
+#: web/controllers/admin/user_controller.ex:51
+#: web/controllers/admin/user_controller.ex:55
+#: web/controllers/admin/user_controller.ex:66
+#: web/controllers/admin/user_controller.ex:70
 #: web/controllers/registration_controller.ex:28
+#: web/controllers/session_controller.ex:38
 #: web/templates/admin/entry/form.html.eex:9
 #: web/templates/admin/entry/index.html.eex:6
 #: web/templates/admin/entry/show.html.eex:6
@@ -403,7 +405,7 @@ msgstr ""
 #: web/controllers/admin/category_controller.ex:24
 #: web/controllers/admin/entry_controller.ex:24
 #: web/controllers/admin/tag_controller.ex:24
-#: web/controllers/admin/user_controller.ex:25
+#: web/controllers/admin/user_controller.ex:24
 msgid "%{name} created successfully."
 msgstr ""
 
@@ -411,7 +413,7 @@ msgstr ""
 #: web/controllers/admin/category_controller.ex:66
 #: web/controllers/admin/entry_controller.ex:66
 #: web/controllers/admin/tag_controller.ex:66
-#: web/controllers/admin/user_controller.ex:68
+#: web/controllers/admin/user_controller.ex:66
 msgid "%{name} deleted successfully."
 msgstr ""
 
@@ -419,28 +421,28 @@ msgstr ""
 #: web/controllers/admin/category_controller.ex:51
 #: web/controllers/admin/entry_controller.ex:51
 #: web/controllers/admin/tag_controller.ex:51
-#: web/controllers/admin/user_controller.ex:53
+#: web/controllers/admin/user_controller.ex:51
 msgid "%{name} updated successfully."
 msgstr ""
 
 #: web/controllers/admin/category_controller.ex:28
 #: web/controllers/admin/entry_controller.ex:28
 #: web/controllers/admin/tag_controller.ex:28
-#: web/controllers/admin/user_controller.ex:29
+#: web/controllers/admin/user_controller.ex:28
 msgid "%{name} create failed."
 msgstr ""
 
 #: web/controllers/admin/category_controller.ex:70
 #: web/controllers/admin/entry_controller.ex:70
 #: web/controllers/admin/tag_controller.ex:70
-#: web/controllers/admin/user_controller.ex:72
+#: web/controllers/admin/user_controller.ex:70
 msgid "%{name} delete failed."
 msgstr ""
 
 #: web/controllers/admin/category_controller.ex:55
 #: web/controllers/admin/entry_controller.ex:55
 #: web/controllers/admin/tag_controller.ex:55
-#: web/controllers/admin/user_controller.ex:57
+#: web/controllers/admin/user_controller.ex:55
 msgid "%{name} update failed."
 msgstr ""
 
@@ -477,7 +479,22 @@ msgstr ""
 msgid "Your account has been created successfully and confirmation e-mail was sent. please read confirmation instructions and activate your account."
 msgstr ""
 
-#: lib/media_sample/mailer.ex:42
+#: lib/media_sample/mailer.ex:39
 #: web/templates/mail/confirmation_instructions.html.eex:1
 msgid "confirmation instructions"
+msgstr ""
+
+#: web/controllers/admin/session_controller.ex:31
+#: web/controllers/session_controller.ex:38
+msgid "%{name} signed out"
+msgstr ""
+
+#: web/controllers/admin/session_controller.ex:23
+#: web/controllers/session_controller.ex:30
+msgid "Could not authenticate"
+msgstr ""
+
+#: web/controllers/admin/session_controller.ex:18
+#: web/controllers/session_controller.ex:25
+msgid "Signed in as %{name}"
 msgstr ""

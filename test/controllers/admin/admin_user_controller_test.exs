@@ -14,7 +14,7 @@ defmodule MediaSample.Admin.AdminUserControllerTest do
 
   test "redirect to admin login page if not authenticated", %{conn: conn} do
     conn = get conn, admin_admin_user_path(conn, :index, conn.assigns.locale)
-    assert redirected_to(conn) =~ admin_session_path(conn, :new)
+    assert redirected_to(conn) =~ admin_session_path(conn, :new, conn.assigns.locale)
   end
 
   test "lists all entries on index", %{conn: conn} do

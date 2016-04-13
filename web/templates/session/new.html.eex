@@ -1,5 +1,5 @@
 <h1><%= gettext "User Login" %></h1>
-<%= form_tag session_path(@conn, :callback, "identity"), method: "post", class: "login" do %>
+<%= form_tag session_path(@conn, :callback, @conn.assigns.locale, "identity"), method: "post", class: "login" do %>
   <div class='control-group'>
     <label class='control-label' for='email-input'><%= gettext "Email" %></label>
     <input class='form-control' type='email' name='email' value='<%= @conn.params["email"] %>' required/>
@@ -15,19 +15,19 @@
   </div>
 <% end %>
 <p>
-  <a class="btn btn-primary col-xs-12" href="<%= session_path(@conn, :new, "github") %>">
+  <a class="btn btn-primary col-xs-12" href="<%= session_path(@conn, :new, @conn.assigns.locale, "github") %>">
     <i class='fa fa-github'></i>
     Github
   </a>
 </p>
 <p>
-  <a class="btn btn-primary col-xs-12" href="<%= session_path(@conn, :new, "facebook") %>">
+  <a class="btn btn-primary col-xs-12" href="<%= session_path(@conn, :new, @conn.assigns.locale, "facebook") %>">
     <i class='fa fa-github'></i>
     Facebook
   </a>
 </p>
 <p>
-  <a class="btn btn-primary col-xs-12" href="<%= session_path(@conn, :new, "twitter") %>">
+  <a class="btn btn-primary col-xs-12" href="<%= session_path(@conn, :new, @conn.assigns.locale, "twitter") %>">
     <i class='fa fa-github'></i>
     Twitter
   </a>

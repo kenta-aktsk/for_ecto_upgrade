@@ -54,13 +54,17 @@ defmodule MediaSample.Web do
       use Phoenix.Controller, namespace: MediaSample.Admin
       use MediaSample.Controller
       import MediaSample.Admin.Helpers
-      alias MediaSample.Admin.AdminUserAuthService
+      alias MediaSample.{Admin.AdminUserAuthService, Gettext}
 
       plug :check_logged_in
 
       def check_logged_in(conn, _params) do
-        if conn.request_path != admin_session_path(conn, :new) && !admin_logged_in?(conn) do
-          conn |> redirect(to: admin_session_path(conn, :new)) |> halt
+        session_paths = [
+          admin_session_path(conn, :new, conn.assigns.locale),
+          admin_session_path(conn, :callback, conn.assigns.locale)
+        ]
+        if !(conn.request_path in session_paths) && !admin_logged_in?(conn) do
+          conn |> redirect(to: admin_session_path(conn, :new, conn.assigns.locale)) |> halt
         else
           conn
         end

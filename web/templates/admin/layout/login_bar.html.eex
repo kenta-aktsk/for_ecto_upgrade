@@ -1,5 +1,5 @@
 <%= if admin_logged_in?(@conn) do %>
   <li>
-    <%= link gettext("Logout"), to: admin_session_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
+    <%= link gettext("Logout"), to: admin_session_path(@conn, :delete, @conn.assigns.locale), method: :delete, class: "btn btn-danger" %>
   </li>
 <% end %>

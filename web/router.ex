@@ -26,25 +26,12 @@ defmodule MediaSample.Router do
     get "/", DummyController, :dummy
   end
 
-  # ueberauth doesn't support "/:identifier" in request path. 
-  # so login/logout/callback path must be defined outside of "/:locale" scope.
-  scope "/admin", MediaSample.Admin, as: :admin do
-    pipe_through [:browser]
-    get "/auth/identity", SessionController, :new
-    post "/auth/identity/callback", SessionController, :callback
-    delete "/logout", SessionController, :delete
-  end
-  scope "/", MediaSample do
-    pipe_through [:browser]
-    get "/auth/:identity", SessionController, :new
-    get "/auth/:identity/callback", SessionController, :callback
-    post "/auth/:identity/callback", SessionController, :callback
-    delete "/logout", SessionController, :delete
-  end
-
   scope "/:locale" do
     scope "/admin", MediaSample.Admin, as: :admin do
       pipe_through [:browser]
+      get "/auth/identity", SessionController, :new
+      post "/auth/identity/callback", SessionController, :callback
+      delete "/logout", SessionController, :delete
       get "/", PageController, :index
       resources "/admin_users", AdminUserController
       resources "/users", UserController
@@ -54,6 +41,10 @@ defmodule MediaSample.Router do
     end
     scope "/", MediaSample do
       pipe_through [:browser]
+      get "/auth/:identity", SessionController, :new
+      get "/auth/:identity/callback", SessionController, :callback
+      post "/auth/:identity/callback", SessionController, :callback
+      delete "/logout", SessionController, :delete
       get "/", PageController, :index
       resources "/entries", EntryController, only: [:index, :show]
       resources "/registration", RegistrationController, only: [:new, :create]

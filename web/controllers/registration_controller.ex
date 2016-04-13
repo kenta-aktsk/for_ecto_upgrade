@@ -30,7 +30,7 @@ defmodule MediaSample.RegistrationController do
     end
   end
 
-  def confirm(conn, %{"token" => token}, _locale) do
+  def confirm(conn, %{"token" => token}, locale) do
     user = User |> Repo.slave.get_by(confirmation_token: token)
     if user do
       changeset = User.changeset(user, %{"confirmation_token" => nil, "status" => Status.valid.id, "confirmed_at" => Ecto.DateTime.utc})
@@ -38,7 +38,7 @@ defmodule MediaSample.RegistrationController do
         {:ok, _} ->
           conn
           |> put_flash(:info, gettext("Your account has been activated successfully."))
-          |> redirect(to: session_path(conn, :new, "identity")) |> halt
+          |> redirect(to: session_path(conn, :new, locale, "identity")) |> halt
         {:error, _} ->
           conn
           |> put_flash(:error, gettext("Confirmation failed, something went wrong! Please try again later."))

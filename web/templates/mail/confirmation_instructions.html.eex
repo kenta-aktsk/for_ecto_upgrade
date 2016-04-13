@@ -1,0 +1,3 @@
+<b><%= gettext "confirmation instructions" %></b>
+
+<p><%= link gettext("Confirm"), to: registration_url(@conn, :confirm, current_locale(@conn), @token) %></p>

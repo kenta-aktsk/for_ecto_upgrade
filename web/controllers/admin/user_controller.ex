@@ -17,9 +17,8 @@ defmodule MediaSample.Admin.UserController do
 
   def create(conn, %{"user" => user_params}, locale) do
     changeset = User.changeset(%User{}, user_params)
-    IO.puts "changeset = #{inspect changeset}"
 
-    case Repo.transaction(UserService.insert(changeset, user_params, locale)) do
+    case Repo.transaction(UserService.insert(conn, changeset, user_params, locale)) do
       {:ok, %{user: user, upload: _file}} ->
         conn
         |> put_flash(:info, gettext("%{name} created successfully.", name: gettext("User")))
@@ -44,9 +43,7 @@ defmodule MediaSample.Admin.UserController do
 
   def update(conn, %{"id" => id, "user" => user_params}, locale) do
     user = User |> User.preload_all(locale) |> Repo.slave.get!(id)
-    IO.puts "user = #{inspect user}"
     changeset = User.changeset(user, user_params)
-    IO.puts "changeset = #{inspect changeset}"
 
     case Repo.transaction(UserService.update(changeset, user_params, locale)) do
       {:ok, %{user: user, upload: _file}} ->

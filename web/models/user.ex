@@ -14,6 +14,9 @@ defmodule MediaSample.User do
     field :image, :string
     field :user_type, :integer
     field :status, :integer
+    field :confirmation_token, :string
+    field :confirmed_at, Ecto.DateTime
+    field :confirmation_sent_at, Ecto.DateTime
 
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
@@ -25,7 +28,7 @@ defmodule MediaSample.User do
   end
 
   @required_fields ~w(email name status user_type)a
-  @optional_fields ~w(profile)a
+  @optional_fields ~w(profile confirmation_token confirmed_at confirmation_sent_at)a
 
   def changeset(user, params \\ %{}) do
     {required_fields, optional_fields} = adjust_validation_fields(user, @required_fields, @optional_fields)

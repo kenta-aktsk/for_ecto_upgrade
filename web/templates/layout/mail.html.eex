@@ -1,0 +1,5 @@
+<html>
+<body>
+<%= render @view_module, @view_template, assigns %>
+</body>
+</html>

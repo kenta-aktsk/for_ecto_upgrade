@@ -176,14 +176,13 @@ msgstr "記事"
 msgid "Tag"
 msgstr "タグ"
 
-#: web/controllers/admin/user_controller.ex:24
-#: web/controllers/admin/user_controller.ex:28
-#: web/controllers/admin/user_controller.ex:51
-#: web/controllers/admin/user_controller.ex:55
-#: web/controllers/admin/user_controller.ex:66
-#: web/controllers/admin/user_controller.ex:70
-#: web/controllers/registration_controller.ex:20
-#: web/controllers/registration_controller.ex:24
+#: web/controllers/admin/user_controller.ex:25
+#: web/controllers/admin/user_controller.ex:29
+#: web/controllers/admin/user_controller.ex:53
+#: web/controllers/admin/user_controller.ex:57
+#: web/controllers/admin/user_controller.ex:68
+#: web/controllers/admin/user_controller.ex:72
+#: web/controllers/registration_controller.ex:28
 #: web/templates/admin/entry/form.html.eex:9
 #: web/templates/admin/entry/index.html.eex:6
 #: web/templates/admin/entry/show.html.eex:6
@@ -403,7 +402,7 @@ msgstr "よろしいですか？"
 #: web/controllers/admin/category_controller.ex:24
 #: web/controllers/admin/entry_controller.ex:24
 #: web/controllers/admin/tag_controller.ex:24
-#: web/controllers/admin/user_controller.ex:24
+#: web/controllers/admin/user_controller.ex:25
 msgid "%{name} created successfully."
 msgstr "%{name} を新規作成しました。"
 
@@ -411,7 +410,7 @@ msgstr "%{name} を新規作成しました。"
 #: web/controllers/admin/category_controller.ex:66
 #: web/controllers/admin/entry_controller.ex:66
 #: web/controllers/admin/tag_controller.ex:66
-#: web/controllers/admin/user_controller.ex:66
+#: web/controllers/admin/user_controller.ex:68
 msgid "%{name} deleted successfully."
 msgstr "%{name} を削除しました。"
 
@@ -419,40 +418,65 @@ msgstr "%{name} を削除しました。"
 #: web/controllers/admin/category_controller.ex:51
 #: web/controllers/admin/entry_controller.ex:51
 #: web/controllers/admin/tag_controller.ex:51
-#: web/controllers/admin/user_controller.ex:51
+#: web/controllers/admin/user_controller.ex:53
 msgid "%{name} updated successfully."
 msgstr "%{name} を更新しました。"
 
 #: web/controllers/admin/category_controller.ex:28
 #: web/controllers/admin/entry_controller.ex:28
 #: web/controllers/admin/tag_controller.ex:28
-#: web/controllers/admin/user_controller.ex:28
+#: web/controllers/admin/user_controller.ex:29
 msgid "%{name} create failed."
 msgstr "%{name} の新規作成に失敗しました。"
 
 #: web/controllers/admin/category_controller.ex:70
 #: web/controllers/admin/entry_controller.ex:70
 #: web/controllers/admin/tag_controller.ex:70
-#: web/controllers/admin/user_controller.ex:70
+#: web/controllers/admin/user_controller.ex:72
 msgid "%{name} delete failed."
 msgstr "%{name} の削除に失敗しました。"
 
 #: web/controllers/admin/category_controller.ex:55
 #: web/controllers/admin/entry_controller.ex:55
 #: web/controllers/admin/tag_controller.ex:55
-#: web/controllers/admin/user_controller.ex:55
+#: web/controllers/admin/user_controller.ex:57
 msgid "%{name} update failed."
 msgstr "%{name} の更新に失敗しました。"
 
-#: web/controllers/registration_controller.ex:24
+#: web/controllers/registration_controller.ex:28
 msgid "%{name} regist failed."
 msgstr "%{name} の登録に失敗しました。"
-
-#: web/controllers/registration_controller.ex:20
-msgid "%{name} registed successfully."
-msgstr "%{name} を登録しました。"
 
 #: web/templates/layout/login_bar.html.eex:7
 #: web/templates/registration/new.html.eex:1
 msgid "Sign up"
 msgstr "サインアップ"
+
+#: web/templates/mail/confirmation_instructions.html.eex:3
+msgid "Confirm"
+msgstr "確認"
+
+#: web/templates/registration/confirm.html.eex:1
+msgid "Confirm user"
+msgstr "ユーザー確認"
+
+#: web/controllers/registration_controller.ex:44
+msgid "Confirmation failed, something went wrong! Please try again later."
+msgstr "確認処理が失敗しました。もう一度お試しください。"
+
+#: web/controllers/registration_controller.ex:49
+msgid "Confirmation failed. Your account has already been activated or confirmation token has been expired."
+msgstr "確認処理が失敗しました。アカウントは既に有効化されているか、トークンが期限切れです。"
+
+#: web/controllers/registration_controller.ex:40
+msgid "Your account has been activated successfully."
+msgstr "アカウントが正常に有効化されました。"
+
+#: web/controllers/registration_controller.ex:24
+msgid "Your account has been created successfully and confirmation e-mail was sent. please read confirmation instructions and activate your account."
+msgstr "アカウントが正常に作成されました。送信されたメールをご確認頂き、アカウントを有効化してください。"
+
+#: lib/media_sample/mailer.ex:42
+#: web/templates/mail/confirmation_instructions.html.eex:1
+msgid "confirmation instructions"
+msgstr "確認手順"

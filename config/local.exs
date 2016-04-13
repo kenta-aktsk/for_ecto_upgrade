@@ -59,6 +59,12 @@ config :media_sample, MediaSample.ReadRepo1,
   charset: "utf8mb4",
   pool_size: 10
 
+config :media_sample, MediaSample.Mailer,
+  server: System.get_env("MEDIA_SAMPLE_EMAIL_SERVER"),
+  username: System.get_env("MEDIA_SAMPLE_EMAIL_USER"),
+  passoword: System.get_env("MEDIA_SAMPLE_EMAIL_PASSWORD"),
+  sender: System.get_env("MEDIA_SAMPLE_EMAIL_SENDER")
+
 config :arc,
   storage: Arc.Storage.Local,
   base_upload_path: "priv/static/images"

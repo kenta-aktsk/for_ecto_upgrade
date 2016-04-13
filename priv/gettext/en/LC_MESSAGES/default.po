@@ -176,14 +176,13 @@ msgstr ""
 msgid "Tag"
 msgstr ""
 
-#: web/controllers/admin/user_controller.ex:24
-#: web/controllers/admin/user_controller.ex:28
-#: web/controllers/admin/user_controller.ex:51
-#: web/controllers/admin/user_controller.ex:55
-#: web/controllers/admin/user_controller.ex:66
-#: web/controllers/admin/user_controller.ex:70
-#: web/controllers/registration_controller.ex:20
-#: web/controllers/registration_controller.ex:24
+#: web/controllers/admin/user_controller.ex:25
+#: web/controllers/admin/user_controller.ex:29
+#: web/controllers/admin/user_controller.ex:53
+#: web/controllers/admin/user_controller.ex:57
+#: web/controllers/admin/user_controller.ex:68
+#: web/controllers/admin/user_controller.ex:72
+#: web/controllers/registration_controller.ex:28
 #: web/templates/admin/entry/form.html.eex:9
 #: web/templates/admin/entry/index.html.eex:6
 #: web/templates/admin/entry/show.html.eex:6
@@ -403,7 +402,7 @@ msgstr ""
 #: web/controllers/admin/category_controller.ex:24
 #: web/controllers/admin/entry_controller.ex:24
 #: web/controllers/admin/tag_controller.ex:24
-#: web/controllers/admin/user_controller.ex:24
+#: web/controllers/admin/user_controller.ex:25
 msgid "%{name} created successfully."
 msgstr ""
 
@@ -411,7 +410,7 @@ msgstr ""
 #: web/controllers/admin/category_controller.ex:66
 #: web/controllers/admin/entry_controller.ex:66
 #: web/controllers/admin/tag_controller.ex:66
-#: web/controllers/admin/user_controller.ex:66
+#: web/controllers/admin/user_controller.ex:68
 msgid "%{name} deleted successfully."
 msgstr ""
 
@@ -419,40 +418,65 @@ msgstr ""
 #: web/controllers/admin/category_controller.ex:51
 #: web/controllers/admin/entry_controller.ex:51
 #: web/controllers/admin/tag_controller.ex:51
-#: web/controllers/admin/user_controller.ex:51
+#: web/controllers/admin/user_controller.ex:53
 msgid "%{name} updated successfully."
 msgstr ""
 
 #: web/controllers/admin/category_controller.ex:28
 #: web/controllers/admin/entry_controller.ex:28
 #: web/controllers/admin/tag_controller.ex:28
-#: web/controllers/admin/user_controller.ex:28
+#: web/controllers/admin/user_controller.ex:29
 msgid "%{name} create failed."
 msgstr ""
 
 #: web/controllers/admin/category_controller.ex:70
 #: web/controllers/admin/entry_controller.ex:70
 #: web/controllers/admin/tag_controller.ex:70
-#: web/controllers/admin/user_controller.ex:70
+#: web/controllers/admin/user_controller.ex:72
 msgid "%{name} delete failed."
 msgstr ""
 
 #: web/controllers/admin/category_controller.ex:55
 #: web/controllers/admin/entry_controller.ex:55
 #: web/controllers/admin/tag_controller.ex:55
-#: web/controllers/admin/user_controller.ex:55
+#: web/controllers/admin/user_controller.ex:57
 msgid "%{name} update failed."
 msgstr ""
 
-#: web/controllers/registration_controller.ex:24
+#: web/controllers/registration_controller.ex:28
 msgid "%{name} regist failed."
-msgstr ""
-
-#: web/controllers/registration_controller.ex:20
-msgid "%{name} registed successfully."
 msgstr ""
 
 #: web/templates/layout/login_bar.html.eex:7
 #: web/templates/registration/new.html.eex:1
 msgid "Sign up"
+msgstr ""
+
+#: web/templates/mail/confirmation_instructions.html.eex:3
+msgid "Confirm"
+msgstr ""
+
+#: web/templates/registration/confirm.html.eex:1
+msgid "Confirm user"
+msgstr ""
+
+#: web/controllers/registration_controller.ex:44
+msgid "Confirmation failed, something went wrong! Please try again later."
+msgstr ""
+
+#: web/controllers/registration_controller.ex:49
+msgid "Confirmation failed. Your account has already been activated or confirmation token has been expired."
+msgstr ""
+
+#: web/controllers/registration_controller.ex:40
+msgid "Your account has been activated successfully."
+msgstr ""
+
+#: web/controllers/registration_controller.ex:24
+msgid "Your account has been created successfully and confirmation e-mail was sent. please read confirmation instructions and activate your account."
+msgstr ""
+
+#: lib/media_sample/mailer.ex:42
+#: web/templates/mail/confirmation_instructions.html.eex:1
+msgid "confirmation instructions"
 msgstr ""

@@ -32,12 +32,14 @@ defmodule MediaSample.Mixfile do
       :arc,
       :ex_enum,
       :read_repos,
+      :translator,
       :ueberauth_facebook,
       :ueberauth_twitter,
       :ueberauth_github,
       :ueberauth_identity,
       :maru,
       :guardian,
+      :mailman,
       :mariaex
       ]
     ]
@@ -77,6 +79,8 @@ defmodule MediaSample.Mixfile do
      {:oauth, github: "tim/erlang-oauth"},
      {:maru, "~> 0.8"},
      {:guardian, "~> 0.10.0"},
+     {:mailman, "~> 0.1.0"},
+     {:eiconv, github: "zotonic/eiconv"},
      {:cowboy, "~> 1.0"}]
   end
 

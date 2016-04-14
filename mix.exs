@@ -40,7 +40,13 @@ defmodule MediaSample.Mixfile do
       :maru,
       :guardian,
       :mailman,
+      :lager,
+      :corman,
       :mariaex
+      ],
+     included_applications: [
+      :mcd,
+      :plug_session_memcached
       ]
     ]
   end
@@ -81,6 +87,10 @@ defmodule MediaSample.Mixfile do
      {:guardian, "~> 0.10.0"},
      {:mailman, "~> 0.1.0"},
      {:eiconv, github: "zotonic/eiconv"},
+     # {:plug_session_memcached, "~> 0.3.3"},
+     # {:plug_session_memcached, path: "/Users/kentakatsumata/Documents/workspace_elixir/plug-session-memcached"},
+     {:plug_session_memcached, github: "kenta-aktsk/plug-session-memcached"},
+     {:mcd, github: "EchoTeam/mcd"},
      {:cowboy, "~> 1.0"}]
   end
 

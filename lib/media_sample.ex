@@ -13,6 +13,7 @@ defmodule MediaSample do
       supervisor(MediaSample.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(MediaSample.Worker, [arg1, arg2, arg3]),
+      supervisor(PlugSessionMemcached.Supervisor, [])
     ]
 
     children = children ++ Enum.map(MediaSample.Repo.slaves, &supervisor(&1, []))

@@ -31,9 +31,11 @@ defmodule MediaSample.Endpoint do
   plug Plug.Head
 
   plug Plug.Session,
-    store: :cookie,
     key: "_media_sample_key",
-    signing_salt: "Hco0rRT0"
+    store: :memcached,
+    signing_salt: "Hco0rRT0",
+    table: :memcached_sessions,
+    encryption_salt: "C5sWyZPx"
 
   plug MediaSample.Router
 

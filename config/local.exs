@@ -91,3 +91,6 @@ config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
 config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
   consumer_key: System.get_env("MEDIA_SAMPLE_TWITTER_CLIENT_ID"),
   consumer_secret: System.get_env("MEDIA_SAMPLE_TWITTER_CLIENT_SECRET")
+
+config :plug_session_memcached,
+  server: [ '127.0.0.1', 11211 ]

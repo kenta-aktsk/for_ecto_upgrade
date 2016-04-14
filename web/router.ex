@@ -23,7 +23,7 @@ defmodule MediaSample.Router do
   # this scope is required. without this, root url ("/") won't be recognized. 
   scope "/", MediaSample do
     pipe_through [:browser]
-    get "/", DummyController, :dummy
+    get "/", RootController, :root
   end
 
   scope "/:locale" do

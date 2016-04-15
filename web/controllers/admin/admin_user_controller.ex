@@ -4,9 +4,9 @@ defmodule MediaSample.Admin.AdminUserController do
 
   plug :scrub_params, "admin_user" when action in [:create, :update]
 
-  def index(conn, _params) do
-    admin_users = Repo.slave.all(AdminUser)
-    render(conn, "index.html", admin_users: admin_users)
+  def index(conn, params) do
+    page = AdminUser |> from |> Repo.slave.paginate(params)
+    render(conn, "index.html", admin_users: page.entries, page: page)
   end
 
   def new(conn, _params) do

@@ -55,6 +55,9 @@ config :guardian, Guardian,
 config :plug_session_memcached,
   server: ['127.0.0.1', 11211]
 
+config :scrivener_html,
+  routes_helper: MediaSample.Router.Helpers
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

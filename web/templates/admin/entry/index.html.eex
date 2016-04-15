@@ -31,4 +31,6 @@
   </tbody>
 </table>
 
+<%= pagination_links @conn, @page, [@conn.assigns.locale], path: &admin_entry_path/4 %>
+
 <%= link gettext("New"), to: admin_entry_path(@conn, :new, @conn.assigns.locale) %>

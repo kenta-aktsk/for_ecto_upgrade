@@ -4,16 +4,16 @@ defmodule MediaSample.SessionController do
   import MediaSample.Helpers
   alias MediaSample.Gettext
 
-  Enum.each Gettext.config[:locales], fn(locale) ->
+  Enum.each Gettext.supported_locales, fn(locale) ->
     plug Ueberauth, base_path: "/#{locale}/auth"
   end
   plug :check_logged_in
 
-  def new(conn, _params, locale) do
+  def new(conn, _params, _locale) do
     render(conn, "new.html")
   end
 
-  def callback(%Plug.Conn{assigns: %{ueberauth_failure: fails}} = conn, _params, locale) do
+  def callback(%Plug.Conn{assigns: %{ueberauth_failure: fails}} = conn, _params, _locale) do
     conn
     |> put_flash(:error, hd(fails.errors).message)
     |> render("new.html")
@@ -36,15 +36,15 @@ defmodule MediaSample.SessionController do
 
   def delete(conn, _params, locale) do
     conn
-      |> configure_session(drop: true)
-      |> put_flash(:info, gettext("%{name} signed out", name: gettext("User")))
-      |> redirect(to: session_path(conn, :new, locale, "identity")) |> halt
+    |> configure_session(drop: true)
+    |> put_flash(:info, gettext("%{name} signed out", name: gettext("User")))
+    |> redirect(to: session_path(conn, :new, locale, "identity")) |> halt
   end
 
-  def check_logged_in(conn, params) do
-    locale = Enum.find(Gettext.config[:locales], fn(loc) ->
+  def check_logged_in(conn, _params) do
+    locale = Enum.find Gettext.supported_locales, fn(loc) ->
       conn.request_path == session_path(conn, :new, loc, "identity")
-    end)
+    end
 
     if locale && user_logged_in?(conn) do
       conn |> redirect(to: page_path(conn, :index, locale)) |> halt

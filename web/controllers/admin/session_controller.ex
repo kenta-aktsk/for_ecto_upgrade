@@ -4,12 +4,12 @@ defmodule MediaSample.Admin.SessionController do
   alias Ueberauth.Strategy.Helpers
   alias MediaSample.Gettext
 
-  Enum.each Gettext.config[:locales], fn(locale) ->
+  Enum.each Gettext.supported_locales, fn(locale) ->
     plug Ueberauth, base_path: "/#{locale}/admin/auth"
   end
   plug :check_logged_in
 
-  def new(conn, _params, locale) do
+  def new(conn, _params, _locale) do
     render(conn, "new.html", callback_url: Helpers.callback_url(conn))
   end
 
@@ -29,15 +29,15 @@ defmodule MediaSample.Admin.SessionController do
 
   def delete(conn, _params, locale) do
     conn
-      |> AdminUserAuthService.logout
-      |> put_flash(:info, gettext("%{name} signed out", name: gettext("AdminUser")))
-      |> redirect(to: admin_session_path(conn, :new, locale)) |> halt
+    |> AdminUserAuthService.logout
+    |> put_flash(:info, gettext("%{name} signed out", name: gettext("AdminUser")))
+    |> redirect(to: admin_session_path(conn, :new, locale)) |> halt
   end
 
   def check_logged_in(conn, _params) do
-    locale = Enum.find(Gettext.config[:locales], fn(loc) ->
+    locale = Enum.find Gettext.supported_locales, fn(loc) ->
       conn.request_path == admin_session_path(conn, :new, loc)
-    end)
+    end
 
     if locale && admin_logged_in?(conn) do
       conn |> redirect(to: admin_page_path(conn, :index, locale)) |> halt

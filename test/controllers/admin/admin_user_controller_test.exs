@@ -18,10 +18,11 @@ defmodule MediaSample.Admin.AdminUserControllerTest do
   end
 
   test "lists all entries on index", %{conn: conn} do
-    conn = conn
-    |> with_session_and_flash
-    |> with_logged_in_user
-    |> action(:index)
+    conn =
+      conn
+      |> with_session_and_flash
+      |> with_logged_in_user
+      |> action(:index)
     assert html_response(conn, 200) =~ "Listing admin users"
   end
 

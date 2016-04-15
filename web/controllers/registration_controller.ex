@@ -11,7 +11,8 @@ defmodule MediaSample.RegistrationController do
   end
 
   def create(conn, %{"user" => user_params}, locale) do
-    user_params = user_params
+    user_params =
+      user_params
       |> Map.merge(User.default_params)
       |> Map.put("confirmation_token", SecureRandom.urlsafe_base64)
       |> Map.put("confirmation_sent_at", Ecto.DateTime.utc)

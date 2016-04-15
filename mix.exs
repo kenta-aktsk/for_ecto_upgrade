@@ -43,6 +43,7 @@ defmodule MediaSample.Mixfile do
       :lager,
       :corman,
       :scrivener_html,
+      :scrivener_headers,
       :mariaex
       ],
      included_applications: [
@@ -68,7 +69,7 @@ defmodule MediaSample.Mixfile do
      {:ecto, "~> 2.0.0-beta", github: "elixir-lang/ecto", override: true},
      {:phoenix_ecto, "~> 3.0.0-beta"},
      {:phoenix_html, "~> 2.4"},
-     {:phoenix_live_reload, "~> 1.0", only: [:local, :dev]},
+     {:phoenix_live_reload, "~> 1.0", only: [:local]},
      {:gettext, "~> 0.9"},
      {:ex_enum, github: "kenta-aktsk/ex_enum"},
      # {:ex_enum, path: "/Users/kentakatsumata/Documents/workspace_elixir/ex_enum"},
@@ -94,6 +95,7 @@ defmodule MediaSample.Mixfile do
      {:mcd, github: "EchoTeam/mcd"},
      {:scrivener, "~> 1.0"},
      {:scrivener_html, "~> 1.0"},
+     {:scrivener_headers, "~> 1.0"},
      {:cowboy, "~> 1.0"}]
   end
 

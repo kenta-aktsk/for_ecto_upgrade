@@ -16,6 +16,11 @@ defmodule MediaSample.API.V1.SharedParams do
     requires :password, type: :string
   end
 
+  params :page do
+    use :base
+    optional :page, type: :integer, regexp: @one_and_over
+  end
+
   params :entry do
     use :base
     optional :id, type: :integer, regexp: @one_and_over

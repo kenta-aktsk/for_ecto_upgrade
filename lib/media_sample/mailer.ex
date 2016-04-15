@@ -33,7 +33,6 @@ defmodule MediaSample.Mailer do
   end
 
   def confirmation_email(%Plug.Conn{}=conn, to, token) do
-    str = render_to_string(MailView, "confirmation_instructions.html", %{conn: conn, token: token} |> put_layout)
     config = Application.get_env(:media_sample, __MODULE__)
     %Mailman.Email{
       subject: gettext("confirmation instructions"),

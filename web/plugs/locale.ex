@@ -34,8 +34,9 @@ defmodule MediaSample.Locale do
   end
 
   defp parse_language_option(string) do
-    captures = ~r/^(?<tag>[\w\-]+)(?:;q=(?<quality>[\d\.]+))?$/i
-    |> Regex.named_captures(string)
+    captures =
+      ~r/^(?<tag>[\w\-]+)(?:;q=(?<quality>[\d\.]+))?$/i
+      |> Regex.named_captures(string)
 
     quality = case Float.parse(captures["quality"] || "1.0") do
       {val, _} -> val

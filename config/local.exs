@@ -85,12 +85,8 @@ config :ueberauth, Ueberauth.Strategy.Github.OAuth,
 
 config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
   client_id: System.get_env("MEDIA_SAMPLE_FACEBOOK_CLIENT_ID"),
-  client_secret: System.get_env("MEDIA_SAMPLE_FACEBOOK_CLIENT_SECRET"),
-  redirect_uri: "http://localhost:4000/auth/facebook/callback"
+  client_secret: System.get_env("MEDIA_SAMPLE_FACEBOOK_CLIENT_SECRET")
 
 config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
   consumer_key: System.get_env("MEDIA_SAMPLE_TWITTER_CLIENT_ID"),
   consumer_secret: System.get_env("MEDIA_SAMPLE_TWITTER_CLIENT_SECRET")
-
-config :plug_session_memcached,
-  server: [ '127.0.0.1', 11211 ]

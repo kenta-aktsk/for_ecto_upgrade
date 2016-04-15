@@ -5,9 +5,10 @@ defmodule MediaSample.ControllerTestHelper do
       @controller unquote(opts)[:controller] || raise ":controller must be given."
 
       def action(conn, action, params \\ %{}) do
-        conn = conn
-        |> put_private(:phoenix_controller, @controller)
-        |> Phoenix.Controller.put_view(Phoenix.Controller.__view__(@controller))
+        conn =
+          conn
+          |> put_private(:phoenix_controller, @controller)
+          |> Phoenix.Controller.put_view(Phoenix.Controller.__view__(@controller))
 
         apply(@controller, action, [conn, params])
       end

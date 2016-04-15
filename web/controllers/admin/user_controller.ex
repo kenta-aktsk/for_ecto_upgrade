@@ -10,7 +10,7 @@ defmodule MediaSample.Admin.UserController do
     render(conn, "index.html", users: users)
   end
 
-  def new(conn, _params, locale) do
+  def new(conn, _params, _locale) do
     changeset = User.changeset(%User{})
     render(conn, "new.html", changeset: changeset)
   end

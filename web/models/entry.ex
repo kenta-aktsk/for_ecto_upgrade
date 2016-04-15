@@ -2,7 +2,7 @@ defmodule MediaSample.Entry do
   use MediaSample.Web, :model
   use MediaSample.ModelStatusConcern
   use MediaSample.PreloadConcern
-  alias MediaSample.{Gettext, EntryTranslation, UserTranslation, CategoryTranslation, TagTranslation}
+  alias MediaSample.{EntryTranslation, UserTranslation, CategoryTranslation, TagTranslation}
 
   schema "entries" do
     field :title, :string

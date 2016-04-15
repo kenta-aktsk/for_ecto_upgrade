@@ -27,4 +27,6 @@
   </tbody>
 </table>
 
+<%= pagination_links @conn, @page, [@conn.assigns.locale], path: &admin_category_path/4 %>
+
 <%= link gettext("New"), to: admin_category_path(@conn, :new, @conn.assigns.locale) %>

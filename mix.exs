@@ -42,6 +42,7 @@ defmodule MediaSample.Mixfile do
       :mailman,
       :lager,
       :corman,
+      :scrivener_html,
       :mariaex
       ],
      included_applications: [
@@ -91,6 +92,8 @@ defmodule MediaSample.Mixfile do
      # {:plug_session_memcached, path: "/Users/kentakatsumata/Documents/workspace_elixir/plug-session-memcached"},
      {:plug_session_memcached, github: "kenta-aktsk/plug-session-memcached"},
      {:mcd, github: "EchoTeam/mcd"},
+     {:scrivener, "~> 1.0"},
+     {:scrivener_html, "~> 1.0"},
      {:cowboy, "~> 1.0"}]
   end
 

@@ -30,3 +30,5 @@
 <% end %>
   </tbody>
 </table>
+
+<%= pagination_links @conn, @page, [@conn.assigns.locale], path: &entry_path/4 %>

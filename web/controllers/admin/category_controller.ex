@@ -5,9 +5,9 @@ defmodule MediaSample.Admin.CategoryController do
 
   plug :scrub_params, "category" when action in [:create, :update]
 
-  def index(conn, _params, locale) do
-    categories = Category |> Category.preload_all(locale) |> Repo.slave.all
-    render(conn, "index.html", categories: categories)
+  def index(conn, params, locale) do
+    page = Category |> Category.preload_all(locale) |> Repo.slave.paginate(params)
+    render(conn, "index.html", categories: page.entries, page: page)
   end
 
   def new(conn, _params, _locale) do

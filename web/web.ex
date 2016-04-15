@@ -143,6 +143,7 @@ defmodule MediaSample.View do
       import MediaSample.Gettext
       import MediaSample.Helpers
       import Translator.TranslationHelpers
+      import Scrivener.HTML
     end
   end
 end

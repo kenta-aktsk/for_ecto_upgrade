@@ -3,9 +3,9 @@ defmodule MediaSample.EntryController do
   use MediaSample.LocalizedController
   alias MediaSample.Entry
 
-  def index(conn, _params, locale) do
-    entries = Entry |> Entry.valid |> Entry.preload_all(locale) |> Repo.slave.all
-    render(conn, "index.html", entries: entries)
+  def index(conn, params, locale) do
+    page = Entry |> Entry.valid |> Entry.preload_all(locale) |> Repo.slave.paginate(params)
+    render(conn, "index.html", entries: page.entries, page: page)
   end
 
   def show(conn, %{"id" => id}, locale) do

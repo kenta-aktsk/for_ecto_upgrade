@@ -5,9 +5,9 @@ defmodule MediaSample.Admin.EntryController do
 
   plug :scrub_params, "entry" when action in [:create, :update]
 
-  def index(conn, _params, locale) do
-    entries = Entry |> Entry.preload_all(locale) |> Repo.slave.all
-    render(conn, "index.html", entries: entries)
+  def index(conn, params, locale) do
+    page = Entry |> Entry.preload_all(locale) |> Repo.slave.paginate(params)
+    render(conn, "index.html", entries: page.entries, page: page)
   end
 
   def new(conn, _params, _locale) do

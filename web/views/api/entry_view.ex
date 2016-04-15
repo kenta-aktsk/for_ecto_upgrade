@@ -2,6 +2,12 @@ defmodule MediaSample.API.EntryView do
   use MediaSample.Web, :view
   alias MediaSample.{Enums.Status, EntryImageUploader}
 
+  def render("index.json", %{entries: entries}) do
+    %{
+      entries: render_many(entries, __MODULE__, "entry.json")
+    }
+  end
+
   def render("show.json", %{entry: entry}) do
     %{
       entry: render_one(entry, __MODULE__, "entry.json")

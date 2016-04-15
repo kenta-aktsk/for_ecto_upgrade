@@ -1,9 +1,9 @@
 defmodule MediaSample.Admin.AdminUserAuthService do
   import Plug.Conn, only: [put_session: 3, configure_session: 2]
-  alias MediaSample.{Repo, AdminUser}
+  alias MediaSample.{Repo, AdminUser, Enums.Status}
 
   def auth_and_validate(auth) do
-    case Repo.slave.get_by(AdminUser, email: auth.uid) do
+    case Repo.slave.get_by(AdminUser, email: auth.uid, status: Status.valid.id) do
       nil -> {:error, :not_found}
       admin_user ->
         case auth.credentials.other.password do

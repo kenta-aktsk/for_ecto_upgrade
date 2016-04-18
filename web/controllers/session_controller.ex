@@ -20,7 +20,6 @@ defmodule MediaSample.SessionController do
   end
 
   def callback(%Plug.Conn{assigns: %{ueberauth_auth: auth}} = conn, _params, locale) do
-    IO.puts "callback called. auth = #{inspect auth}"
     case UserAuthService.get_or_insert(auth) do
       {:ok, user} ->
         conn

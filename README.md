@@ -104,6 +104,35 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 And you can login to [`admin page`](http://localhost:4000/en/admin) by user `admin01@example.com` password `1234`.
 
+## Environment variables
+
+If you want to use guardian, social login, SES email, you need to set environment variables like below:
+
+```bash
+# ~/.bash_profile
+export MEDIA_SAMPLE_GUARDIAN_SECRET_KEY=your_random_value
+
+export MEDIA_SAMPLE_GITHUB_CLIENT_ID=your_client_id
+export MEDIA_SAMPLE_GITHUB_CLIENT_SECRET=your_client_secret
+
+export MEDIA_SAMPLE_FACEBOOK_CLIENT_ID=your_client_id
+export MEDIA_SAMPLE_FACEBOOK_CLIENT_SECRET=your_client_secret
+
+export MEDIA_SAMPLE_TWITTER_CLIENT_ID=your_client_id
+export MEDIA_SAMPLE_TWITTER_CLIENT_SECRET=your_client_secret
+
+export MEDIA_SAMPLE_EMAIL_SERVER=ses_server
+export MEDIA_SAMPLE_EMAIL_USER=ses_smtp_user
+export MEDIA_SAMPLE_EMAIL_PASSWORD=ses_smtp_password
+export MEDIA_SAMPLE_EMAIL_SENDER=ses_email
+```
+
+And you need to load:
+
+```bash
+source ~/.bash_profile
+```
+
 ## Locale
 
 This project supports locales `en` and `ja` (`en` is default), [`localhost:4000/en`](http://localhost:4000/en) and [`localhost:4000/ja`](http://localhost:4000/ja)

@@ -134,7 +134,7 @@ msgstr "ログアウト"
 #: web/controllers/admin/admin_user_controller.ex:23
 #: web/controllers/admin/admin_user_controller.ex:48
 #: web/controllers/admin/admin_user_controller.ex:63
-#: web/controllers/admin/session_controller.ex:31
+#: web/controllers/admin/session_controller.ex:33
 #: web/templates/admin/page/index.html.eex:10
 msgid "AdminUser"
 msgstr "管理者"
@@ -183,8 +183,8 @@ msgstr "タグ"
 #: web/controllers/admin/user_controller.ex:55
 #: web/controllers/admin/user_controller.ex:66
 #: web/controllers/admin/user_controller.ex:70
-#: web/controllers/registration_controller.ex:28
-#: web/controllers/session_controller.ex:38
+#: web/controllers/registration_controller.ex:29
+#: web/controllers/session_controller.ex:39
 #: web/templates/admin/entry/form.html.eex:9
 #: web/templates/admin/entry/index.html.eex:6
 #: web/templates/admin/entry/show.html.eex:6
@@ -384,11 +384,11 @@ msgstr "ユーザーログイン"
 msgid "UserType"
 msgstr "種別"
 
-#: web/templates/admin/admin_user/index.html.eex:30
-#: web/templates/admin/category/index.html.eex:30
-#: web/templates/admin/entry/index.html.eex:34
-#: web/templates/admin/tag/index.html.eex:28
-#: web/templates/admin/user/index.html.eex:34
+#: web/templates/admin/admin_user/index.html.eex:32
+#: web/templates/admin/category/index.html.eex:32
+#: web/templates/admin/entry/index.html.eex:36
+#: web/templates/admin/tag/index.html.eex:30
+#: web/templates/admin/user/index.html.eex:36
 msgid "New"
 msgstr "新規"
 
@@ -445,7 +445,7 @@ msgstr "%{name} の削除に失敗しました。"
 msgid "%{name} update failed."
 msgstr "%{name} の更新に失敗しました。"
 
-#: web/controllers/registration_controller.ex:28
+#: web/controllers/registration_controller.ex:29
 msgid "%{name} regist failed."
 msgstr "%{name} の登録に失敗しました。"
 
@@ -462,38 +462,38 @@ msgstr "確認"
 msgid "Confirm user"
 msgstr "ユーザー確認"
 
-#: web/controllers/registration_controller.ex:44
+#: web/controllers/registration_controller.ex:45
 msgid "Confirmation failed, something went wrong! Please try again later."
 msgstr "確認処理が失敗しました。もう一度お試しください。"
 
-#: web/controllers/registration_controller.ex:49
+#: web/controllers/registration_controller.ex:50
 msgid "Confirmation failed. Your account has already been activated or confirmation token has been expired."
 msgstr "確認処理が失敗しました。アカウントは既に有効化されているか、トークンが期限切れです。"
 
-#: web/controllers/registration_controller.ex:40
+#: web/controllers/registration_controller.ex:41
 msgid "Your account has been activated successfully."
 msgstr "アカウントが正常に有効化されました。"
 
-#: web/controllers/registration_controller.ex:24
+#: web/controllers/registration_controller.ex:25
 msgid "Your account has been created successfully and confirmation e-mail was sent. please read confirmation instructions and activate your account."
 msgstr "アカウントが正常に作成されました。送信されたメールをご確認頂き、アカウントを有効化してください。"
 
-#: lib/media_sample/mailer.ex:39
+#: lib/media_sample/mailer.ex:38
 #: web/templates/mail/confirmation_instructions.html.eex:1
 msgid "confirmation instructions"
 msgstr "確認手順"
 
-#: web/controllers/admin/session_controller.ex:31
-#: web/controllers/session_controller.ex:38
+#: web/controllers/admin/session_controller.ex:33
+#: web/controllers/session_controller.ex:39
 msgid "%{name} signed out"
 msgstr "%{name} がサインアウトしました"
 
-#: web/controllers/admin/session_controller.ex:23
-#: web/controllers/session_controller.ex:30
+#: web/controllers/admin/session_controller.ex:25
+#: web/controllers/session_controller.ex:31
 msgid "Could not authenticate"
 msgstr "認証できませんでした"
 
-#: web/controllers/admin/session_controller.ex:18
-#: web/controllers/session_controller.ex:25
+#: web/controllers/admin/session_controller.ex:20
+#: web/controllers/session_controller.ex:26
 msgid "Signed in as %{name}"
 msgstr "%{name} としてサインインしました"

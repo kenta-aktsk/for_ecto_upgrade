@@ -1,5 +1,5 @@
 defmodule MediaSample.AdminUserTest do
-  use MediaSample.ModelCase
+  use MediaSample.ModelCase, async: true
 
   alias MediaSample.{AdminUser, Enums.Status}
 

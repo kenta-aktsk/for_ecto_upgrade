@@ -1,5 +1,5 @@
 defmodule MediaSample.UserControllerTest do
-  # use MediaSample.ConnCase
+  # use MediaSample.ConnCase, async: true
 
   # alias MediaSample.User
   # @valid_attrs %{email: "some content", encrypted_password: "some content", image: "some content", name: "some content", profile: "some content", status: 42}

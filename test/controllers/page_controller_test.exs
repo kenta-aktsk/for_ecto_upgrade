@@ -1,5 +1,5 @@
 defmodule MediaSample.PageControllerTest do
-  use MediaSample.ConnCase
+  use MediaSample.ConnCase, async: true
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

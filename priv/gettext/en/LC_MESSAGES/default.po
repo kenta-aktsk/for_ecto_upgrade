@@ -134,7 +134,7 @@ msgstr ""
 #: web/controllers/admin/admin_user_controller.ex:23
 #: web/controllers/admin/admin_user_controller.ex:48
 #: web/controllers/admin/admin_user_controller.ex:63
-#: web/controllers/admin/session_controller.ex:31
+#: web/controllers/admin/session_controller.ex:33
 #: web/templates/admin/page/index.html.eex:10
 msgid "AdminUser"
 msgstr ""
@@ -183,8 +183,8 @@ msgstr ""
 #: web/controllers/admin/user_controller.ex:55
 #: web/controllers/admin/user_controller.ex:66
 #: web/controllers/admin/user_controller.ex:70
-#: web/controllers/registration_controller.ex:28
-#: web/controllers/session_controller.ex:38
+#: web/controllers/registration_controller.ex:29
+#: web/controllers/session_controller.ex:39
 #: web/templates/admin/entry/form.html.eex:9
 #: web/templates/admin/entry/index.html.eex:6
 #: web/templates/admin/entry/show.html.eex:6
@@ -384,11 +384,11 @@ msgstr ""
 msgid "UserType"
 msgstr ""
 
-#: web/templates/admin/admin_user/index.html.eex:30
-#: web/templates/admin/category/index.html.eex:30
-#: web/templates/admin/entry/index.html.eex:34
-#: web/templates/admin/tag/index.html.eex:28
-#: web/templates/admin/user/index.html.eex:34
+#: web/templates/admin/admin_user/index.html.eex:32
+#: web/templates/admin/category/index.html.eex:32
+#: web/templates/admin/entry/index.html.eex:36
+#: web/templates/admin/tag/index.html.eex:30
+#: web/templates/admin/user/index.html.eex:36
 msgid "New"
 msgstr ""
 
@@ -445,7 +445,7 @@ msgstr ""
 msgid "%{name} update failed."
 msgstr ""
 
-#: web/controllers/registration_controller.ex:28
+#: web/controllers/registration_controller.ex:29
 msgid "%{name} regist failed."
 msgstr ""
 
@@ -462,38 +462,38 @@ msgstr ""
 msgid "Confirm user"
 msgstr ""
 
-#: web/controllers/registration_controller.ex:44
+#: web/controllers/registration_controller.ex:45
 msgid "Confirmation failed, something went wrong! Please try again later."
 msgstr ""
 
-#: web/controllers/registration_controller.ex:49
+#: web/controllers/registration_controller.ex:50
 msgid "Confirmation failed. Your account has already been activated or confirmation token has been expired."
 msgstr ""
 
-#: web/controllers/registration_controller.ex:40
+#: web/controllers/registration_controller.ex:41
 msgid "Your account has been activated successfully."
 msgstr ""
 
-#: web/controllers/registration_controller.ex:24
+#: web/controllers/registration_controller.ex:25
 msgid "Your account has been created successfully and confirmation e-mail was sent. please read confirmation instructions and activate your account."
 msgstr ""
 
-#: lib/media_sample/mailer.ex:39
+#: lib/media_sample/mailer.ex:38
 #: web/templates/mail/confirmation_instructions.html.eex:1
 msgid "confirmation instructions"
 msgstr ""
 
-#: web/controllers/admin/session_controller.ex:31
-#: web/controllers/session_controller.ex:38
+#: web/controllers/admin/session_controller.ex:33
+#: web/controllers/session_controller.ex:39
 msgid "%{name} signed out"
 msgstr ""
 
-#: web/controllers/admin/session_controller.ex:23
-#: web/controllers/session_controller.ex:30
+#: web/controllers/admin/session_controller.ex:25
+#: web/controllers/session_controller.ex:31
 msgid "Could not authenticate"
 msgstr ""
 
-#: web/controllers/admin/session_controller.ex:18
-#: web/controllers/session_controller.ex:25
+#: web/controllers/admin/session_controller.ex:20
+#: web/controllers/session_controller.ex:26
 msgid "Signed in as %{name}"
 msgstr ""

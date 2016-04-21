@@ -48,7 +48,7 @@ defmodule MediaSample.UserAuthService do
   end
 
   defp user_from_authorization(authorization, auth) do
-    case Repo.slave.one(Ecto.Model.assoc(authorization, :user)) do
+    case Repo.slave.one(Ecto.assoc(authorization, :user)) do
       nil -> {:error, :user_not_found}
       user ->
         update_authorization(authorization, auth)

@@ -24,6 +24,8 @@ config :media_sample, MediaSample.Gettext,
   locales: ~w(ja en),
   default_locale: "en"
 
+config :media_sample, ecto_repos: [MediaSample.Repo]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

@@ -1,5 +1,5 @@
 defmodule MediaSample.Admin.AdminUserControllerTest do
-  use MediaSample.ConnCase
+  use MediaSample.ConnCase, async: true
   use MediaSample.ControllerTestHelper, controller: MediaSample.Admin.AdminUserController
 
   alias MediaSample.{AdminUser, Admin.AdminUserAuthService, Enums.Status}

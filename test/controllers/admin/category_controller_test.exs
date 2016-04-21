@@ -1,5 +1,5 @@
 defmodule MediaSample.CategoryControllerTest do
-  # use MediaSample.ConnCase
+  # use MediaSample.ConnCase, async: true
 
   # alias MediaSample.Category
   # @valid_attrs %{description: "some content", image: "some content", name: "some content", status: 42}

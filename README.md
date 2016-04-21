@@ -155,3 +155,7 @@ curl -v -H "Authorization: Bearer hogehoge" \
 -F "title=test entry 01" -F "content=test entry 01 content" -F "status=1" -F "category_id=1" -F "tags[]=1" -F "tags[]=2" \
 http://localhost:4000/en/api/v1/mypage/entry/save
 ```
+
+## TODO
+
+- [ ] resolve logger problem (logger and lager)

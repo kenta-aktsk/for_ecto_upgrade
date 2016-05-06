@@ -44,6 +44,7 @@ defmodule MediaSample.Mixfile do
       :corman,
       :scrivener_html,
       :scrivener_headers,
+      :plain_sitemap,
       :mariaex
       ],
      included_applications: [
@@ -76,6 +77,8 @@ defmodule MediaSample.Mixfile do
      # {:read_repos, path: "/Users/kentakatsumata/Documents/workspace_elixir/read_repos"},
      {:translator, github: "kenta-aktsk/translator"},
      # {:translator, path: "/Users/kentakatsumata/Documents/workspace_elixir/translator"},
+     {:plain_sitemap, github: "kenta-aktsk/plain_sitemap"},
+     # {:plain_sitemap, path: "/Users/kentakatsumata/Documents/workspace_elixir/plain_sitemap"},
      {:comeonin, "~> 1.6"},
      {:secure_random, "~> 0.2"},
      {:exrm, "~> 1.0" },

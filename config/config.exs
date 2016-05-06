@@ -13,6 +13,7 @@ end
 
 # Configures the endpoint
 config :media_sample, MediaSample.Endpoint,
+  schema: "http",
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "SNGrdlPqi3howFc98AszYO2do73NM4UzDXQzk6rirQ6YHm9Gtq7cbjwkxgXZN/Aw",
@@ -59,6 +60,9 @@ config :plug_session_memcached,
 
 config :scrivener_html,
   routes_helper: MediaSample.Router.Helpers
+
+config :plain_sitemap,
+  generator: MediaSample.Sitemap
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

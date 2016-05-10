@@ -6,6 +6,7 @@ end
 defmodule MediaSample.PreloadConcern do
   defmacro __using__(_opts) do
     quote location: :keep do
+      alias MediaSample.Gettext
       @behaviour MediaSample.PreloadBehaviour
 
       def preload_all(query), do: preload_all(query, Gettext.config[:default_locale])

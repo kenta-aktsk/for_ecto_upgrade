@@ -37,5 +37,9 @@ defmodule MediaSample.Entry do
       tags: [translation: ^TagTranslation.translation_query(locale)]
     ]
   end
+
+  def default_order(query) do
+    from r in query, order_by: [desc: r.updated_at, desc: r.id]
+  end
 end
 

@@ -49,6 +49,7 @@ defmodule MediaSample.Router do
       resources "/entries", EntryController, only: [:index, :show]
       resources "/registration", RegistrationController, only: [:new, :create]
       get "/confirm/:token", RegistrationController, :confirm
+      get "/rss", FeedController, :rss
     end
   end
 

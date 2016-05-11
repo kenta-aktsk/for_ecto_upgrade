@@ -497,3 +497,11 @@ msgstr ""
 #: web/controllers/session_controller.ex:26
 msgid "Signed in as %{name}"
 msgstr ""
+
+#: web/views/feed_view.ex:10
+msgid "MediaSample"
+msgstr ""
+
+#: web/views/feed_view.ex:12
+msgid "Description of MediaSample"
+msgstr ""

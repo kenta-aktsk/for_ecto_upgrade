@@ -45,6 +45,7 @@ defmodule MediaSample.Mixfile do
       :scrivener_html,
       :scrivener_headers,
       :plain_sitemap,
+      :xml_builder,
       :mariaex
       ],
      included_applications: [
@@ -98,6 +99,7 @@ defmodule MediaSample.Mixfile do
      {:scrivener, "~> 1.0"},
      {:scrivener_html, "~> 1.0"},
      {:scrivener_headers, "~> 1.0"},
+     {:xml_builder, "~> 0.0.6"},
      {:cowboy, "~> 1.0"}]
   end
 

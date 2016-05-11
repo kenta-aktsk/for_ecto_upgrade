@@ -497,3 +497,11 @@ msgstr "認証できませんでした"
 #: web/controllers/session_controller.ex:26
 msgid "Signed in as %{name}"
 msgstr "%{name} としてサインインしました"
+
+#: web/views/feed_view.ex:10
+msgid "MediaSample"
+msgstr "メディアサンプル"
+
+#: web/views/feed_view.ex:12
+msgid "Description of MediaSample"
+msgstr "メディアサンプルの説明です。"

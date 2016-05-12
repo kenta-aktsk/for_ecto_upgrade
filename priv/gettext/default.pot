@@ -30,6 +30,15 @@ msgstr ""
 msgid "reader"
 msgstr ""
 
+msgid "title.home"
+msgstr ""
+
+msgid "title.about"
+msgstr ""
+
+msgid "title.faq"
+msgstr ""
+
 #: web/templates/admin/admin_user/index.html.eex:23
 #: web/templates/admin/category/index.html.eex:23
 #: web/templates/admin/entry/index.html.eex:27

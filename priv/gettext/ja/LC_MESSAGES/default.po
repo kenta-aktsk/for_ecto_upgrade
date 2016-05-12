@@ -29,6 +29,15 @@ msgstr "編集者"
 msgid "reader"
 msgstr "購読者"
 
+msgid "title.home"
+msgstr "トップページです"
+
+msgid "title.about"
+msgstr "aboutページです"
+
+msgid "title.faq"
+msgstr "faqページです"
+
 #: web/templates/admin/admin_user/index.html.eex:23
 #: web/templates/admin/category/index.html.eex:23
 #: web/templates/admin/entry/index.html.eex:27

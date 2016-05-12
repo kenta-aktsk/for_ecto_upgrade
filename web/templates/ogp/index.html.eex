@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<%= if entry_page?(@path), do: render("_twitter_entry.html", entry: get_valid_entry!(@locale, @path)), else: render("_twitter.html") %>
+<meta property="og:site_name" content="<%= gettext "MediaSample" %>">
+<meta property="og:url" content="<%= get_ogp_url(@locale, @path) %>">
+<meta property="og:type" content="<%= get_ogp_type(@path) %>">
+<meta property="og:title" content="<%= get_ogp_title(@locale, @path) %>">
+<meta property="og:description" content="<%= get_ogp_description(@locale, @path) %>">
+<meta property="og:image" content="<%= get_ogp_image(@locale, @path) %>">
+</head>
+<body>
+</body>
+</html>

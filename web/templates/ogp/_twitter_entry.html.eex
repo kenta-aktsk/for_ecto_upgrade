@@ -1,0 +1,5 @@
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="<%= Application.get_env(:media_sample, :social)[:twitter][:account] %>">
+<meta name="twitter:title" content="<%= translate(@entry, :title) %>" />
+<meta name="twitter:description" content="<%= translate(@entry, :content) %>" />
+<meta name="twitter:image" content="<%= EntryImageUploader.url({@entry.image, @entry}, :medium) %>" />

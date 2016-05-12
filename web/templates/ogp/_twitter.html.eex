@@ -1,0 +1,2 @@
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="<%= Application.get_env(:media_sample, :social)[:twitter][:account] %>">

@@ -64,6 +64,11 @@ config :scrivener_html,
 config :plain_sitemap,
   generator: MediaSample.Sitemap
 
+config :media_sample, :social,
+  twitter: [
+    account: "@AkatsukiKenta"
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

@@ -29,6 +29,15 @@ msgstr "editor"
 msgid "reader"
 msgstr "reader"
 
+msgid "title.home"
+msgstr "top page"
+
+msgid "title.about"
+msgstr "about page"
+
+msgid "title.faq"
+msgstr "faq page"
+
 #: web/templates/admin/admin_user/index.html.eex:23
 #: web/templates/admin/category/index.html.eex:23
 #: web/templates/admin/entry/index.html.eex:27

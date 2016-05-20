@@ -6,7 +6,7 @@ defmodule MediaSample.FeedController do
   @feed_limit 25
 
   def rss(conn, _params, locale) do
-    entries = Entry |> Entry.valid |> Entry.preload_all(locale) |> Entry.default_order |> limit(@feed_limit) |> Repo.slave.all
+    entries = Entry |> Entry.valid |> Entry.preload_all(locale) |> Entry.rss_order |> limit(@feed_limit) |> Repo.slave.all
     conn
     |> put_resp_content_type("text/xml")
     |> render "rss.xml", conn: conn, locale: locale, entries: entries

@@ -65,6 +65,12 @@ config :media_sample, MediaSample.Mailer,
   passoword: System.get_env("MEDIA_SAMPLE_EMAIL_PASSWORD"),
   sender: System.get_env("MEDIA_SAMPLE_EMAIL_SENDER")
 
+config :media_sample, MediaSample.Search,
+  access_key_id: System.get_env("MEDIA_SAMPLE_ELASTICSEARCH_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("MEDIA_SAMPLE_ELASTICSEARCH_SECRET_ACCESS_KEY"),
+  region: System.get_env("MEDIA_SAMPLE_ELASTICSEARCH_REGION"),
+  url: System.get_env("MEDIA_SAMPLE_ELASTICSEARCH_URL")
+
 config :arc,
   storage: Arc.Storage.Local,
   base_upload_path: "priv/static/images"

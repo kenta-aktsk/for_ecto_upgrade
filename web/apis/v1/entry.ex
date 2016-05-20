@@ -1,7 +1,7 @@
 defmodule MediaSample.API.V1.Entry do
   use Maru.Router
   import Phoenix.View, only: [render: 3], warn: false
-  alias MediaSample.{Repo, Entry, API.EntryView}, warn: false
+  alias MediaSample.{Repo, Entry, Search, API.EntryView}, warn: false
   helpers MediaSample.API.V1.SharedParams
 
   resource "/entries" do
@@ -13,6 +13,15 @@ defmodule MediaSample.API.V1.Entry do
       conn
       |> Scrivener.Headers.paginate(page)
       |> json(render(EntryView, "index.json", entries: page.entries))
+    end
+
+    params do
+      use [:search]
+    end
+    get "/search" do
+      words = params[:words]
+      entries = Search.search_entry(conn.assigns.locale, words)
+      conn |> json(render(EntryView, "search.json", entries: entries))
     end
   end
 end

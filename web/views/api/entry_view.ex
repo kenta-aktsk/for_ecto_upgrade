@@ -14,6 +14,12 @@ defmodule MediaSample.API.EntryView do
     }
   end
 
+  def render("search.json", %{entries: entries}) do
+    %{
+      entries: render_many(entries, __MODULE__, "entry.json")
+    }
+  end
+
   def render("entry.json", %{entry: entry}) do
     %{
       id: entry.id,

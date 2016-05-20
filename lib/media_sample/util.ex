@@ -17,4 +17,8 @@ defmodule MediaSample.Util do
   def rfc822_string(%Timex.DateTime{} = datetime) do
     datetime |> Timex.format!("{RFC822}")
   end
+
+  def atomify(map) when is_map(map) do
+    Enum.map(map, fn {k, v} -> {String.to_atom(k), v} end) |> Enum.into(%{})
+  end
 end

@@ -15,7 +15,10 @@ This project is featuring many basic and general topics like below:
 * using memcached as session storage (plug_session_memcached)
 * image file upload to S3 (arc)
 * send email via SES (mailman)
-* classification value (ex_enum)
+* sitemap and RSS
+* Facebook OGP and Twitter Cards
+* ElasticSearch (AWS ElasticSearch Service with AWS Signature Version 4)
+* enumerated types/classification value (ex_enum)
 * service layer
 * database concurrent test
 * metaprogramming
@@ -81,6 +84,33 @@ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist
 telnet localhost 11211
 ```
 
+Next, you need to install ElasticSearch (for full text search).
+
+```bash
+# Download ElasticSearch's newest zip file from download page.
+# https://www.elastic.co/downloads/elasticsearch
+
+# And unzip it under `~/tools` directory. (Assume that you downloaded version 2.3.2)
+
+# if you want to use Japanese, install kuromoji plugin
+~/tools/elasticsearch-2.3.2/bin/plugin install analysis-kuromoji
+
+# edit config file
+vi ~/tools/elasticsearch-2.3.2/config/elasticsearch.yml
+
+  # use unique cluster name to prevent auto-clustering with other user's nodes within the same network
+  cluster.name: kenta.katsumata
+
+  # prevent multi-cast
+  discovery.zen.ping.multicast.enabled: false
+
+# start in the background
+~/tools/elasticsearch-2.3.2/bin/elasticsearch -d
+
+# test
+curl http://localhost:9200/
+```
+
 After that, you can start this app like below:
 
 ```bash
@@ -106,7 +136,7 @@ And you can login to [`admin page`](http://localhost:4000/en/admin) by user `adm
 
 ## Environment variables
 
-If you want to use guardian, social login, SES email, you need to set environment variables like below:
+If you want to use guardian, social login, SES email, ElasticSearch(AWS ElasticSearch Service), you need to set environment variables like below:
 
 ```bash
 # ~/.bash_profile
@@ -125,6 +155,14 @@ export MEDIA_SAMPLE_EMAIL_SERVER=ses_server
 export MEDIA_SAMPLE_EMAIL_USER=ses_smtp_user
 export MEDIA_SAMPLE_EMAIL_PASSWORD=ses_smtp_password
 export MEDIA_SAMPLE_EMAIL_SENDER=ses_email
+
+export MEDIA_SAMPLE_ELASTICSEARCH_URL=elastic_search_url
+
+# Following environment variables are for AWS ElasticSearch Service.
+# If you use local ElasticSearch, these variables are not required.
+export MEDIA_SAMPLE_ELASTICSEARCH_ACCESS_KEY_ID=aws_access_key_id
+export MEDIA_SAMPLE_ELASTICSEARCH_SECRET_ACCESS_KEY=aws_secret_access_key
+export MEDIA_SAMPLE_ELASTICSEARCH_REGION=aws_region
 ```
 
 And you need to load:
@@ -141,6 +179,30 @@ If you access to [`localhost:4000`](http://localhost:4000) without specifing any
 
 Initial data are only for English, if you want to make `ja` locale data, you need to change locale to `ja` and create or update record.
 
+## Create ElasticSearch Index
+
+You can create ElasticSearch index and import data from your database like below:
+
+```bash
+# iex
+MediaSample.Search.create_index
+MediaSample.Search.import_documents
+
+# compiled package
+bin/media_sample rpc Elixir.MediaSample.Search create_index
+bin/media_sample rpc Elixir.MediaSample.Search import_documents
+```
+
+`MediaSample.Search.create_index/0` function do both `create` and `delete` index operation. You can call only `delete` index operation like below:
+
+```bash
+# iex
+MediaSample.Search.delete_index
+
+# compiled package
+bin/media_sample rpc Elixir.MediaSample.Search delete_index
+```
+
 ## API
 
 You can call some APIs like below:
@@ -154,6 +216,9 @@ curl -d "email=user01%40example%2ecom&password=12345678" http://localhost:4000/e
 curl -v -H "Authorization: Bearer hogehoge" \
 -F "title=test entry 01" -F "content=test entry 01 content" -F "status=1" -F "category_id=1" -F "tags[]=1" -F "tags[]=2" \
 http://localhost:4000/en/api/v1/mypage/entry/save
+
+# full text search (with ElasticSearch)
+curl http://localhost:4000/en/api/v1/entries/search?words=goromaru%20messi
 ```
 
 ## TODO

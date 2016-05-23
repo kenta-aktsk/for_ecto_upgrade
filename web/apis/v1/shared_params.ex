@@ -31,4 +31,9 @@ defmodule MediaSample.API.V1.SharedParams do
     requires :status, type: :integer
     requires :tags, type: List
   end
+
+  params :search do
+    use :base
+    requires :words, type: :string
+  end
 end

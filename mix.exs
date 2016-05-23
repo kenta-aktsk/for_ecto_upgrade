@@ -46,6 +46,8 @@ defmodule MediaSample.Mixfile do
       :scrivener_headers,
       :plain_sitemap,
       :xml_builder,
+      :tirexs,
+      :aws_auth,
       :mariaex
       ],
      included_applications: [
@@ -100,6 +102,13 @@ defmodule MediaSample.Mixfile do
      {:scrivener_html, "~> 1.0"},
      {:scrivener_headers, "~> 1.0"},
      {:xml_builder, "~> 0.0.6"},
+     {:tirexs, "~> 0.8"},
+     # {:tirexs, github: "Zatvobor/tirexs"},
+     # {:tirexs, path: "/Users/kentakatsumata/Documents/workspace_elixir/tirexs"},
+     {:aws_auth, "~> 0.4"},
+     # {:aws_auth, github: "bryanjos/aws_auth"},
+     # {:aws_auth, path: "/Users/kentakatsumata/Documents/workspace_elixir/aws_auth"},
+     {:timex, "~> 2.1", override: true},
      {:cowboy, "~> 1.0"}]
   end
 

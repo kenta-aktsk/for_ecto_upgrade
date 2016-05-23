@@ -3,6 +3,7 @@ defmodule MediaSample.Entry do
   use MediaSample.ModelStatusConcern
   use MediaSample.PreloadConcern
   alias MediaSample.{EntryTranslation, UserTranslation, CategoryTranslation, TagTranslation}
+  @mapping_type "entry"
 
   schema "entries" do
     field :title, :string
@@ -38,8 +39,12 @@ defmodule MediaSample.Entry do
     ]
   end
 
-  def default_order(query) do
+  def rss_order(query) do
     from r in query, order_by: [desc: r.updated_at, desc: r.id]
+  end
+
+  def mapping_type do
+    @mapping_type
   end
 end
 

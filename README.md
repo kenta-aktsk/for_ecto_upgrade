@@ -98,11 +98,8 @@ Next, you need to install ElasticSearch (for full text search).
 # edit config file
 vi ~/tools/elasticsearch-2.3.2/config/elasticsearch.yml
 
-  # use unique cluster name to prevent auto-clustering with other user's nodes within the same network
+  # use unique cluster name
   cluster.name: kenta.katsumata
-
-  # prevent multi-cast
-  discovery.zen.ping.multicast.enabled: false
 
 # start in the background
 ~/tools/elasticsearch-2.3.2/bin/elasticsearch -d

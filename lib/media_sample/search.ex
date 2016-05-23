@@ -82,7 +82,7 @@ defmodule MediaSample.Search do
     Tirexs.bump!(payload)._bulk()
   end
 
-  def get_index_name(locale) do 
+  def get_index_name(locale) do
     "media_sample_#{locale}"
   end
 

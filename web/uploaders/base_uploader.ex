@@ -11,7 +11,7 @@ defmodule MediaSample.BaseUploader do
       @extension_whitelist ~w(.jpg .jpeg .gif .png)
       @acl :public_read
 
-      def validate({file, _}) do   
+      def validate({file, _}) do
         file_extension = file.file_name |> Path.extname |> String.downcase
         Enum.member?(@extension_whitelist, file_extension)
       end

@@ -20,7 +20,7 @@ defmodule MediaSample.Router do
     plug Guardian.Plug.LoadResource
   end
 
-  # this scope is required. without this, root url ("/") won't be recognized. 
+  # this scope is required. without this, root url ("/") won't be recognized.
   scope "/", MediaSample do
     pipe_through [:browser]
     get "/", RootController, :root

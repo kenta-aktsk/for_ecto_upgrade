@@ -7,7 +7,7 @@ defmodule MediaSample.Admin.Helpers do
     end
   end
 
-  def current_admin_user(conn) do 
+  def current_admin_user(conn) do
     get_session(conn, :current_admin_user)
   end
 end

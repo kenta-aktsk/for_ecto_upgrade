@@ -29,6 +29,18 @@ msgstr "編集者"
 msgid "reader"
 msgstr "購読者"
 
+msgid "text"
+msgstr "テキスト"
+
+msgid "image"
+msgstr "画像"
+
+msgid "quote"
+msgstr "引用"
+
+msgid "header"
+msgstr "ヘッダー"
+
 msgid "title.home"
 msgstr "トップページです"
 
@@ -41,6 +53,7 @@ msgstr "faqページです"
 #: web/templates/admin/admin_user/index.html.eex:23
 #: web/templates/admin/category/index.html.eex:23
 #: web/templates/admin/entry/index.html.eex:27
+#: web/templates/admin/section/index.html.eex:27
 #: web/templates/admin/tag/index.html.eex:21
 #: web/templates/admin/user/index.html.eex:27
 msgid "Delete"
@@ -52,6 +65,8 @@ msgstr "削除"
 #: web/templates/admin/category/show.html.eex:29
 #: web/templates/admin/entry/index.html.eex:26
 #: web/templates/admin/entry/show.html.eex:44
+#: web/templates/admin/section/index.html.eex:26
+#: web/templates/admin/section/show.html.eex:39
 #: web/templates/admin/tag/index.html.eex:20
 #: web/templates/admin/tag/show.html.eex:17
 #: web/templates/admin/user/index.html.eex:26
@@ -98,6 +113,7 @@ msgstr "新規 管理者"
 #: web/templates/admin/admin_user/index.html.eex:21
 #: web/templates/admin/category/index.html.eex:21
 #: web/templates/admin/entry/index.html.eex:25
+#: web/templates/admin/section/index.html.eex:25
 #: web/templates/admin/tag/index.html.eex:19
 #: web/templates/admin/user/index.html.eex:25
 #: web/templates/entry/index.html.eex:27
@@ -113,6 +129,9 @@ msgstr "表示"
 #: web/templates/admin/entry/form.html.eex:48
 #: web/templates/admin/entry/index.html.eex:10
 #: web/templates/admin/entry/show.html.eex:38
+#: web/templates/admin/section/form.html.eex:42
+#: web/templates/admin/section/index.html.eex:10
+#: web/templates/admin/section/show.html.eex:33
 #: web/templates/admin/tag/form.html.eex:15
 #: web/templates/admin/tag/index.html.eex:7
 #: web/templates/admin/tag/show.html.eex:11
@@ -169,6 +188,9 @@ msgstr "カテゴリ"
 #: web/controllers/admin/entry_controller.ex:66
 #: web/controllers/admin/entry_controller.ex:70
 #: web/templates/admin/page/index.html.eex:19
+#: web/templates/admin/section/form.html.eex:9
+#: web/templates/admin/section/index.html.eex:6
+#: web/templates/admin/section/show.html.eex:6
 msgid "Entry"
 msgstr "記事"
 
@@ -215,6 +237,9 @@ msgstr "一覧"
 #: web/templates/admin/entry/edit.html.eex:8
 #: web/templates/admin/entry/new.html.eex:8
 #: web/templates/admin/entry/show.html.eex:45
+#: web/templates/admin/section/edit.html.eex:8
+#: web/templates/admin/section/new.html.eex:8
+#: web/templates/admin/section/show.html.eex:40
 #: web/templates/admin/tag/edit.html.eex:7
 #: web/templates/admin/tag/new.html.eex:7
 #: web/templates/admin/tag/show.html.eex:18
@@ -232,6 +257,7 @@ msgstr "編集 管理者"
 #: web/templates/admin/admin_user/form.html.eex:4
 #: web/templates/admin/category/form.html.eex:4
 #: web/templates/admin/entry/form.html.eex:4
+#: web/templates/admin/section/form.html.eex:4
 #: web/templates/admin/tag/form.html.eex:4
 #: web/templates/admin/user/form.html.eex:4
 #: web/templates/registration/form.html.eex:4
@@ -241,6 +267,7 @@ msgstr "エラーが発生しました。下記のエラーメッセージを確
 #: web/templates/admin/admin_user/form.html.eex:39
 #: web/templates/admin/category/form.html.eex:36
 #: web/templates/admin/entry/form.html.eex:54
+#: web/templates/admin/section/form.html.eex:48
 #: web/templates/admin/tag/form.html.eex:21
 #: web/templates/admin/user/form.html.eex:60
 #: web/templates/registration/form.html.eex:48
@@ -267,6 +294,9 @@ msgstr "管理者ログイン"
 
 #: web/templates/admin/entry/form.html.eex:33
 #: web/templates/admin/entry/show.html.eex:26
+#: web/templates/admin/section/form.html.eex:21
+#: web/templates/admin/section/index.html.eex:8
+#: web/templates/admin/section/show.html.eex:16
 msgid "Content"
 msgstr "コンテンツ"
 
@@ -304,6 +334,8 @@ msgstr "ハロー %{name}！"
 #: web/templates/admin/category/show.html.eex:16
 #: web/templates/admin/entry/form.html.eex:39
 #: web/templates/admin/entry/show.html.eex:31
+#: web/templates/admin/section/form.html.eex:27
+#: web/templates/admin/section/show.html.eex:21
 #: web/templates/admin/user/form.html.eex:27
 #: web/templates/admin/user/show.html.eex:21
 #: web/templates/entry/index.html.eex:8
@@ -396,6 +428,7 @@ msgstr "種別"
 #: web/templates/admin/admin_user/index.html.eex:32
 #: web/templates/admin/category/index.html.eex:32
 #: web/templates/admin/entry/index.html.eex:36
+#: web/templates/admin/section/index.html.eex:36
 #: web/templates/admin/tag/index.html.eex:30
 #: web/templates/admin/user/index.html.eex:36
 msgid "New"
@@ -404,6 +437,7 @@ msgstr "新規"
 #: web/templates/admin/admin_user/index.html.eex:23
 #: web/templates/admin/category/index.html.eex:23
 #: web/templates/admin/entry/index.html.eex:27
+#: web/templates/admin/section/index.html.eex:27
 #: web/templates/admin/tag/index.html.eex:21
 #: web/templates/admin/user/index.html.eex:27
 msgid "Are you sure?"
@@ -412,6 +446,7 @@ msgstr "よろしいですか？"
 #: web/controllers/admin/admin_user_controller.ex:23
 #: web/controllers/admin/category_controller.ex:24
 #: web/controllers/admin/entry_controller.ex:24
+#: web/controllers/admin/section_controller.ex:24
 #: web/controllers/admin/tag_controller.ex:24
 #: web/controllers/admin/user_controller.ex:24
 msgid "%{name} created successfully."
@@ -420,6 +455,7 @@ msgstr "%{name} を新規作成しました。"
 #: web/controllers/admin/admin_user_controller.ex:63
 #: web/controllers/admin/category_controller.ex:66
 #: web/controllers/admin/entry_controller.ex:66
+#: web/controllers/admin/section_controller.ex:66
 #: web/controllers/admin/tag_controller.ex:66
 #: web/controllers/admin/user_controller.ex:66
 msgid "%{name} deleted successfully."
@@ -428,6 +464,7 @@ msgstr "%{name} を削除しました。"
 #: web/controllers/admin/admin_user_controller.ex:48
 #: web/controllers/admin/category_controller.ex:51
 #: web/controllers/admin/entry_controller.ex:51
+#: web/controllers/admin/section_controller.ex:51
 #: web/controllers/admin/tag_controller.ex:51
 #: web/controllers/admin/user_controller.ex:51
 msgid "%{name} updated successfully."
@@ -435,6 +472,7 @@ msgstr "%{name} を更新しました。"
 
 #: web/controllers/admin/category_controller.ex:28
 #: web/controllers/admin/entry_controller.ex:28
+#: web/controllers/admin/section_controller.ex:28
 #: web/controllers/admin/tag_controller.ex:28
 #: web/controllers/admin/user_controller.ex:28
 msgid "%{name} create failed."
@@ -442,6 +480,7 @@ msgstr "%{name} の新規作成に失敗しました。"
 
 #: web/controllers/admin/category_controller.ex:70
 #: web/controllers/admin/entry_controller.ex:70
+#: web/controllers/admin/section_controller.ex:70
 #: web/controllers/admin/tag_controller.ex:70
 #: web/controllers/admin/user_controller.ex:70
 msgid "%{name} delete failed."
@@ -449,6 +488,7 @@ msgstr "%{name} の削除に失敗しました。"
 
 #: web/controllers/admin/category_controller.ex:55
 #: web/controllers/admin/entry_controller.ex:55
+#: web/controllers/admin/section_controller.ex:55
 #: web/controllers/admin/tag_controller.ex:55
 #: web/controllers/admin/user_controller.ex:55
 msgid "%{name} update failed."
@@ -507,10 +547,48 @@ msgstr "認証できませんでした"
 msgid "Signed in as %{name}"
 msgstr "%{name} としてサインインしました"
 
-#: web/views/feed_view.ex:10
+#: web/templates/ogp/index.html.eex:5 web/views/feed_view.ex:10
+#: web/views/ogp_view.ex:21
 msgid "MediaSample"
 msgstr "メディアサンプル"
 
-#: web/views/feed_view.ex:12
+#: web/views/feed_view.ex:12 web/views/ogp_view.ex:37
 msgid "Description of MediaSample"
 msgstr "メディアサンプルの説明です。"
+
+#: web/templates/admin/section/edit.html.eex:1
+msgid "Edit section"
+msgstr "編集 セクション"
+
+#: web/templates/admin/section/index.html.eex:1
+msgid "Listing sections"
+msgstr "セクション一覧"
+
+#: web/templates/admin/section/new.html.eex:1
+msgid "New section"
+msgstr "新規 セクション"
+
+#: web/controllers/admin/section_controller.ex:24
+#: web/controllers/admin/section_controller.ex:28
+#: web/controllers/admin/section_controller.ex:51
+#: web/controllers/admin/section_controller.ex:55
+#: web/controllers/admin/section_controller.ex:66
+#: web/controllers/admin/section_controller.ex:70
+msgid "Section"
+msgstr "セクション"
+
+#: web/templates/admin/section/form.html.eex:15
+#: web/templates/admin/section/index.html.eex:7
+#: web/templates/admin/section/show.html.eex:11
+msgid "SectionType"
+msgstr "種別"
+
+#: web/templates/admin/section/form.html.eex:36
+#: web/templates/admin/section/index.html.eex:9
+#: web/templates/admin/section/show.html.eex:28
+msgid "Seq"
+msgstr "順序"
+
+#: web/templates/admin/section/show.html.eex:1
+msgid "Show section"
+msgstr "表示"

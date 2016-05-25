@@ -20,7 +20,7 @@ defmodule MediaSample.API.V1.Entry do
     end
     get "/search" do
       words = params[:words]
-      entries = Search.search_entry(conn.assigns.locale, words)
+      entries = Search.search_entries(conn.assigns.locale, words)
       conn |> json(render(EntryView, "search.json", entries: entries))
     end
   end

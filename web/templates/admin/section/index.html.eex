@@ -1,0 +1,36 @@
+<h2><%= gettext "Listing sections" %></h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= gettext "Entry" %></th>
+      <th><%= gettext "SectionType" %></th>
+      <th><%= gettext "Content" %></th>
+      <th><%= gettext "Seq" %></th>
+      <th><%= gettext "Status" %></th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for section <- @sections do %>
+    <tr>
+      <td><%= translate(section.entry, :title) %></td>
+      <td><%= SectionType.get(section.section_type).text %></td>
+      <td><%= translate(section, :content) %></td>
+      <td><%= section.seq %></td>
+      <td><%= Status.get(section.status).text %></td>
+
+      <td class="text-right">
+        <%= link gettext("Show"), to: admin_section_path(@conn, :show, @conn.assigns.locale, section), class: "btn btn-default btn-xs" %>
+        <%= link gettext("Edit"), to: admin_section_path(@conn, :edit, @conn.assigns.locale, section), class: "btn btn-default btn-xs" %>
+        <%= link gettext("Delete"), to: admin_section_path(@conn, :delete, @conn.assigns.locale, section), method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= pagination_links @conn, @page, [@conn.assigns.locale], path: &admin_section_path/4 %>
+
+<%= link gettext("New"), to: admin_section_path(@conn, :new, @conn.assigns.locale) %>

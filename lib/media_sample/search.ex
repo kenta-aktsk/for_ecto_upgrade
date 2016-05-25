@@ -2,7 +2,7 @@ defmodule MediaSample.Search do
   import Tirexs.Bulk
   import Translator.TranslationHelpers
   import Ecto.Query, only: [where: 3]
-  alias MediaSample.{Search.Definition, Repo, Entry, Gettext}
+  alias MediaSample.{Search.Definition, Repo, Entry, Section, Gettext, Util}
 
   def create_index, do: Gettext.supported_locales |> Enum.each(&(create_index(&1)))
   def create_index(locale) do
@@ -26,10 +26,18 @@ defmodule MediaSample.Search do
   end
 
   def put_document(locale, type, id, params) when is_list(params) do
-    path = "/#{get_index_name(locale)}/#{type}/#{id}"
-    payload = Tirexs.HTTP.encode(Keyword.take(params, get_document_fields(locale, type)))
-    sign("PUT", path, payload)
-    {:ok, _, _} = Tirexs.HTTP.put(path, payload)
+    # we have to use Bulk API when indexing child document.
+    # because aws_auth can't generate correct signature when path passed with query string parameter (e.x. "?parent=1")
+    metadata =
+      [_index: get_index_name(locale), _type: type, _id: id]
+      |> Util.do_if(type == Section.mapping_type, &(&1 |> Keyword.put(:_parent, params[:entry_id])))
+    document = Keyword.take(params, get_search_fields(locale, type))
+
+    payload = Tirexs.Bulk.payload_as_string do
+      [[[index: metadata], document]]
+    end
+
+    __MODULE__.bulk(payload)
   end
 
   def delete_document(type, id), do: Gettext.supported_locales |> Enum.each(&(delete_document(&1, type, id)))
@@ -39,28 +47,14 @@ defmodule MediaSample.Search do
     Tirexs.HTTP.delete(path)
   end
 
-  def search_document(locale, type, fields, query) when is_list(fields) and is_binary(query) do
-    query = Regex.replace(~r/\s|　/, query, " ")
-    path = "/#{get_index_name(locale)}/#{type}/_search"
-    payload = Tirexs.HTTP.encode([query: [multi_match: [fields: fields, query: query]]])
-    sign("POST", path, payload)
-    {:ok, 200, result} = Tirexs.Resources.bump(payload)._search(get_index_name(locale), type)
-    result
-  end
-
-  def search_entry(locale, query) do
-    result = search_document(locale, Entry.mapping_type, get_search_fields(locale, Entry.mapping_type), query)
-    if result[:hits][:total] > 0 do
-      ids = result[:hits][:hits] |> Enum.map(&(&1[:_id]))
-      Entry |> Entry.preload_all(locale) |> where([e], e.id in ^ids) |> Repo.slave.all
-    else
-      []
-    end
-  end
-
   def import_documents, do: Gettext.supported_locales |> Enum.each(&(import_documents(&1)))
   def import_documents(locale) do
-    entries = Entry |> Entry.preload_all(locale) |> Repo.slave.all
+    import_entries(locale)
+    import_sections(locale)
+  end
+
+  def import_entries(locale) do
+    entries = Entry |> Entry.valid |> Entry.preload_all(locale) |> Repo.slave.all
     fields = get_document_fields(locale, Entry.mapping_type)
     documents = Enum.map(entries, fn(entry) ->
       Enum.map(fields, fn(field) ->
@@ -72,11 +66,73 @@ defmodule MediaSample.Search do
       end)
     end)
 
-    index_name = get_index_name(locale)
-    payload = Tirexs.Bulk.bulk([index: index_name, type: Entry.mapping_type]) do
+    payload = Tirexs.Bulk.bulk([index: get_index_name(locale), type: Entry.mapping_type]) do
       index documents
     end
 
+    __MODULE__.bulk(payload)
+  end
+
+  def import_sections(locale) do
+    sections = Section |> Section.valid |> Section.preload_all(locale) |> Repo.slave.all
+    fields = get_search_fields(locale, Section.mapping_type)
+
+    documents = Enum.flat_map(sections, fn(section) ->
+      document = Enum.map(fields, fn(field) ->
+        {field, translate(section, field)}
+      end)
+      metadata = [index: [_index: get_index_name(locale), _type: Section.mapping_type, _parent: section.entry.id, _id: section.id]]
+      [metadata, document]
+    end)
+
+    payload = Tirexs.Bulk.payload_as_string do
+      documents
+    end
+
+    __MODULE__.bulk(payload)
+  end
+
+  def search_entry_documents(locale, words) when is_binary(words) do
+    payload =
+      query(
+        get_search_fields(locale, Entry.mapping_type),
+        get_search_fields(locale, Section.mapping_type),
+        Regex.replace(~r/\s|　/, words, " ")
+      )
+      |> Tirexs.HTTP.encode
+
+    index_name = get_index_name(locale)
+    path = "/#{index_name}/#{Entry.mapping_type}/_search"
+    sign("POST", path, payload)
+    {:ok, 200, result} = Tirexs.Resources.bump(payload)._search(index_name, Entry.mapping_type)
+    result
+  end
+
+  def search_entries(locale, words) when is_binary(words) do
+    result = search_entry_documents(locale, words)
+
+    if result[:hits][:total] > 0 do
+      ids = result[:hits][:hits] |> Enum.map(&(&1[:_id]))
+      Entry |> Entry.preload_all(locale) |> where([e], e.id in ^ids) |> Repo.slave.all
+    else
+      []
+    end
+  end
+
+  def query(entry_fields, section_fields, words) do
+    [
+      filter: [
+        bool: [
+          should: [
+            [query: [multi_match: [fields: entry_fields, query: words]]],
+            [has_child: [type: "section", query: [multi_match: [fields: section_fields, query: words]]]]
+          ]
+        ]
+      ]
+    ]
+  end
+
+  def bulk(payload) when is_binary(payload) do
     path = "/_bulk"
     sign("POST", path, payload)
     Tirexs.bump!(payload)._bulk()

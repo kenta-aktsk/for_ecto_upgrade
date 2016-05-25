@@ -25,6 +25,15 @@ defmodule MediaSample.Search.Definition do
             title: [type: "string", index: "analyzed", analyzer: "kuromoji_analyzer"],
             content: [type: "string", index: "analyzed", analyzer: "kuromoji_analyzer"]
           ]
+        ],
+        section: [
+          _source: [enabled: true],
+          _all: [enabled: true, analyzer: "kuromoji_analyzer"],
+          _parent: [type: "entry"],
+          properties: [
+            id: [type: "integer", index: "not_analyzed"],
+            content: [type: "string", index: "analyzed", analyzer: "kuromoji_analyzer"]
+          ]
         ]
       ]
     ],
@@ -52,6 +61,15 @@ defmodule MediaSample.Search.Definition do
           properties: [
             id: [type: "integer", index: "not_analyzed"],
             title: [type: "string", index: "analyzed", analyzer: "english"],
+            content: [type: "string", index: "analyzed", analyzer: "english"]
+          ]
+        ],
+        section: [
+          _source: [enabled: true],
+          _all: [enabled: true, analyzer: "english"],
+          _parent: [type: "entry"],
+          properties: [
+            id: [type: "integer", index: "not_analyzed"],
             content: [type: "string", index: "analyzed", analyzer: "english"]
           ]
         ]

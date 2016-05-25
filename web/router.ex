@@ -37,6 +37,7 @@ defmodule MediaSample.Router do
       resources "/users", UserController
       resources "/categories", CategoryController
       resources "/entries", EntryController
+      resources "/sections", SectionController
       resources "/tags", TagController
     end
     scope "/", MediaSample do

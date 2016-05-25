@@ -1,0 +1,50 @@
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p><%= gettext "Oops, something went wrong! Please check the errors below." %></p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :entry, gettext("Entry"), class: "control-label" %>
+    <%= select f, :entry_id, valid_collection(Entry, :title, @locale), class: "form-control" %>
+    <%= error_tag f, :entry %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :section_type, gettext("SectionType"), class: "control-label" %>
+    <%= select f, :section_type, SectionType.select([:text, :id]), class: "form-control" %>
+    <%= error_tag f, :section_type %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :content, gettext("Content"), class: "control-label" %>
+    <%= textarea :section, :content, value: translate(@section, :content), class: "form-control" %>
+    <%= error_tag f, :content %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :image, gettext("Image"), class: "control-label" %>
+    <%= if @changeset.data.image do %>
+      <img src="<%= SectionImageUploader.url({@changeset.data.image, @changeset.data}, :medium) %>" alt="" />
+    <% end %>
+    <%= file_input f, :image, class: "form-control" %>
+    <%= error_tag f, :image %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :seq, gettext("Seq"), class: "control-label" %>
+    <%= text_input f, :seq, class: "form-control" %>
+    <%= error_tag f, :seq %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :status, gettext("Status"), class: "control-label" %>
+    <%= select f, :status, Status.select([:text, :id]), class: "form-control" %>
+    <%= error_tag f, :status %>
+  </div>
+
+  <div class="form-group">
+    <%= submit gettext("Submit"), class: "btn btn-primary" %>
+  </div>
+<% end %>

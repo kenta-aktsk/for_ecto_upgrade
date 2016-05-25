@@ -1,0 +1,8 @@
+<h2><%= gettext "New section" %></h2>
+
+<%= render "form.html", changeset: @changeset,
+                        section: nil,
+                        locale: @conn.assigns.locale,
+                        action: admin_section_path(@conn, :create, @conn.assigns.locale) %>
+
+<%= link gettext("Back"), to: admin_section_path(@conn, :index, @conn.assigns.locale) %>

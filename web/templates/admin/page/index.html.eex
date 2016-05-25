@@ -19,6 +19,9 @@
         <%= link gettext("Entry"), to: admin_entry_path(@conn, :index, @conn.assigns.locale) %>
       </li>
       <li>
+        <%= link gettext("Section"), to: admin_section_path(@conn, :index, @conn.assigns.locale) %>
+      </li>
+      <li>
         <%= link gettext("Tag"), to: admin_tag_path(@conn, :index, @conn.assigns.locale) %>
       </li>
     </ul>

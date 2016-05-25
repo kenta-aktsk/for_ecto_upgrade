@@ -1,6 +1,6 @@
 defmodule MediaSample.API.EntryView do
   use MediaSample.Web, :view
-  alias MediaSample.{Enums.Status, EntryImageUploader}
+  alias MediaSample.{Enums.Status, EntryImageUploader, API.SectionView}
 
   def render("index.json", %{entries: entries}) do
     %{
@@ -26,7 +26,8 @@ defmodule MediaSample.API.EntryView do
       title: translate(entry, :title),
       content: translate(entry, :content),
       image: EntryImageUploader.url({entry.image, entry}, :medium),
-      status: Status.get(entry.status).text
+      status: Status.get(entry.status).text,
+      sections: render_many(entry.sections, SectionView, "section.json")
     }
   end
 end

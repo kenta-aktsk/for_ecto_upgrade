@@ -24,7 +24,7 @@ defmodule MediaSample.Helpers do
   def valid_collection(module, caption_field, locale \\ nil) when is_atom(module) and is_atom(caption_field) do
     module
     |> module.valid
-    |> Util.pipe_if(locale, &(&1 |> module.preload_all(locale)))
+    |> Util.do_if(locale, &(&1 |> module.preload_all(locale)))
     |> Repo.slave.all
     |> Enum.map(&({translate(&1, caption_field), &1.id}))
   end

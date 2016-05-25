@@ -1,0 +1,40 @@
+<h2><%= gettext "Show section" %></h2>
+
+<ul>
+
+  <li>
+    <strong><%= gettext "Entry" %>:</strong>
+    <%= translate(@section.entry, :title) %>
+  </li>
+
+  <li>
+    <strong><%= gettext "SectionType" %>:</strong>
+    <%= SectionType.get(@section.section_type).text %>
+  </li>
+
+  <li>
+    <strong><%= gettext "Content" %>:</strong>
+    <%= translate(@section, :content) %>
+  </li>
+
+  <li>
+    <strong><%= gettext "Image" %>:</strong>
+    <%= if @section.image do %>
+      <img src="<%= SectionImageUploader.url({@section.image, @section}, :medium) %>" alt="" />
+    <% end %>
+  </li>
+
+  <li>
+    <strong><%= gettext "Seq" %>:</strong>
+    <%= @section.seq %>
+  </li>
+
+  <li>
+    <strong><%= gettext "Status" %>:</strong>
+    <%= Status.get(@section.status).text %>
+  </li>
+
+</ul>
+
+<%= link gettext("Edit"), to: admin_section_path(@conn, :edit, @conn.assigns.locale, @section) %>
+<%= link gettext("Back"), to: admin_section_path(@conn, :index, @conn.assigns.locale) %>

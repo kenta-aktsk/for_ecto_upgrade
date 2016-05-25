@@ -2,7 +2,8 @@ defmodule MediaSample.Entry do
   use MediaSample.Web, :model
   use MediaSample.ModelStatusConcern
   use MediaSample.PreloadConcern
-  alias MediaSample.{EntryTranslation, UserTranslation, CategoryTranslation, TagTranslation}
+  alias MediaSample.{User, Category, Tag, Section, EntryTranslation, UserTranslation,
+    CategoryTranslation, TagTranslation, SectionTranslation, Enums.Status}
   @mapping_type "entry"
 
   schema "entries" do
@@ -11,10 +12,11 @@ defmodule MediaSample.Entry do
     field :image, :string
     field :status, :integer
 
-    belongs_to :user, MediaSample.User
-    belongs_to :category, MediaSample.Category
-    many_to_many :tags, MediaSample.Tag, join_through: "entry_tags", on_delete: :delete_all
-    has_one :translation, MediaSample.EntryTranslation
+    belongs_to :user, User
+    belongs_to :category, Category
+    many_to_many :tags, Tag, join_through: "entry_tags", on_delete: :delete_all
+    has_one :translation, EntryTranslation
+    has_many :sections, Section
 
     timestamps
   end
@@ -35,7 +37,9 @@ defmodule MediaSample.Entry do
       translation: ^EntryTranslation.translation_query(locale),
       user: [translation: ^UserTranslation.translation_query(locale)],
       category: [translation: ^CategoryTranslation.translation_query(locale)],
-      tags: [translation: ^TagTranslation.translation_query(locale)]
+      tags: [translation: ^TagTranslation.translation_query(locale)],
+      sections: ^(from s in Section, where: s.status == ^Status.valid.id, order_by: [asc: s.seq],
+        preload: [translation: ^SectionTranslation.translation_query(locale)])
     ]
   end
 

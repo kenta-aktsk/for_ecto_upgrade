@@ -55,41 +55,47 @@ defmodule MediaSample.Search do
 
   def import_entries(locale) do
     entries = Entry |> Entry.valid |> Entry.preload_all(locale) |> Repo.slave.all
-    fields = get_document_fields(locale, Entry.mapping_type)
-    documents = Enum.map(entries, fn(entry) ->
-      Enum.map(fields, fn(field) ->
-        if field == :id do
-          {field, entry.id}
-        else
-          {field, translate(entry, field)}
-        end
+
+    unless Blank.blank?(entries) do
+      fields = get_document_fields(locale, Entry.mapping_type)
+      documents = Enum.map(entries, fn(entry) ->
+        Enum.map(fields, fn(field) ->
+          if field == :id do
+            {field, entry.id}
+          else
+            {field, translate(entry, field)}
+          end
+        end)
       end)
-    end)
 
-    payload = Tirexs.Bulk.bulk([index: get_index_name(locale), type: Entry.mapping_type]) do
-      index documents
+      payload = Tirexs.Bulk.bulk([index: get_index_name(locale), type: Entry.mapping_type]) do
+        index documents
+      end
+
+      __MODULE__.bulk(payload)
     end
-
-    __MODULE__.bulk(payload)
   end
 
   def import_sections(locale) do
     sections = Section |> Section.valid |> Section.preload_all(locale) |> Repo.slave.all
-    fields = get_search_fields(locale, Section.mapping_type)
 
-    documents = Enum.flat_map(sections, fn(section) ->
-      document = Enum.map(fields, fn(field) ->
-        {field, translate(section, field)}
+    unless Blank.blank?(sections) do
+      fields = get_search_fields(locale, Section.mapping_type)
+
+      documents = Enum.flat_map(sections, fn(section) ->
+        document = Enum.map(fields, fn(field) ->
+          {field, translate(section, field)}
+        end)
+        metadata = [index: [_index: get_index_name(locale), _type: Section.mapping_type, _parent: section.entry.id, _id: section.id]]
+        [metadata, document]
       end)
-      metadata = [index: [_index: get_index_name(locale), _type: Section.mapping_type, _parent: section.entry.id, _id: section.id]]
-      [metadata, document]
-    end)
 
-    payload = Tirexs.Bulk.payload_as_string do
-      documents
+      payload = Tirexs.Bulk.payload_as_string do
+        documents
+      end
+
+      __MODULE__.bulk(payload)
     end
-
-    __MODULE__.bulk(payload)
   end
 
   def search_entry_documents(locale, words) when is_binary(words) do

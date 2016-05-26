@@ -26,7 +26,7 @@ defmodule MediaSample.API.V1.SharedParams do
     optional :id, type: :integer, regexp: @one_and_over
     requires :category_id, type: :integer, regexp: @one_and_over
     requires :title, type: :string
-    requires :content, type: :string
+    requires :description, type: :string
     optional :image, type: File
     requires :status, type: :integer
     requires :tags, type: List

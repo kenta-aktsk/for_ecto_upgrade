@@ -30,9 +30,9 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :content, gettext("Content"), class: "control-label" %>
-    <%= textarea :entry, :content, value: translate(@entry, :content), class: "form-control" %>
-    <%= error_tag f, :content %>
+    <%= label f, :description, gettext("Description"), class: "control-label" %>
+    <%= text_input :entry, :description, value: translate(@entry, :description), class: "form-control" %>
+    <%= error_tag f, :description %>
   </div>
 
   <div class="form-group">

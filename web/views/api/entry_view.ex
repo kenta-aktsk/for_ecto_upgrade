@@ -24,7 +24,7 @@ defmodule MediaSample.API.EntryView do
     %{
       id: entry.id,
       title: translate(entry, :title),
-      content: translate(entry, :content),
+      description: translate(entry, :description),
       image: EntryImageUploader.url({entry.image, entry}, :medium),
       status: Status.get(entry.status).text,
       sections: render_many(entry.sections, SectionView, "section.json")

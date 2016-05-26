@@ -23,7 +23,7 @@ defmodule MediaSample.Search.Definition do
           properties: [
             id: [type: "integer", index: "not_analyzed"],
             title: [type: "string", index: "analyzed", analyzer: "kuromoji_analyzer"],
-            content: [type: "string", index: "analyzed", analyzer: "kuromoji_analyzer"]
+            description: [type: "string", index: "analyzed", analyzer: "kuromoji_analyzer"]
           ]
         ],
         section: [
@@ -61,7 +61,7 @@ defmodule MediaSample.Search.Definition do
           properties: [
             id: [type: "integer", index: "not_analyzed"],
             title: [type: "string", index: "analyzed", analyzer: "english"],
-            content: [type: "string", index: "analyzed", analyzer: "english"]
+            description: [type: "string", index: "analyzed", analyzer: "english"]
           ]
         ],
         section: [

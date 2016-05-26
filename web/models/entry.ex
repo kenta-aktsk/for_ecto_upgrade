@@ -8,7 +8,7 @@ defmodule MediaSample.Entry do
 
   schema "entries" do
     field :title, :string
-    field :content, :string
+    field :description, :string
     field :image, :string
     field :status, :integer
 
@@ -21,7 +21,7 @@ defmodule MediaSample.Entry do
     timestamps
   end
 
-  @required_fields ~w(user_id category_id title content status)a
+  @required_fields ~w(user_id category_id title description status)a
   @optional_fields ~w()a
 
   def changeset(entry, params \\ %{}) do

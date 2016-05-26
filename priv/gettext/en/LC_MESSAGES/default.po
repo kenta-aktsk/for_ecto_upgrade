@@ -203,7 +203,7 @@ msgstr ""
 #: web/templates/admin/entry/form.html.eex:21
 #: web/templates/admin/entry/index.html.eex:8
 #: web/templates/admin/entry/show.html.eex:16
-#: web/templates/admin/page/index.html.eex:22
+#: web/templates/admin/page/index.html.eex:25
 #: web/templates/entry/index.html.eex:6
 msgid "Tag"
 msgstr ""
@@ -292,8 +292,6 @@ msgstr ""
 msgid "Admin Login"
 msgstr ""
 
-#: web/templates/admin/entry/form.html.eex:33
-#: web/templates/admin/entry/show.html.eex:26
 #: web/templates/admin/section/form.html.eex:21
 #: web/templates/admin/section/index.html.eex:8
 #: web/templates/admin/section/show.html.eex:16
@@ -303,6 +301,8 @@ msgstr ""
 #: web/templates/admin/category/form.html.eex:15
 #: web/templates/admin/category/index.html.eex:7
 #: web/templates/admin/category/show.html.eex:11
+#: web/templates/admin/entry/form.html.eex:33
+#: web/templates/admin/entry/show.html.eex:26
 msgid "Description"
 msgstr ""
 
@@ -574,6 +574,7 @@ msgstr ""
 #: web/controllers/admin/section_controller.ex:55
 #: web/controllers/admin/section_controller.ex:66
 #: web/controllers/admin/section_controller.ex:70
+#: web/templates/admin/page/index.html.eex:22
 msgid "Section"
 msgstr ""
 

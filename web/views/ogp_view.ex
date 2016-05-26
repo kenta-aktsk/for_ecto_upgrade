@@ -37,7 +37,7 @@ defmodule MediaSample.OgpView do
         gettext "Description of MediaSample"
       url_type == UrlType.entry ->
         entry = get_valid_entry!(locale, path)
-        translate(entry, :content)
+        translate(entry, :description)
       :else ->
         raise "corresponding description is not defined. path = #{path}"
     end

@@ -23,8 +23,8 @@
   </li>
 
   <li>
-    <strong><%= gettext "Content" %>:</strong>
-    <%= translate(@entry, :content) %>
+    <strong><%= gettext "Description" %>:</strong>
+    <%= translate(@entry, :description) %>
   </li>
 
   <li>

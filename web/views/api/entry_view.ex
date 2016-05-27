@@ -27,7 +27,7 @@ defmodule MediaSample.API.EntryView do
       description: translate(entry, :description),
       image: EntryImageUploader.url({entry.image, entry}, :medium),
       status: Status.get(entry.status).text,
-      sections: render_many(entry.sections, SectionView, "section.json")
+      sections: (if Ecto.assoc_loaded?(entry.sections), do: render_many(entry.sections, SectionView, "section.json"), else: [])
     }
   end
 end

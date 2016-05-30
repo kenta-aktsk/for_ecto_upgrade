@@ -31,7 +31,7 @@ defmodule MediaSample.EntryService do
   end
 
   def insert_entry_tags(tags, entry) do
-    entry_tags = Enum.map(tags, &([entry_id: entry.id, tag_id: String.to_integer(&1)]))
+    entry_tags = Enum.map(tags, &([entry_id: entry.id, tag_id: Util.to_integer(&1)]))
     count = length(entry_tags)
     {^count, list} = Repo.insert_all(EntryTag, entry_tags)
     {:ok, list}

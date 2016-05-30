@@ -21,4 +21,7 @@ defmodule MediaSample.Util do
   def atomify(map) when is_map(map) do
     Enum.map(map, fn {k, v} -> {String.to_atom(k), v} end) |> Enum.into(%{})
   end
+
+  def to_integer(val) when is_integer(val), do: val
+  def to_integer(val) when is_binary(val), do: String.to_integer(val)
 end

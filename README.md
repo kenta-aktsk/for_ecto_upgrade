@@ -211,7 +211,8 @@ curl -d "email=user01%40example%2ecom&password=12345678" http://localhost:4000/e
 
 # call entry save API with JWT token
 curl -v -H "Authorization: Bearer hogehoge" \
--F "title=test entry 01" -F "description=test entry 01 description" -F "status=1" -F "category_id=1" -F "tags[]=1" -F "tags[]=2" \
+-H "Accept: application/json" -H "Content-type: application/json" \
+-X POST -d '{"title":"entry 01", "description":"entry 01 description", "status":1, "category_id":1, "tags":[1, 2], "sections":[{"section_type":1, "content":"section 01", "seq":1, "status":1}]}' \
 http://localhost:4000/en/api/v1/mypage/entry/save
 
 # full text search (with ElasticSearch)

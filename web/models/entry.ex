@@ -30,6 +30,7 @@ defmodule MediaSample.Entry do
     |> validate_required(@required_fields)
     |> foreign_key_constraint(:user_id)
     |> foreign_key_constraint(:category_id)
+    |> validate_inclusion(:status, Status.select(:id))
   end
 
   def preload_all(query, locale) do

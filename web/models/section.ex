@@ -2,7 +2,7 @@ defmodule MediaSample.Section do
   use MediaSample.Web, :model
   use MediaSample.ModelStatusConcern
   use MediaSample.PreloadConcern
-  alias MediaSample.{Entry, EntryTranslation, SectionTranslation}
+  alias MediaSample.{Entry, EntryTranslation, SectionTranslation, Enums.SectionType, Enums.Status}
   @mapping_type "section"
 
   schema "sections" do
@@ -19,13 +19,15 @@ defmodule MediaSample.Section do
   end
 
   @required_fields ~w(entry_id section_type seq status)a
-  @optional_fields ~w()a
+  @optional_fields ~w(content)a
 
   def changeset(section, params \\ %{}) do
     section
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> foreign_key_constraint(:entry_id)
+    |> validate_inclusion(:section_type, SectionType.select(:id))
+    |> validate_inclusion(:status, Status.select(:id))
   end
 
   def preload_all(query, locale) do

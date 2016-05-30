@@ -63,6 +63,7 @@
   "scrivener_html": {:hex, :scrivener_html, "1.1.0", "546654286ccf3a7657a1327e54b16195ccd3fd1d989d23b6db3baa91413e5bac", [:mix], [{:scrivener, "~> 1.0", [hex: :scrivener, optional: false]}, {:phoenix_html, "~> 2.2", [hex: :phoenix_html, optional: false]}, {:phoenix, "~> 1.0 or ~> 1.2-rc", [hex: :phoenix, optional: true]}]},
   "secure_random": {:hex, :secure_random, "0.3.0", "3091ffcf1b5323b1739be87efa0ba51f27207ab09c200f36dd70c00f685bf735", [:mix], []},
   "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.0", "edee20847c42e379bf91261db474ffbe373f8acb56e9079acb6038d4e0bf414f", [:rebar, :make], []},
+  "temp": {:hex, :temp, "0.4.0", "8b3fe66b49d373f91d17a15167e89907ae22b4ac7addf9f0efd585711e9ea715", [:mix], []},
   "timex": {:hex, :timex, "2.1.5", "d4afd4e5114de99ac3093bbdba3a692ff6d9408c9e0075985a568c323c39f6c5", [:mix], [{:tzdata, "~> 0.1.8 or ~> 0.5", [hex: :tzdata, optional: false]}, {:gettext, "~> 0.10", [hex: :gettext, optional: false]}, {:combine, "~> 0.7", [hex: :combine, optional: false]}]},
   "tirexs": {:hex, :tirexs, "0.8.1", "d0d478e4deefaecaa3f675193ac1750bdd01d8f8e9e28181e8858c394f2df77a", [:mix], [{:exjsx, "~> 3.2.0", [hex: :exjsx, optional: false]}]},
   "translator": {:git, "https://github.com/kenta-aktsk/translator.git", "af79dfdfa1e50d4d1b2ff05110d043ba4fd963c3", []},

@@ -49,6 +49,7 @@ defmodule MediaSample.Mixfile do
       :xml_builder,
       :tirexs,
       :aws_auth,
+      :temp,
       :mariaex
       ],
      included_applications: [
@@ -110,6 +111,7 @@ defmodule MediaSample.Mixfile do
      # {:aws_auth, github: "bryanjos/aws_auth"},
      # {:aws_auth, path: "/Users/kentakatsumata/Documents/workspace_elixir/aws_auth"},
      {:timex, "~> 2.1", override: true},
+     {:temp, "~> 0.4.0"},
      {:cowboy, "~> 1.0"}]
   end
 

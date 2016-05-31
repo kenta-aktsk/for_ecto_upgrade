@@ -14,6 +14,7 @@ defmodule MediaSample.API.V1.Mypage.Entry do
     unless entry.user.id == user.id, do: raise "user is not the owner of this entry."
   end
 
+  def make_temp_image(nil), do: nil
   def make_temp_image(image) when is_binary(image) do
     scheme = get_data_uri_scheme(image)
     if scheme do
@@ -98,7 +99,7 @@ defmodule MediaSample.API.V1.Mypage.Entry do
             {:ok, %{entry: entry}} ->
               unless Blank.blank?(params["sections"]) do
                 Enum.each(params["sections"], fn(section_params) ->
-                  section_multi = build_section_multi(entry, section_params, locale)
+                  section_multi = build_section_multi(entry, Guardian.Utils.stringify_keys(section_params), locale)
                   case Repo.transaction(section_multi) do
                     {:ok, _} -> :ok
                     {:error, _failed_operation, _failed_value, _changes_so_far} ->
